@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-09-04 Fri 14:22 -->
+<!-- 2020-09-09 Wed 15:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ldlework's init.el</title>
@@ -41,7 +41,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -202,50 +202,26 @@
 <script type="text/javascript" src="https://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
 <script type="text/" src="https://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -255,1221 +231,197 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org58d2685">setup</a>
+<li><a href="#org0558861">org-mode</a>
 <ul>
-<li><a href="#org439a160">lexical binding</a></li>
-<li><a href="#org6754c2d">straight.el</a>
+<li><a href="#org6d8d6b7">straight.el fixes</a>
 <ul>
-<li><a href="#org8602952">bootstrap</a></li>
-<li><a href="#org44faf53">use-package integration</a></li>
+<li><a href="#orgc72d0e3">fix-org-git-version</a></li>
+<li><a href="#org3191d21">fix-org-release</a></li>
 </ul>
 </li>
-<li><a href="#org58555a6">general dependencies</a></li>
-<li><a href="#org8ad9b1f">linux paths</a></li>
-<li><a href="#org6afb7f7">windows paths</a></li>
-<li><a href="#orgb46c8b5">utility functions</a>
+<li><a href="#org4f841a7">installation</a></li>
+<li><a href="#orgf99ab75">security</a></li>
+<li><a href="#org72cca6c">look</a>
 <ul>
-<li><a href="#org18e901c">my/org-file-name</a></li>
-<li><a href="#org120a912">my/notes-file-name</a></li>
-<li><a href="#org44fc29a">my/bookmarks-file-name</a></li>
-<li><a href="#orgf13edcc">my/template-directory</a></li>
-<li><a href="#org2525420">my/template-file-name</a></li>
-<li><a href="#orge38150c">my/project-directory</a></li>
-<li><a href="#orgb253995">my/source-directory</a></li>
-<li><a href="#org8e59938">setup external browser</a></li>
+<li><a href="#orgfda18df">indent by header level</a></li>
+<li><a href="#orgdcd039d">pretty heading bullets</a></li>
+<li><a href="#org9271311">pretty priority cookies</a></li>
+<li><a href="#org3cdb434">pretty heading ellipsis</a></li>
+<li><a href="#orgd9b9879">dynamic tag position</a></li>
 </ul>
 </li>
+<li><a href="#org9c6adb9">feel</a>
+<ul>
+<li><a href="#org17ac5a3">don't fold blocks on open</a></li>
+<li><a href="#org1d071ef">auto-fill paragraphs</a></li>
+<li><a href="#org3c439a4">respect content on heading insert</a></li>
+<li><a href="#org5a9390a">ensure one-line between headers</a></li>
+<li><a href="#org330d537">initial visibility</a></li>
 </ul>
 </li>
-<li><a href="#org9d5295c">aesthetics</a>
+<li><a href="#orgb666b03">todo states</a></li>
+<li><a href="#org8dc97eb">poly-org</a></li>
+<li><a href="#org052b771">org-modules</a></li>
+<li><a href="#org9772a78">org-babel</a>
 <ul>
-<li><a href="#org42096c2">vertical border</a></li>
-<li><a href="#orgaa95139">blend in the fringes</a></li>
+<li><a href="#org3cd6a33">add languages to babel</a></li>
+<li><a href="#org90b7c7a">set default header args</a></li>
+<li><a href="#orgdeba657">disable code evaluation prompts</a></li>
 </ul>
 </li>
-<li><a href="#orgcb174d2">core</a>
+<li><a href="#orgb4e79aa">org-helm</a></li>
+<li><a href="#orgab538b3">org-projectile</a></li>
+<li><a href="#org08c4180">org-capture</a>
 <ul>
-<li><a href="#orgc42e1c3">autosaves</a>
-<ul>
-<li><a href="#orgd7b4948">autosave every buffer that visits a file</a></li>
-<li><a href="#orga651ebc">save every 20 secs or 20 keystrokes</a></li>
-<li><a href="#org805457c">store autosaves in a single place</a></li>
+<li><a href="#org5668760">set default notes file</a></li>
+<li><a href="#org039284f">bind a key for capture</a></li>
+<li><a href="#orga3aa8a3">automatically visit new capture</a></li>
+<li><a href="#orgf2666dc">capture templates</a></li>
 </ul>
 </li>
-<li><a href="#org3b6c6bb">backups</a>
-<ul>
-<li><a href="#orgcdba387">store backups with the autosaves</a></li>
-<li><a href="#orgc5fb2db">keep 10 backups</a></li>
-<li><a href="#org9599b93">delete old backups</a></li>
-<li><a href="#orgdff6981">copy files to avoid various problems</a></li>
-<li><a href="#org111561d">backup files even if version controlled</a></li>
-</ul>
-</li>
-<li><a href="#org4cb1a48">cursor</a>
-<ul>
-<li><a href="#orgd9b2760">box style</a></li>
-<li><a href="#org9e6044f">blinking</a></li>
-</ul>
-</li>
-<li><a href="#org0019891">disable</a>
-<ul>
-<li><a href="#org870a830">menubar</a></li>
-<li><a href="#org606b5e8">toolbar</a></li>
-<li><a href="#orgac02d63">scrollbar</a></li>
-<li><a href="#org638c896">startup message</a></li>
-<li><a href="#org1c6e5bf">customizations file</a></li>
-</ul>
-</li>
-<li><a href="#org0288821">editing</a>
-<ul>
-<li><a href="#org14307cf">use spaces</a></li>
-<li><a href="#org735747e">visual fill-column</a></li>
-<li><a href="#orgf7572ea">fill at 79</a></li>
-<li><a href="#orgebfd3b5">autofill text-mode</a></li>
-<li><a href="#orge599048">ssh for tramp</a></li>
-</ul>
-</li>
-<li><a href="#org680eb47">key-bindings</a>
-<ul>
-<li><a href="#orgdc97ad8">meta n &amp; p</a></li>
-</ul>
-</li>
-<li><a href="#org6ac4e8a">minor-modes</a>
-<ul>
-<li><a href="#org5296025">whitespace-mode</a></li>
-<li><a href="#org76ce2bb">prettify-symbols-mode</a></li>
-<li><a href="#orgcd92c09">electric-pair-mode</a></li>
-<li><a href="#org9cb2574">rainbow-delimeters-mode</a></li>
-<li><a href="#orgf9e1286">show-paren-mode</a></li>
-<li><a href="#org4071580">which-key-mode</a></li>
-<li><a href="#orgc29e3df">company-mode</a></li>
-</ul>
-</li>
-<li><a href="#orge1ff0b9">shorten prompts</a></li>
-<li><a href="#orgb6bcfca">debug on error</a></li>
-</ul>
-</li>
-<li><a href="#org8be4c05">helpful</a></li>
-<li><a href="#orgce8ecaa">deflayer</a></li>
-<li><a href="#orga93f5f2">polymode</a></li>
-<li><a href="#org68cd974">org-mode</a>
-<ul>
-<li><a href="#org67a139b">straight.el fixes</a>
-<ul>
-<li><a href="#org1502184">fix-org-git-version</a></li>
-<li><a href="#org8e59a0f">fix-org-release</a></li>
-</ul>
-</li>
-<li><a href="#orgd173659">installation</a></li>
-<li><a href="#orgba0b87d">security</a></li>
-<li><a href="#orga4b4b61">look</a>
-<ul>
-<li><a href="#org8db2763">indent by header level</a></li>
-<li><a href="#org56df5c4">pretty heading bullets</a></li>
-<li><a href="#org1f09038">pretty priority cookies</a></li>
-<li><a href="#org002f98a">pretty heading ellipsis</a></li>
-<li><a href="#orgdc29589">dynamic tag position</a></li>
-</ul>
-</li>
-<li><a href="#org717e92e">feel</a>
-<ul>
-<li><a href="#org5dd4cd6">don't fold blocks on open</a></li>
-<li><a href="#org66469f9">auto-fill paragraphs</a></li>
-<li><a href="#org60f5166">respect content on heading insert</a></li>
-<li><a href="#orgd6fb6a5">ensure one-line between headers</a></li>
-<li><a href="#org091f834">initial visibility</a></li>
-</ul>
-</li>
-<li><a href="#org3136d15">todo states</a></li>
-<li><a href="#orgab657c3">poly-org</a></li>
-<li><a href="#org49963cf">org-modules</a></li>
-<li><a href="#orga3d0048">org-babel</a>
-<ul>
-<li><a href="#org78bc59e">add languages to babel</a></li>
-<li><a href="#org86c6e4f">set default header args</a></li>
-<li><a href="#org194ea0b">disable code evaluation prompts</a></li>
-</ul>
-</li>
-<li><a href="#org77e6683">org-helm</a></li>
-<li><a href="#org46889b6">org-projectile</a></li>
-<li><a href="#orge3a9333">org-capture</a>
-<ul>
-<li><a href="#org474c344">set default notes file</a></li>
-<li><a href="#org8c57232">bind a key for capture</a></li>
-<li><a href="#orgb7dfa6d">automatically visit new capture</a></li>
-<li><a href="#org3d685be">capture templates</a></li>
-</ul>
-</li>
-<li><a href="#org4900b3a">org-agenda</a></li>
-<li><a href="#org7f908ce">linkmarks</a></li>
-<li><a href="#orgc88fd1b">outshine</a></li>
-<li><a href="#org3c36d38">org-ql</a></li>
-<li><a href="#org5c51f19">i-read-this</a></li>
-<li><a href="#org33c5420">don't prompt to confirm not prompting to confirm</a></li>
-</ul>
-</li>
-<li><a href="#orga66ade0">projectile</a>
-<ul>
-<li><a href="#org56c304f">project discovery</a></li>
-</ul>
-</li>
-<li><a href="#orgaf5d3a4">helm</a>
-<ul>
-<li><a href="#orgb782aee">ace-jump-helm-line</a></li>
-<li><a href="#orgb4fcece">helm-bookmarks</a></li>
-<li><a href="#org7b8e7f6">helm-ag</a></li>
-<li><a href="#orgc8d1377">helm-descbinds</a></li>
-<li><a href="#org2fb6896">helm-flyspell</a></li>
-<li><a href="#org801d1d4">helm-org-rifle</a></li>
-<li><a href="#org81198cb">helm-projectile</a></li>
-<li><a href="#orge0c59ed">auto full frame</a></li>
-<li><a href="#orgd5c1461">filter nix wrappers</a></li>
-</ul>
-</li>
-<li><a href="#orgc66bd39">magit</a>
-<ul>
-<li><a href="#orge042500">forge</a></li>
-</ul>
-</li>
-<li><a href="#org2a891fc">language support</a>
-<ul>
-<li><a href="#org93e3813">flycheck</a></li>
-<li><a href="#orgc8f7423">elisp</a>
-<ul>
-<li><a href="#org1190560">macrostep</a></li>
-<li><a href="#orgd007212">context-help</a></li>
-<li><a href="#org08d1cde">lispy-mode</a></li>
-</ul>
-</li>
-<li><a href="#org25cd1ae">markdown-mode</a></li>
-<li><a href="#orgc31ef10">python</a>
-<ul>
-<li><a href="#org6b88ccb">elpy</a></li>
-</ul>
-</li>
-<li><a href="#org4dc5d56">typescript</a>
-<ul>
-<li><a href="#org1e5b3e2">typescript-mode</a></li>
-<li><a href="#orgad83856">jsx</a></li>
-</ul>
-</li>
-<li><a href="#org67f6290">yaml</a>
-<ul>
-<li><a href="#org467391d">yaml-mode</a></li>
-</ul>
-</li>
-<li><a href="#org01503c8">web-mode</a></li>
-<li><a href="#orgfea3ba6">go-mode</a></li>
-<li><a href="#orgd940ca2">lojban</a></li>
-</ul>
-</li>
-<li><a href="#orgd6ff8e6">tooling support</a>
-<ul>
-<li><a href="#org729de61">rec-mode</a>
-<ul>
-<li><a href="#org99a35e8">support</a></li>
-</ul>
-</li>
-<li><a href="#org31da5ec">docker</a></li>
-<li><a href="#orgf296546">nix</a>
-<ul>
-<li><a href="#org54be6a0">nix-mode</a></li>
-<li><a href="#org8ca7b6d">nix-sandbox</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org32e0dce">yasnippet</a></li>
-<li><a href="#orgee292fe">org-brain</a>
-<ul>
-<li><a href="#org0cdd118">Navigation Helpers</a></li>
-<li><a href="#org19e480f">polybrain</a></li>
-<li><a href="#orgb397499">search</a></li>
-</ul>
-</li>
-<li><a href="#org7a7c118">hydra</a>
-<ul>
-<li><a href="#org1176530">pretty-hydra</a></li>
-<li><a href="#orgbec70bf">major-mode-hydra</a></li>
-<li><a href="#org9cd3bc4">hera</a></li>
-<li><a href="#orgb5e635f">nougat-hydra</a></li>
-<li><a href="#org43740d7">hydra-dwim</a></li>
-<li><a href="#org206dbdf">helm-org-bm</a></li>
-<li><a href="#org1e573a4">major-mode hydra key</a></li>
-<li><a href="#org9ed6ecc">hydra-help</a></li>
-<li><a href="#org3381d7f">hydra-mark</a></li>
-<li><a href="#orgc831242">hydra-projectile</a></li>
-<li><a href="#org31b5da0">hydra-registers</a></li>
-<li><a href="#org27f25aa">hydra-window</a>
-<ul>
-<li><a href="#orgea9530b">Toggle Window Split</a></li>
-</ul>
-</li>
-<li><a href="#orga170a00">hydra-yank-pop</a></li>
-<li><a href="#orga1cef7f">hydra-zoom</a></li>
-<li><a href="#org573a178">emacs-lisp</a></li>
-<li><a href="#org3c13e55">org-mode</a>
-<ul>
-<li><a href="#org37f9c72">hydra-org-goto-first-sibling</a></li>
-<li><a href="#org0a323bd">hydra-org-goto-last-sibling</a></li>
-<li><a href="#orgff1fe05">hydra-org-parent-level</a></li>
-<li><a href="#org6f42d4d">hydra-org-child-level</a></li>
-<li><a href="#org3bf10e6">hydra-org</a></li>
-</ul>
-</li>
-<li><a href="#orge7c6247">hydra-brain</a>
-<ul>
-<li><a href="#org92a1f98">Toggle Window Split</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org5a2211d">treemacs</a>
-<ul>
-<li><a href="#orgf1e1679">Hydra</a></li>
-</ul>
-</li>
-<li><a href="#org3d2f5dc">elfeed</a>
-<ul>
-<li><a href="#org01e0f9f">boilerplate</a></li>
-<li><a href="#org3d11b57">setup</a></li>
-</ul>
-</li>
-<li><a href="#orgf2da900">misc</a>
-<ul>
-<li><a href="#orgbd3bfdc">emacsql</a></li>
-<li><a href="#org4d42b91">gist</a></li>
-<li><a href="#org5049c20">poker.el</a></li>
-<li><a href="#org1cd4426">decide-mode</a></li>
-</ul>
-</li>
-<li><a href="#orgb33b255">entrypoint</a>
-<ul>
-<li><a href="#orgcb4892d">ep-notes-file</a></li>
-<li><a href="#org05a04e6">ep-notes-find-file</a></li>
-<li><a href="#org370dc49">ep-notes-visit</a></li>
-<li><a href="#org05e72c6">ep-notes-select-then-visit</a></li>
-<li><a href="#org50b35e1">bookmarks</a></li>
-<li><a href="#org2a6b5a6">docs</a></li>
-<li><a href="#org815619a">nix</a></li>
-<li><a href="#org27632dc">hydra-default</a></li>
-</ul>
-</li>
-<li><a href="#org8a3b927">linux configuration</a>
-<ul>
-<li><a href="#org638b863">preamble</a></li>
-<li><a href="#org585e6c0">nixos</a>
-<ul>
-<li><a href="#org5cd5e6f">lorri</a></li>
-</ul>
-</li>
-<li><a href="#orga55d99d">aesthetics</a>
-<ul>
-<li><a href="#orgb6bfe10">theme</a></li>
-<li><a href="#org054f903">default font</a></li>
-<li><a href="#org14c7327">unicode fonts</a></li>
-<li><a href="#org73e8767">eyeliner for modeline</a></li>
-</ul>
-</li>
-<li><a href="#org05affcd">core</a>
-<ul>
-<li><a href="#orge77f0c5">minor modes</a></li>
-<li><a href="#org21ed572">backup every save</a></li>
-<li><a href="#org4019e7b">fix tooltips</a></li>
-</ul>
-</li>
-<li><a href="#org8554c16">org</a>
-<ul>
-<li><a href="#org96ce065">look</a></li>
-</ul>
-</li>
-<li><a href="#org4929c49">language support</a>
-<ul>
-<li><a href="#orga84c299">python</a></li>
-<li><a href="#org54885ec">typescript</a></li>
-<li><a href="#org35cf921">f#</a></li>
-</ul>
-</li>
-<li><a href="#org4a97052">helm</a>
-<ul>
-<li><a href="#org2572217">theme customizations</a></li>
-</ul>
-</li>
-<li><a href="#orgf24f02d">postamble</a></li>
-</ul>
-</li>
-<li><a href="#orgaf37110">windows configuration</a>
-<ul>
-<li><a href="#org372a449">preamble</a></li>
-<li><a href="#orgd11986f">theme</a></li>
-<li><a href="#org3968b0d">postamble</a></li>
+<li><a href="#orga1b98c5">org-agenda</a></li>
+<li><a href="#org6f9088e">org-fragtog</a></li>
+<li><a href="#org5a5b008">linkmarks</a></li>
+<li><a href="#orgec4bf65">outshine</a></li>
+<li><a href="#org58cd020">org-ql</a></li>
+<li><a href="#org7371913">i-read-this</a></li>
+<li><a href="#org76cae90">don't prompt to confirm not prompting to confirm</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org58d2685" class="outline-2">
-<h2 id="org58d2685">setup</h2>
-<div class="outline-text-2" id="text-org58d2685">
-</div>
-<div id="outline-container-org439a160" class="outline-3">
-<h3 id="org439a160">lexical binding</h3>
-<div class="outline-text-3" id="text-org439a160">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>;; -*- lexical-binding: t -*-</code>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org6754c2d" class="outline-3">
-<h3 id="org6754c2d">straight.el</h3>
-<div class="outline-text-3" id="text-org6754c2d">
-<p>
-<a href="https://github.com/raxod502/straight.el">straight.el</a> is an alternative to <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Packages.html">package.el</a> with many advantages including the
-ability to integrate with <a href="https://github.com/jwiegley/use-package">use-package</a> and installing packages from git or
-github.
-</p>
-</div>
-
-<div id="outline-container-org8602952" class="outline-4">
-<h4 id="org8602952">bootstrap</h4>
-<div class="outline-text-4" id="text-org8602952">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(let ((bootstrap-file (concat user-emacs-directory "straight/repos/straight.el/bootstrap.el"))</code>
-<code>      (bootstrap-version 3))</code>
-<code>  (unless (file-exists-p bootstrap-file)</code>
-<code>    (with-current-buffer</code>
-<code>        (url-retrieve-synchronously</code>
-<code>         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"</code>
-<code>         'silent 'inhibit-cookies)</code>
-<code>      (goto-char (point-max))</code>
-<code>      (eval-print-last-sexp)))</code>
-<code>  (load bootstrap-file nil 'nomessage))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org44faf53" class="outline-4">
-<h4 id="org44faf53">use-package integration</h4>
-<div class="outline-text-4" id="text-org44faf53">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq straight-use-package-by-default t)</code>
-<code>(straight-use-package 'use-package)</code>
-<code>(use-package git) ;; ensure we can install from git sources</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org58555a6" class="outline-3">
-<h3 id="org58555a6">general dependencies</h3>
-<div class="outline-text-3" id="text-org58555a6">
-<p>
-The following package dependencies are used throughout the rest of the
-configuration. They provide contemporary APIs for working with various elisp
-data structures.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(require 'cl)</code>
-<code>(use-package f :demand t)          ;; files</code>
-<code>(use-package dash :demand t)       ;; lists</code>
-<code>(use-package ht :demand t)         ;; hash-tables</code>
-<code>(use-package s :demand t)          ;; strings</code>
-<code>(use-package a :demand t)          ;; association lists</code>
-<code>(use-package anaphora :demand t)   ;; anaphora</code>
-<code>;; (eval `(use-package ecl :demand t :straight (ecl :type git :local-repo ,(my/project-directory "ecl"))))</code>
-<code></code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org8ad9b1f" class="outline-3">
-<h3 id="org8ad9b1f">linux paths</h3>
-<div class="outline-text-3" id="text-org8ad9b1f">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(when (string-equal system-type "gnu/linux")</code>
-<code>  (defvar my/home-directory (expand-file-name "~/"))</code>
-<code>  (defvar my/data-directory (concat my/home-directory ".emacs.d/"))</code>
-<code>  (defvar my/projects-directory (concat my/home-directory "src/"))</code>
-<code>  (defvar my/sources-directory (concat my/home-directory "ext/"))</code>
-<code>  (defvar my/org-directory (concat my/home-directory "org/"))</code>
-<code>  (defvar my/yas-directory (concat my/data-directory "yas/")))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org6afb7f7" class="outline-3">
-<h3 id="org6afb7f7">windows paths</h3>
-<div class="outline-text-3" id="text-org6afb7f7">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(when (string-equal system-type "windows-nt")</code>
-<code>  (defvar my/home-directory (expand-file-name "b:/"))</code>
-<code>  (defvar my/data-directory (concat my/home-directory "Emacs/"))</code>
-<code>  (defvar my/projects-directory (concat my/home-directory "Projects/"))</code>
-<code>  (defvar my/sources-directory (concat my/home-directory "Sources/"))</code>
-<code>  (defvar my/org-directory (concat my/home-directory "Syncthing/Org/"))</code>
-<code>  (defvar my/yas-directory (concat my/data-directory "Yas/"))</code>
-<code>  (setq linkmarks-file (concat my/org-directory "bookmarks.org")))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgb46c8b5" class="outline-3">
-<h3 id="orgb46c8b5">utility functions</h3>
-<div class="outline-text-3" id="text-orgb46c8b5">
-</div>
-<div id="outline-container-org18e901c" class="outline-4">
-<h4 id="org18e901c">my/org-file-name</h4>
-<div class="outline-text-4" id="text-org18e901c">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun my/org-file-name (file-name)</code>
-<code>  "Create file-name relative to my/org-directory"</code>
-<code>  (concat my/org-directory file-name))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org120a912" class="outline-4">
-<h4 id="org120a912">my/notes-file-name</h4>
-<div class="outline-text-4" id="text-org120a912">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defvar my/notes-file-name</code>
-<code>  (my/org-file-name "notes.org")</code>
-<code>  "Main notes file-name")</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org44fc29a" class="outline-4">
-<h4 id="org44fc29a">my/bookmarks-file-name</h4>
-<div class="outline-text-4" id="text-org44fc29a">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defvar my/bookmarks-file-name</code>
-<code>  (my/org-file-name "bookmarks.org")</code>
-<code>  "Main bookmarks file-name")</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgf13edcc" class="outline-4">
-<h4 id="orgf13edcc">my/template-directory</h4>
-<div class="outline-text-4" id="text-orgf13edcc">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq-default my/template-directory (concat my/org-directory "templates/"))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org2525420" class="outline-4">
-<h4 id="org2525420">my/template-file-name</h4>
-<div class="outline-text-4" id="text-org2525420">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun my/template-file-name (file-name)</code>
-<code>  "Create file-name relative to my/template-directory"</code>
-<code>  (concat my/template-directory file-name))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orge38150c" class="outline-4">
-<h4 id="orge38150c">my/project-directory</h4>
-<div class="outline-text-4" id="text-orge38150c">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun my/project-directory (name)</code>
-<code>  (concat my/projects-directory name))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgb253995" class="outline-4">
-<h4 id="orgb253995">my/source-directory</h4>
-<div class="outline-text-4" id="text-orgb253995">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun my/source-directory (name)</code>
-<code>  (concat my/sources-directory name))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org8e59938" class="outline-4">
-<h4 id="org8e59938">setup external browser</h4>
-<div class="outline-text-4" id="text-org8e59938">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq browse-url-browser-function 'browse-url-chrome)</code>
-<code>(setq browse-url-chrome-program "qutebrowser")</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org9d5295c" class="outline-2">
-<h2 id="org9d5295c">aesthetics</h2>
-<div class="outline-text-2" id="text-org9d5295c">
-</div>
-<div id="outline-container-org42096c2" class="outline-3">
-<h3 id="org42096c2">vertical border</h3>
-<div class="outline-text-3" id="text-org42096c2">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(set-face-foreground 'vertical-border "gray")</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgaa95139" class="outline-3">
-<h3 id="orgaa95139">blend in the fringes</h3>
-<div class="outline-text-3" id="text-orgaa95139">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(set-face-attribute 'fringe nil :background nil)</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgcb174d2" class="outline-2">
-<h2 id="orgcb174d2">core</h2>
-<div class="outline-text-2" id="text-orgcb174d2">
-<p>
-The following sections customize core Emacs settings.
-</p>
-</div>
-
-<div id="outline-container-orgc42e1c3" class="outline-3">
-<h3 id="orgc42e1c3">autosaves</h3>
-<div class="outline-text-3" id="text-orgc42e1c3">
-<p>
-Auto-save will periodically save files to backup while you editing. This is
-great if something goes catastrophically wrong to Emacs!
-</p>
-</div>
-
-<div id="outline-container-orgd7b4948" class="outline-4">
-<h4 id="orgd7b4948">autosave every buffer that visits a file</h4>
-<div class="outline-text-4" id="text-orgd7b4948">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq auto-save-default t)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orga651ebc" class="outline-4">
-<h4 id="orga651ebc">save every 20 secs or 20 keystrokes</h4>
-<div class="outline-text-4" id="text-orga651ebc">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq auto-save-timeout 20</code>
-<code>      auto-save-interval 20)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org805457c" class="outline-4">
-<h4 id="org805457c">store autosaves in a single place</h4>
-<div class="outline-text-4" id="text-org805457c">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defvar emacs-autosave-directory</code>
-<code>  (expand-file-name (concat user-emacs-directory "autosaves/")))</code>
-<code></code>
-<code>(unless (file-exists-p emacs-autosave-directory)</code>
-<code>    (make-directory emacs-autosave-directory))</code>
-<code></code>
-<code>(setq auto-save-file-name-transforms</code>
-<code>      `((".*" ,emacs-autosave-directory t)))</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org3b6c6bb" class="outline-3">
-<h3 id="org3b6c6bb">backups</h3>
-<div class="outline-text-3" id="text-org3b6c6bb">
-<p>
-Backups are created everytime a buffer is saved. This is really useful
-for recovering work that takes place between version-control commits
-or on unversioned files.
-</p>
-</div>
-
-<div id="outline-container-orgcdba387" class="outline-4">
-<h4 id="orgcdba387">store backups with the autosaves</h4>
-<div class="outline-text-4" id="text-orgcdba387">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>;; (setq backup-directory-alist `(("." . ,emacs-autosave-directory)))</code>
-<code>(setq make-backup-files nil)</code>
-<code>(setq backup-directory-alist nil)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgc5fb2db" class="outline-4">
-<h4 id="orgc5fb2db">keep 10 backups</h4>
-<div class="outline-text-4" id="text-orgc5fb2db">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq kept-new-versions 10</code>
-<code>      kept-old-verisons 0)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org9599b93" class="outline-4">
-<h4 id="org9599b93">delete old backups</h4>
-<div class="outline-text-4" id="text-org9599b93">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq delete-old-versions t)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgdff6981" class="outline-4">
-<h4 id="orgdff6981">copy files to avoid various problems</h4>
-<div class="outline-text-4" id="text-orgdff6981">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq backup-by-copying t)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org111561d" class="outline-4">
-<h4 id="org111561d">backup files even if version controlled</h4>
-<div class="outline-text-4" id="text-org111561d">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq vc-make-backup-files t)</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org4cb1a48" class="outline-3">
-<h3 id="org4cb1a48">cursor</h3>
-<div class="outline-text-3" id="text-org4cb1a48">
-</div>
-<div id="outline-container-orgd9b2760" class="outline-4">
-<h4 id="orgd9b2760">box style</h4>
-<div class="outline-text-4" id="text-orgd9b2760">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq-default cursor-type 'box)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org9e6044f" class="outline-4">
-<h4 id="org9e6044f">blinking</h4>
-<div class="outline-text-4" id="text-org9e6044f">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(blink-cursor-mode 1)</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org0019891" class="outline-3">
-<h3 id="org0019891">disable</h3>
-<div class="outline-text-3" id="text-org0019891">
-<p>
-Turn off various UI features to achieve a minimal, distraction free
-experience. Additionally, all configuration should live inside
-version-controlled files so the Emacs customizations file is also disabled.
-</p>
-</div>
-
-<div id="outline-container-org870a830" class="outline-4">
-<h4 id="org870a830">menubar</h4>
-<div class="outline-text-4" id="text-org870a830">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(menu-bar-mode -1)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org606b5e8" class="outline-4">
-<h4 id="org606b5e8">toolbar</h4>
-<div class="outline-text-4" id="text-org606b5e8">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(tool-bar-mode -1)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgac02d63" class="outline-4">
-<h4 id="orgac02d63">scrollbar</h4>
-<div class="outline-text-4" id="text-orgac02d63">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(scroll-bar-mode -1)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org638c896" class="outline-4">
-<h4 id="org638c896">startup message</h4>
-<div class="outline-text-4" id="text-org638c896">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq inhibit-startup-message t</code>
-<code>      initial-scratch-message nil)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org1c6e5bf" class="outline-4">
-<h4 id="org1c6e5bf">customizations file</h4>
-<div class="outline-text-4" id="text-org1c6e5bf">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq custom-file (make-temp-file ""))</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org0288821" class="outline-3">
-<h3 id="org0288821">editing</h3>
-<div class="outline-text-3" id="text-org0288821">
-</div>
-<div id="outline-container-org14307cf" class="outline-4">
-<h4 id="org14307cf">use spaces</h4>
-<div class="outline-text-4" id="text-org14307cf">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq-default indent-tabs-mode nil)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org735747e" class="outline-4">
-<h4 id="org735747e">visual fill-column</h4>
-<div class="outline-text-4" id="text-org735747e">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package visual-fill-column</code>
-<code>  :config (global-visual-fill-column-mode))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgf7572ea" class="outline-4">
-<h4 id="orgf7572ea">fill at 79</h4>
-<div class="outline-text-4" id="text-orgf7572ea">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq-default fill-column 79)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgebfd3b5" class="outline-4">
-<h4 id="orgebfd3b5">autofill text-mode</h4>
-<div class="outline-text-4" id="text-orgebfd3b5">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(add-hook 'text-mode-hook 'turn-on-auto-fill)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orge599048" class="outline-4">
-<h4 id="orge599048">ssh for tramp</h4>
-<div class="outline-text-4" id="text-orge599048">
-<p>
-Default method for transferring files with Tramp.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
-<code>(setq tramp-default-method "ssh")</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org680eb47" class="outline-3">
-<h3 id="org680eb47">key-bindings</h3>
-<div class="outline-text-3" id="text-org680eb47">
-</div>
-<div id="outline-container-orgdc97ad8" class="outline-4">
-<h4 id="orgdc97ad8">meta n &amp; p</h4>
-<div class="outline-text-4" id="text-orgdc97ad8">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(global-set-key (kbd "M-p") 'backward-paragraph)</code>
-<code>(global-set-key (kbd "M-n") 'forward-paragraph)</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org6ac4e8a" class="outline-3">
-<h3 id="org6ac4e8a">minor-modes</h3>
-<div class="outline-text-3" id="text-org6ac4e8a">
-</div>
-<div id="outline-container-org5296025" class="outline-4">
-<h4 id="org5296025">whitespace-mode</h4>
-<div class="outline-text-4" id="text-org5296025">
-<p>
-Visually displays trailing whitespace.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
-<code>(use-package whitespace</code>
-<code>  :diminish global-whitespace-mode</code>
-<code>  :init</code>
-<code>  (setq whitespace-style</code>
-<code>        '(face tabs newline trailing tab-mark space-before-tab space-after-tab))</code>
-<code>  (global-whitespace-mode 1))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org76ce2bb" class="outline-4">
-<h4 id="org76ce2bb">prettify-symbols-mode</h4>
-<div class="outline-text-4" id="text-org76ce2bb">
-<p>
-Various symbols will be replaced with nice looking unicode glyphs.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
-<code>(global-prettify-symbols-mode 1)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgcd92c09" class="outline-4">
-<h4 id="orgcd92c09">electric-pair-mode</h4>
-<div class="outline-text-4" id="text-orgcd92c09">
-<p>
-Matching closed brackets are inserted for any typed open bracket.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
-<code>(electric-pair-mode 1)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org9cb2574" class="outline-4">
-<h4 id="org9cb2574">rainbow-delimeters-mode</h4>
-<div class="outline-text-4" id="text-org9cb2574">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(require 'color)</code>
-<code>(defun gen-col-list (length s v &amp;optional hval)</code>
-<code>  (cl-flet ( (random-float () (/ (random 10000000000) 10000000000.0))</code>
-<code>          (mod-float (f) (- f (ffloor f))) )</code>
-<code>    (unless hval</code>
-<code>      (setq hval (random-float)))</code>
-<code>    (let ((golden-ratio-conjugate (/ (- (sqrt 5) 1) 2))</code>
-<code>          (h hval)</code>
-<code>          (current length)</code>
-<code>          (ret-list '()))</code>
-<code>      (while (&gt; current 0)</code>
-<code>        (setq ret-list</code>
-<code>              (append ret-list</code>
-<code>                      (list (apply 'color-rgb-to-hex (color-hsl-to-rgb h s v)))))</code>
-<code>        (setq h (mod-float (+ h golden-ratio-conjugate)))</code>
-<code>        (setq current (- current 1)))</code>
-<code>      ret-list)))</code>
-<code></code>
-<code>(defun set-random-rainbow-colors (s l &amp;optional h)</code>
-<code>  ;; Output into message buffer in case you get a scheme you REALLY like.</code>
-<code>  ;; (message "set-random-rainbow-colors %s" (list s l h))</code>
-<code>  (interactive)</code>
-<code>  (rainbow-delimiters-mode t)</code>
-<code></code>
-<code>  ;; Show mismatched braces in bright red.</code>
-<code>  (set-face-background 'rainbow-delimiters-unmatched-face "red")</code>
-<code></code>
-<code>  ;; Rainbow delimiters based on golden ratio</code>
-<code>  (let ( (colors (gen-col-list 9 s l h))</code>
-<code>         (i 1) )</code>
-<code>    (let ( (length (length colors)) )</code>
-<code>      ;;(message (concat "i " (number-to-string i) " length " (number-to-string length)))</code>
-<code>      (while (&lt;= i length)</code>
-<code>        (let ( (rainbow-var-name (concat "rainbow-delimiters-depth-" (number-to-string i) "-face"))</code>
-<code>               (col (nth i colors)) )</code>
-<code>          ;; (message (concat rainbow-var-name " =&gt; " col))</code>
-<code>          (set-face-foreground (intern rainbow-var-name) col))</code>
-<code>        (setq i (+ i 1))))))</code>
-<code></code>
-<code>(use-package rainbow-delimiters :commands rainbow-delimiters-mode :hook ...</code>
-<code>  :init</code>
-<code>  (setq rainbow-delimiters-max-face-count 16)</code>
-<code>  (set-random-rainbow-colors 0.6 0.7 0.5)</code>
-<code>  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgf9e1286" class="outline-4">
-<h4 id="orgf9e1286">show-paren-mode</h4>
-<div class="outline-text-4" id="text-orgf9e1286">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(show-paren-mode 1)</code>
-<code>(setq show-paren-delay 0)</code>
-<code>(require 'paren)</code>
-<code>(set-face-background 'show-paren-match nil)</code>
-<code>(set-face-background 'show-paren-mismatch nil)</code>
-<code>(set-face-foreground 'show-paren-match "#ff0")</code>
-<code>(set-face-foreground 'show-paren-mismatch "#f00")</code>
-<code>(set-face-attribute 'show-paren-match nil :weight 'extra-bold)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org4071580" class="outline-4">
-<h4 id="org4071580">which-key-mode</h4>
-<div class="outline-text-4" id="text-org4071580">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package which-key</code>
-<code>  :diminish which-key-mode</code>
-<code>  :config</code>
-<code>  ;; sort single chars alphabetically P p Q q</code>
-<code>  (setq which-key-sort-order 'which-key-key-order-alpha)</code>
-<code>  (setq which-key-idle-delay 0.8)</code>
-<code>  (which-key-mode))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgc29e3df" class="outline-4">
-<h4 id="orgc29e3df">company-mode</h4>
-<div class="outline-text-4" id="text-orgc29e3df">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package company</code>
-<code>  :config (add-hook 'after-init-hook 'global-company-mode))</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orge1ff0b9" class="outline-3">
-<h3 id="orge1ff0b9">shorten prompts</h3>
-<div class="outline-text-3" id="text-orge1ff0b9">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(fset 'yes-or-no-p 'y-or-n-p)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgb6bcfca" class="outline-3">
-<h3 id="orgb6bcfca">debug on error</h3>
-<div class="outline-text-3" id="text-orgb6bcfca">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq debug-on-error t)</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org8be4c05" class="outline-2">
-<h2 id="org8be4c05">helpful</h2>
-<div class="outline-text-2" id="text-org8be4c05">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package helpful :straight (helpful :type git :host github :repo "Wilfred/helpful"))</code>
-<code></code>
-<code>(use-package helpful</code>
-<code>    :straight (helpful :type git :host github :repo "Wilfred/helpful")</code>
-<code>    :bind (("C-h f" . #'helpful-callable)</code>
-<code>           ("C-h v" . #'helpful-variable)</code>
-<code>           ("C-h k" . #'helpful-key)))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgce8ecaa" class="outline-2">
-<h2 id="orgce8ecaa">deflayer</h2>
-<div class="outline-text-2" id="text-orgce8ecaa">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package deflayer</code>
-<code>  :straight (deflayer :type git :host github :repo "dustinlacewell/deflayer.el"))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orga93f5f2" class="outline-2">
-<h2 id="orga93f5f2">polymode</h2>
-<div class="outline-text-2" id="text-orga93f5f2">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package polymode)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org68cd974" class="outline-2">
-<h2 id="org68cd974">org-mode</h2>
-<div class="outline-text-2" id="text-org68cd974">
-</div>
-<div id="outline-container-org67a139b" class="outline-3">
-<h3 id="org67a139b">straight.el fixes</h3>
-<div class="outline-text-3" id="text-org67a139b">
+<div id="outline-container-org0558861" class="outline-2">
+<h2 id="org0558861">org-mode</h2>
+<div class="outline-text-2" id="text-org0558861">
+</div>
+<div id="outline-container-org6d8d6b7" class="outline-3">
+<h3 id="org6d8d6b7">straight.el fixes</h3>
+<div class="outline-text-3" id="text-org6d8d6b7">
 <p>
 There are some issues with straight.el and org. These the following boilerplate
 fixes all that until <a href="https://github.com/raxod502/straight.el#installing-org-with-straightel">that is resolved</a>.
 </p>
 </div>
 
-<div id="outline-container-org1502184" class="outline-4">
-<h4 id="org1502184">fix-org-git-version</h4>
-<div class="outline-text-4" id="text-org1502184">
+<div id="outline-container-orgc72d0e3" class="outline-4">
+<h4 id="orgc72d0e3">fix-org-git-version</h4>
+<div class="outline-text-4" id="text-orgc72d0e3">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun fix-org-git-version ()</code>
-<code>  "The Git version of org-mode.</code>
-<code>  Inserted by installing org-mode or when a release is made."</code>
-<code>  (require 'git)</code>
-<code>  (let ((git-repo (expand-file-name</code>
-<code>                   "straight/repos/org/" user-emacs-directory)))</code>
-<code>    (string-trim</code>
-<code>     (git-run "describe"</code>
-<code>              "--match=release\*"</code>
-<code>              "--abbrev=6"</code>
-<code>              "HEAD"))))</code>
+<pre class="src src-emacs-lisp">(defun fix-org-git-version ()
+  "The Git version of org-mode.
+  Inserted by installing org-mode or when a release is made."
+  (require 'git)
+  (let ((git-repo (expand-file-name
+                   "straight/repos/org/" user-emacs-directory)))
+    (string-trim
+     (git-run "describe"
+              "--match=release\*"
+              "--abbrev=6"
+              "HEAD"))))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org8e59a0f" class="outline-4">
-<h4 id="org8e59a0f">fix-org-release</h4>
-<div class="outline-text-4" id="text-org8e59a0f">
+<div id="outline-container-org3191d21" class="outline-4">
+<h4 id="org3191d21">fix-org-release</h4>
+<div class="outline-text-4" id="text-org3191d21">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun fix-org-release ()</code>
-<code>  "The release version of org-mode.</code>
-<code>  Inserted by installing org-mode or when a release is made."</code>
-<code>  (require 'git)</code>
-<code>  (let ((git-repo (expand-file-name</code>
-<code>                   "straight/repos/org/" user-emacs-directory)))</code>
-<code>    (string-trim</code>
-<code>     (string-remove-prefix</code>
-<code>      "release_"</code>
-<code>      (git-run "describe"</code>
-<code>               "--match=release\*"</code>
-<code>               "--abbrev=0"</code>
-<code>               "HEAD")))))</code>
+<pre class="src src-emacs-lisp">(defun fix-org-release ()
+  "The release version of org-mode.
+  Inserted by installing org-mode or when a release is made."
+  (require 'git)
+  (let ((git-repo (expand-file-name
+                   "straight/repos/org/" user-emacs-directory)))
+    (string-trim
+     (string-remove-prefix
+      "release_"
+      (git-run "describe"
+               "--match=release\*"
+               "--abbrev=0"
+               "HEAD")))))
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgd173659" class="outline-3">
-<h3 id="orgd173659">installation</h3>
-<div class="outline-text-3" id="text-orgd173659">
+<div id="outline-container-org4f841a7" class="outline-3">
+<h3 id="org4f841a7">installation</h3>
+<div class="outline-text-3" id="text-org4f841a7">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package org</code>
-<code>  :demand t</code>
-<code>  :mode ("\\.org\\'" . org-mode)</code>
-<code>  :config</code>
-<code>  ;; these depend on the 'straight.el fixes' above</code>
-<code>  (defalias #'org-git-version #'fix-org-git-version)</code>
-<code>  (defalias #'org-release #'fix-org-release)</code>
-<code>  (require 'org-habit)</code>
-<code>  (require 'org-capture)</code>
-<code>  (require 'org-tempo))</code>
+<pre class="src src-emacs-lisp">(use-package org
+  :demand t
+  :mode ("\\.org\\'" . org-mode)
+  :config
+  ;; these depend on the 'straight.el fixes' above
+  (defalias #'org-git-version #'fix-org-git-version)
+  (defalias #'org-release #'fix-org-release)
+  (require 'org-habit)
+  (require 'org-capture)
+  (require 'org-tempo))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgba0b87d" class="outline-3">
-<h3 id="orgba0b87d">security</h3>
-<div class="outline-text-3" id="text-orgba0b87d">
+<div id="outline-container-orgf99ab75" class="outline-3">
+<h3 id="orgf99ab75">security</h3>
+<div class="outline-text-3" id="text-orgf99ab75">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(progn</code>
-<code>  (setq org-confirm-babel-evaluate nil)</code>
-<code>  (setq org-confirm-elisp-link-function nil)</code>
-<code>  (setq org-confirm-shell-link-function nil))</code>
+<pre class="src src-emacs-lisp">(progn
+  (setq org-confirm-babel-evaluate nil)
+  (setq org-confirm-elisp-link-function nil)
+  (setq org-confirm-shell-link-function nil))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orga4b4b61" class="outline-3">
-<h3 id="orga4b4b61">look</h3>
-<div class="outline-text-3" id="text-orga4b4b61">
+<div id="outline-container-org72cca6c" class="outline-3">
+<h3 id="org72cca6c">look</h3>
+<div class="outline-text-3" id="text-org72cca6c">
 <p>
 The following sections change how Org-mode documents look.
 </p>
 </div>
 
-<div id="outline-container-org8db2763" class="outline-4">
-<h4 id="org8db2763">indent by header level</h4>
-<div class="outline-text-4" id="text-org8db2763">
+<div id="outline-container-orgfda18df" class="outline-4">
+<h4 id="orgfda18df">indent by header level</h4>
+<div class="outline-text-4" id="text-orgfda18df">
 <p>
 Hide the heading asterisks. Instead indent headings based on depth.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
-<code>(with-eval-after-load 'org</code>
-<code>  (add-hook 'org-mode-hook #'org-indent-mode))</code>
+<pre class="src src-emacs-lisp">(with-eval-after-load 'org
+  (add-hook 'org-mode-hook #'org-indent-mode))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org56df5c4" class="outline-4">
-<h4 id="org56df5c4">pretty heading bullets</h4>
-<div class="outline-text-4" id="text-org56df5c4">
+<div id="outline-container-orgdcd039d" class="outline-4">
+<h4 id="orgdcd039d">pretty heading bullets</h4>
+<div class="outline-text-4" id="text-orgdcd039d">
 <p>
 Use nice unicode bullets instead of the default asterisks.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
-<code>(use-package org-bullets</code>
-<code>  :after (org)</code>
-<code>  :config</code>
-<code>  (add-hook 'org-mode-hook 'org-bullets-mode))</code>
+<pre class="src src-emacs-lisp">(use-package org-bullets
+  :after (org)
+  :config
+  (add-hook 'org-mode-hook 'org-bullets-mode))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org1f09038" class="outline-4">
-<h4 id="org1f09038">pretty priority cookies</h4>
-<div class="outline-text-4" id="text-org1f09038">
+<div id="outline-container-org9271311" class="outline-4">
+<h4 id="org9271311">pretty priority cookies</h4>
+<div class="outline-text-4" id="text-org9271311">
 <p>
 Instead of the default <code>[#A]</code> and <code>[#C]</code> priority cookies, use little unicode arrows to
 indicate high and low priority. <code>[#B]</code>, which is the same as no priority, is shown as
@@ -1477,104 +429,104 @@ normal.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
-<code>(with-eval-after-load 'org</code>
-<code>  (defun nougat/org-pretty-compose-p (start end match)</code>
-<code>    (if (or (string= match "[#A]") (string= match "[#C]"))</code>
-<code>        ;; prettify asterisks in headings</code>
-<code>        (org-match-line org-outline-regexp-bol)</code>
-<code>      ;; else rely on the default function</code>
-<code>      (funcall #'prettify-symbols-default-compose-p start end match)))</code>
-<code></code>
-<code>  (global-prettify-symbols-mode)</code>
-<code></code>
-<code>  (add-hook</code>
-<code>   'org-mode-hook</code>
-<code>   (lambda ()</code>
-<code>     (setq-local prettify-symbols-compose-predicate #'nougat/org-pretty-compose-p)</code>
-<code>     (setq-local prettify-symbols-alist</code>
-<code>                 (todo-prettify-symbols-alist todo-keywords)))))</code>
+<pre class="src src-emacs-lisp">
+(with-eval-after-load 'org
+  (defun nougat/org-pretty-compose-p (start end match)
+    (if (or (string= match "[#A]") (string= match "[#C]"))
+        ;; prettify asterisks in headings
+        (org-match-line org-outline-regexp-bol)
+      ;; else rely on the default function
+      (funcall #'prettify-symbols-default-compose-p start end match)))
+
+  (global-prettify-symbols-mode)
+
+  (add-hook
+   'org-mode-hook
+   (lambda ()
+     (setq-local prettify-symbols-compose-predicate #'nougat/org-pretty-compose-p)
+     (setq-local prettify-symbols-alist
+                 (todo-prettify-symbols-alist todo-keywords)))))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org002f98a" class="outline-4">
-<h4 id="org002f98a">pretty heading ellipsis</h4>
-<div class="outline-text-4" id="text-org002f98a">
+<div id="outline-container-org3cdb434" class="outline-4">
+<h4 id="org3cdb434">pretty heading ellipsis</h4>
+<div class="outline-text-4" id="text-org3cdb434">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(with-eval-after-load 'org</code>
-<code>  (setq org-ellipsis " ▿"))</code>
+<pre class="src src-emacs-lisp">(with-eval-after-load 'org
+  (setq org-ellipsis " ▿"))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgdc29589" class="outline-4">
-<h4 id="orgdc29589">dynamic tag position</h4>
-<div class="outline-text-4" id="text-orgdc29589">
+<div id="outline-container-orgd9b9879" class="outline-4">
+<h4 id="orgd9b9879">dynamic tag position</h4>
+<div class="outline-text-4" id="text-orgd9b9879">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun org-realign-tags ()</code>
-<code>  (interactive)</code>
-<code>  (setq org-tags-column (- 0 (window-width)))</code>
-<code>  (org-align-tags t))</code>
-<code></code>
-<code>(add-hook 'window-configuration-change-hook 'org-realign-tags)</code>
+<pre class="src src-emacs-lisp">(defun org-realign-tags ()
+  (interactive)
+  (setq org-tags-column (- 0 (window-width)))
+  (org-align-tags t))
+
+(add-hook 'window-configuration-change-hook 'org-realign-tags)
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org717e92e" class="outline-3">
-<h3 id="org717e92e">feel</h3>
-<div class="outline-text-3" id="text-org717e92e">
+<div id="outline-container-org9c6adb9" class="outline-3">
+<h3 id="org9c6adb9">feel</h3>
+<div class="outline-text-3" id="text-org9c6adb9">
 <p>
 The following sections change how it feels to use Org-mode.
 </p>
 </div>
 
-<div id="outline-container-org5dd4cd6" class="outline-4">
-<h4 id="org5dd4cd6">don't fold blocks on open</h4>
-<div class="outline-text-4" id="text-org5dd4cd6">
+<div id="outline-container-org17ac5a3" class="outline-4">
+<h4 id="org17ac5a3">don't fold blocks on open</h4>
+<div class="outline-text-4" id="text-org17ac5a3">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(with-eval-after-load 'org</code>
-<code>  (setq org-hide-block-startup nil))</code>
+<pre class="src src-emacs-lisp">(with-eval-after-load 'org
+  (setq org-hide-block-startup nil))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org66469f9" class="outline-4">
-<h4 id="org66469f9">auto-fill paragraphs</h4>
-<div class="outline-text-4" id="text-org66469f9">
+<div id="outline-container-org1d071ef" class="outline-4">
+<h4 id="org1d071ef">auto-fill paragraphs</h4>
+<div class="outline-text-4" id="text-org1d071ef">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(with-eval-after-load 'org</code>
-<code>  (add-hook 'org-mode-hook 'turn-on-auto-fill))</code>
+<pre class="src src-emacs-lisp">(with-eval-after-load 'org
+  (add-hook 'org-mode-hook 'turn-on-auto-fill))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org60f5166" class="outline-4">
-<h4 id="org60f5166">respect content on heading insert</h4>
-<div class="outline-text-4" id="text-org60f5166">
+<div id="outline-container-org3c439a4" class="outline-4">
+<h4 id="org3c439a4">respect content on heading insert</h4>
+<div class="outline-text-4" id="text-org3c439a4">
 <p>
 If you try to insert a heading in the middle of an entry, don't split it in half, but
 instead insert the new heading after the end of the current entry.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(with-eval-after-load 'org</code>
-<code>  (setq org-insert-heading-respect-content nil))</code>
+<pre class="src src-emacs-lisp">(with-eval-after-load 'org
+  (setq org-insert-heading-respect-content nil))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgd6fb6a5" class="outline-4">
-<h4 id="orgd6fb6a5">ensure one-line between headers</h4>
-<div class="outline-text-4" id="text-orgd6fb6a5">
+<div id="outline-container-org5a9390a" class="outline-4">
+<h4 id="org5a9390a">ensure one-line between headers</h4>
+<div class="outline-text-4" id="text-org5a9390a">
 <p>
 When you save, this section will ensure that there is a one-line space between each
 heading. This helps with the background color of code-blocks not showing up on folded
@@ -1582,2812 +534,623 @@ headings.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>;; (defun my/org-no-line-before-headlines ()</code>
-<code>;;   (beginning-of-buffer)</code>
-<code>;;   (while (re-search-forward "\n\\{3,\\}\\*" nil t)</code>
-<code>;;     (replace-match "\n\n*")))</code>
-<code></code>
-<code>;; (defun my/org-one-line-after-headlines ()</code>
-<code>;;   (beginning-of-buffer)</code>
-<code>;;   (while (re-search-forward "^\\*+.*\n\\{2,\\}" nil t)</code>
-<code>;;     (outline-previous-heading)</code>
-<code>;;     (end-of-line)</code>
-<code>;;     (forward-char)</code>
-<code>;;     (while (looking-at "^[:space:]*$")</code>
-<code>;;       (kill-line))))</code>
-<code></code>
-<code>;; (defun my/org-trim-headlines ()</code>
-<code>;;   (let ((markers nil))</code>
-<code>;;     (org-element-map (org-element-parse-buffer) '(headline)</code>
-<code>;;       (lambda (paragraph)</code>
-<code>;;         (let ((contents-end (org-element-property :contents-end paragraph))</code>
-<code>;;               (post-blank (org-element-property :post-blank paragraph))</code>
-<code>;;               (marker (make-marker)))</code>
-<code>;;           (goto-char contents-end)</code>
-<code>;;           (unless (eq 0 post-blank)</code>
-<code>;;             (set-marker marker contents-end)</code>
-<code>;;             (setq markers (append markers (list (cons marker post-blank))))))))</code>
-<code>;;     (--each markers (save-excursion</code>
-<code>;;                       (goto-char (car it))</code>
-<code>;;                       (kill-line (- (cdr it) 1))))))</code>
-<code></code>
-<code>;; (defun my/org-element-type-at-point ()</code>
-<code>;;   (car (org-element-at-point)))</code>
-<code></code>
-<code>;; (defun my/org-point-at-headline ()</code>
-<code>;;   (let* ((element-type (my/org-element-type-at-point)))</code>
-<code>;;     (eq 'headline element-type)))</code>
-<code></code>
-<code>;; (defun my/org-mark-elements (data types marker-prop &amp;rest props)</code>
-<code>;;   (let ((markers nil))</code>
-<code>;;     (org-element-map data types</code>
-<code>;;       (lambda (element)</code>
-<code>;;         (let* ((marker (make-marker))</code>
-<code>;;                (marker-pos (org-element-property marker-prop element))</code>
-<code>;;                (prop-map (make-hash-table)))</code>
-<code>;;           (when marker-pos</code>
-<code>;;             (set-marker marker marker-pos)</code>
-<code>;;             (--each props (map-put! prop-map it (org-element-property it element)))</code>
-<code>;;             (setq markers (append markers (list (cons marker prop-map))))))))</code>
-<code></code>
-<code>;;     markers))</code>
-<code></code>
-<code>;; (defun my/org-visit-markers (markers)</code>
-<code>;;   (--each markers</code>
-<code>;;     (goto-char (car it))</code>
-<code>;;     (sit-for 1)))</code>
-<code></code>
-<code>;; (defun my/org-visit-elements (types &amp;optional data)</code>
-<code>;;   (setq data (or data (org-element-parse-buffer)))</code>
-<code>;;   (my/org-visit-markers (my/org-mark-elements data types :begin)))</code>
-<code></code>
-<code>;; (defun my/org-trim-headlines ()</code>
-<code>;;   (save-excursion</code>
-<code>;;     (--each (my/org-mark-elements (org-element-parse-buffer) '(headline) :begin :pre-blank)</code>
-<code>;;       (let* ((prop-map (cdr it))</code>
-<code>;;              (pre-blank (map-elt prop-map :pre-blank)))</code>
-<code>;;         (when (&gt; pre-blank 1)</code>
-<code>;;           (goto-char (car it))</code>
-<code>;;           (end-of-line)</code>
-<code>;;           (forward-char)</code>
-<code>;;           (sit-for 1)</code>
-<code>;;           (kill-line (max 0 pre-blank)))))))</code>
-<code></code>
-<code>;; (defun my/org-trim-paragraphs ()</code>
-<code>;;   (save-excursion</code>
-<code>;;     (--each (my/org-mark-elements (org-element-parse-buffer) '(paragraph section src-block) :contents-end :post-blank)</code>
-<code>;;       (let* ((prop-map (cdr it))</code>
-<code>;;              (post-blank (map-elt prop-map :post-blank)))</code>
-<code>;;         (if (&gt; post-blank 1)</code>
-<code>;;             (progn (goto-char (car it))</code>
-<code>;;              (sit-for 1)</code>
-<code>;;              (kill-line (max 0 (- post-blank 1))))</code>
-<code>;;           (when (eq 0 post-blank)</code>
-<code>;;             (goto-char (car it))</code>
-<code>;;             (end-of-line)</code>
-<code>;;             (forward-char)</code>
-<code>;;             (open-line 1)))))))</code>
-<code></code>
-<code>;; (defun my/org-cleanup ()</code>
-<code>;;   (interactive)</code>
-<code>;;   (my/org-trim-headlines)</code>
-<code>;;   (my/org-trim-paragraphs))</code>
-<code></code>
-<code></code>
-<code>;; (with-eval-after-load 'org</code>
-<code>;;   (add-hook</code>
-<code>;;    'org-mode-hook</code>
-<code>;;    (lambda () (add-hook</code>
-<code>;;           'before-save-hook</code>
-<code>;;           'my/org-cleanup</code>
-<code>;;           nil 'make-it-local))))</code>
+<pre class="src src-emacs-lisp">;; (defun my/org-no-line-before-headlines ()
+;;   (beginning-of-buffer)
+;;   (while (re-search-forward "\n\\{3,\\}\\*" nil t)
+;;     (replace-match "\n\n*")))
+
+;; (defun my/org-one-line-after-headlines ()
+;;   (beginning-of-buffer)
+;;   (while (re-search-forward "^\\*+.*\n\\{2,\\}" nil t)
+;;     (outline-previous-heading)
+;;     (end-of-line)
+;;     (forward-char)
+;;     (while (looking-at "^[:space:]*$")
+;;       (kill-line))))
+
+;; (defun my/org-trim-headlines ()
+;;   (let ((markers nil))
+;;     (org-element-map (org-element-parse-buffer) '(headline)
+;;       (lambda (paragraph)
+;;         (let ((contents-end (org-element-property :contents-end paragraph))
+;;               (post-blank (org-element-property :post-blank paragraph))
+;;               (marker (make-marker)))
+;;           (goto-char contents-end)
+;;           (unless (eq 0 post-blank)
+;;             (set-marker marker contents-end)
+;;             (setq markers (append markers (list (cons marker post-blank))))))))
+;;     (--each markers (save-excursion
+;;                       (goto-char (car it))
+;;                       (kill-line (- (cdr it) 1))))))
+
+;; (defun my/org-element-type-at-point ()
+;;   (car (org-element-at-point)))
+
+;; (defun my/org-point-at-headline ()
+;;   (let* ((element-type (my/org-element-type-at-point)))
+;;     (eq 'headline element-type)))
+
+;; (defun my/org-mark-elements (data types marker-prop &amp;rest props)
+;;   (let ((markers nil))
+;;     (org-element-map data types
+;;       (lambda (element)
+;;         (let* ((marker (make-marker))
+;;                (marker-pos (org-element-property marker-prop element))
+;;                (prop-map (make-hash-table)))
+;;           (when marker-pos
+;;             (set-marker marker marker-pos)
+;;             (--each props (map-put! prop-map it (org-element-property it element)))
+;;             (setq markers (append markers (list (cons marker prop-map))))))))
+
+;;     markers))
+
+;; (defun my/org-visit-markers (markers)
+;;   (--each markers
+;;     (goto-char (car it))
+;;     (sit-for 1)))
+
+;; (defun my/org-visit-elements (types &amp;optional data)
+;;   (setq data (or data (org-element-parse-buffer)))
+;;   (my/org-visit-markers (my/org-mark-elements data types :begin)))
+
+;; (defun my/org-trim-headlines ()
+;;   (save-excursion
+;;     (--each (my/org-mark-elements (org-element-parse-buffer) '(headline) :begin :pre-blank)
+;;       (let* ((prop-map (cdr it))
+;;              (pre-blank (map-elt prop-map :pre-blank)))
+;;         (when (&gt; pre-blank 1)
+;;           (goto-char (car it))
+;;           (end-of-line)
+;;           (forward-char)
+;;           (sit-for 1)
+;;           (kill-line (max 0 pre-blank)))))))
+
+;; (defun my/org-trim-paragraphs ()
+;;   (save-excursion
+;;     (--each (my/org-mark-elements (org-element-parse-buffer) '(paragraph section src-block) :contents-end :post-blank)
+;;       (let* ((prop-map (cdr it))
+;;              (post-blank (map-elt prop-map :post-blank)))
+;;         (if (&gt; post-blank 1)
+;;             (progn (goto-char (car it))
+;;              (sit-for 1)
+;;              (kill-line (max 0 (- post-blank 1))))
+;;           (when (eq 0 post-blank)
+;;             (goto-char (car it))
+;;             (end-of-line)
+;;             (forward-char)
+;;             (open-line 1)))))))
+
+;; (defun my/org-cleanup ()
+;;   (interactive)
+;;   (my/org-trim-headlines)
+;;   (my/org-trim-paragraphs))
+
+
+;; (with-eval-after-load 'org
+;;   (add-hook
+;;    'org-mode-hook
+;;    (lambda () (add-hook
+;;           'before-save-hook
+;;           'my/org-cleanup
+;;           nil 'make-it-local))))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org091f834" class="outline-4">
-<h4 id="org091f834">initial visibility</h4>
-<div class="outline-text-4" id="text-org091f834">
+<div id="outline-container-org330d537" class="outline-4">
+<h4 id="org330d537">initial visibility</h4>
+<div class="outline-text-4" id="text-org330d537">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq org-startup-folded 'content)</code>
+<pre class="src src-emacs-lisp">(setq org-startup-folded 'content)
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org3136d15" class="outline-3">
-<h3 id="org3136d15">todo states</h3>
-<div class="outline-text-3" id="text-org3136d15">
+<div id="outline-container-orgb666b03" class="outline-3">
+<h3 id="orgb666b03">todo states</h3>
+<div class="outline-text-3" id="text-orgb666b03">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq todo-keywords</code>
-<code>      ;; normal workflow</code>
-<code>      '((("DOING" "d"</code>
-<code>          :icon "🏃"</code>
-<code>          :face org-doing-face)</code>
-<code></code>
-<code>         ("TODO" "t"</code>
-<code>          :icon "… "</code>
-<code>          :face org-todo-face)</code>
-<code></code>
-<code>         ("DONE" "D"</code>
-<code>          :icon "✓ "</code>
-<code>          :face org-done-face</code>
-<code>          :done-state t))</code>
-<code></code>
-<code>        ;; auxillary states</code>
-<code>        (("SOON" "s"</code>
-<code>          :icon "❗ "</code>
-<code>          :face org-soon-face)</code>
-<code></code>
-<code>         ("SOMEDAY" "S"</code>
-<code>          :icon "🛌"</code>
-<code>          :face org-doing-face))))</code>
-<code></code>
-<code></code>
-<code>;; parsing</code>
-<code></code>
-<code>(defun todo-make-state-model (name key props)</code>
-<code>  (append (list :name name :key key) props))</code>
-<code></code>
-<code>(defun todo-parse-state-data (state-data)</code>
-<code>  (-let* (((name second &amp;rest) state-data)</code>
-<code>          ((key props) (if (stringp second)</code>
-<code>                           (list second (cddr state-data))</code>
-<code>                         (list nil (cdr state-data)))))</code>
-<code>    (todo-make-state-model name key props)))</code>
-<code></code>
-<code>(defun todo-make-sequence-model (states)</code>
-<code>  (mapcar 'todo-parse-state-data states))</code>
-<code></code>
-<code>(defun todo-parse-sequences-data (sequences-data)</code>
-<code>  (mapcar 'todo-make-sequence-model sequences-data))</code>
-<code></code>
-<code></code>
-<code>;; org-todo-keywords</code>
-<code></code>
-<code>(defun todo-keyword-name (name key)</code>
-<code>  (if key (format "%s(%s)" name key) name))</code>
-<code></code>
-<code>(defun todo-keyword-name-for-state (state)</code>
-<code>  (todo-keyword-name (plist-get state :name)</code>
-<code>                     (plist-get state :key)))</code>
-<code></code>
-<code>(defun todo-is-done-state (state)</code>
-<code>  (equal t (plist-get state :done-state)))</code>
-<code></code>
-<code>(defun todo-is-not-done-state (state)</code>
-<code>  (equal nil (plist-get state :done-state)))</code>
-<code></code>
-<code>(defun todo-org-sequence (states)</code>
-<code>  (let ((active (seq-filter 'todo-is-not-done-state states))</code>
-<code>        (inactive (seq-filter 'todo-is-done-state states)))</code>
-<code>    (append '(sequence)</code>
-<code>            (mapcar 'todo-keyword-name-for-state active)</code>
-<code>            '("|")</code>
-<code>            (mapcar 'todo-keyword-name-for-state inactive))))</code>
-<code></code>
-<code>(defun todo-org-todo-keywords (sequences)</code>
-<code>  (mapcar 'todo-org-sequence (todo-parse-sequences-data sequences)))</code>
-<code>;; (todo-org-todo-keywords todo-keywords)</code>
-<code></code>
-<code></code>
-<code>(with-eval-after-load 'org</code>
-<code>  (setq org-todo-keywords (todo-org-todo-keywords todo-keywords)))</code>
-<code></code>
-<code></code>
-<code>(defun todo-org-todo-keyword-faces (sequences)</code>
-<code>  (cl-loop for sequence in (todo-parse-sequences-data sequences)</code>
-<code>           append (cl-loop for state in sequence</code>
-<code>                           for name = (plist-get state :name)</code>
-<code>                           for face = (plist-get state :face)</code>
-<code>                           collect (cons name face))))</code>
-<code>;; (todo-org-todo-keyword-faces todo-keywords)</code>
-<code></code>
-<code>(with-eval-after-load 'org</code>
-<code>  (setq org-todo-keyword-faces (todo-org-todo-keyword-faces todo-keywords)))</code>
-<code></code>
-<code>(defun todo-prettify-symbols-alist (sequences)</code>
-<code>  (cl-loop for sequence in (todo-parse-sequences-data sequences)</code>
-<code>           append (cl-loop for state in sequence</code>
-<code>                           for name = (plist-get state :name)</code>
-<code>                           for icon = (plist-get state :icon)</code>
-<code>                           collect (cons name icon))))</code>
-<code>;; (todo-prettify-symbols-alist todo-keywords)</code>
-<code></code>
-<code>(defun todo-finalize-agenda-for-state (state)</code>
-<code>  (-let (((&amp;plist :name :icon :face) state))</code>
-<code>    (beginning-of-buffer)</code>
-<code>    (while (search-forward name nil 1)</code>
-<code>      (let* ((line-props (text-properties-at (point)))</code>
-<code>             (line-props (ecl-plist-remove line-props 'face)))</code>
-<code>        (call-interactively 'set-mark-command)</code>
-<code>        (search-backward name)</code>
-<code>        (call-interactively 'kill-region)</code>
-<code>        (let ((symbol-pos (point)))</code>
-<code>          (insert icon)</code>
-<code>          (beginning-of-line)</code>
-<code>          (let ((start (point))</code>
-<code>                (end (progn (end-of-line) (point))))</code>
-<code>            (add-text-properties start end line-props)</code>
-<code>            (add-face-text-property symbol-pos (+ 1 symbol-pos) face))))))</code>
-<code>  (beginning-of-buffer)</code>
-<code>  (replace-regexp "[[:space:]]+[=]+" ""))</code>
-<code></code>
-<code>(defun todo-finalize-agenda ()</code>
-<code>  (--each (todo-parse-sequences-data todo-keywords)</code>
-<code>    (-each it 'todo-finalize-agenda-for-state)))</code>
-<code></code>
-<code>(add-hook 'org-agenda-finalize-hook 'todo-finalize-agenda)</code>
+<pre class="src src-emacs-lisp">(setq todo-keywords
+      ;; normal workflow
+      '((("DOING" "d"
+          :icon "🏃"
+          :face org-doing-face)
+
+         ("TODO" "t"
+          :icon "… "
+          :face org-todo-face)
+
+         ("DONE" "D"
+          :icon "✓ "
+          :face org-done-face
+          :done-state t))
+
+        ;; auxillary states
+        (("SOON" "s"
+          :icon "❗ "
+          :face org-soon-face)
+
+         ("SOMEDAY" "S"
+          :icon "🛌"
+          :face org-doing-face))))
+
+
+;; parsing
+
+(defun todo-make-state-model (name key props)
+  (append (list :name name :key key) props))
+
+(defun todo-parse-state-data (state-data)
+  (-let* (((name second &amp;rest) state-data)
+          ((key props) (if (stringp second)
+                           (list second (cddr state-data))
+                         (list nil (cdr state-data)))))
+    (todo-make-state-model name key props)))
+
+(defun todo-make-sequence-model (states)
+  (mapcar 'todo-parse-state-data states))
+
+(defun todo-parse-sequences-data (sequences-data)
+  (mapcar 'todo-make-sequence-model sequences-data))
+
+
+;; org-todo-keywords
+
+(defun todo-keyword-name (name key)
+  (if key (format "%s(%s)" name key) name))
+
+(defun todo-keyword-name-for-state (state)
+  (todo-keyword-name (plist-get state :name)
+                     (plist-get state :key)))
+
+(defun todo-is-done-state (state)
+  (equal t (plist-get state :done-state)))
+
+(defun todo-is-not-done-state (state)
+  (equal nil (plist-get state :done-state)))
+
+(defun todo-org-sequence (states)
+  (let ((active (seq-filter 'todo-is-not-done-state states))
+        (inactive (seq-filter 'todo-is-done-state states)))
+    (append '(sequence)
+            (mapcar 'todo-keyword-name-for-state active)
+            '("|")
+            (mapcar 'todo-keyword-name-for-state inactive))))
+
+(defun todo-org-todo-keywords (sequences)
+  (mapcar 'todo-org-sequence (todo-parse-sequences-data sequences)))
+;; (todo-org-todo-keywords todo-keywords)
+
+
+(with-eval-after-load 'org
+  (setq org-todo-keywords (todo-org-todo-keywords todo-keywords)))
+
+
+(defun todo-org-todo-keyword-faces (sequences)
+  (cl-loop for sequence in (todo-parse-sequences-data sequences)
+           append (cl-loop for state in sequence
+                           for name = (plist-get state :name)
+                           for face = (plist-get state :face)
+                           collect (cons name face))))
+;; (todo-org-todo-keyword-faces todo-keywords)
+
+(with-eval-after-load 'org
+  (setq org-todo-keyword-faces (todo-org-todo-keyword-faces todo-keywords)))
+
+(defun todo-prettify-symbols-alist (sequences)
+  (cl-loop for sequence in (todo-parse-sequences-data sequences)
+           append (cl-loop for state in sequence
+                           for name = (plist-get state :name)
+                           for icon = (plist-get state :icon)
+                           collect (cons name icon))))
+;; (todo-prettify-symbols-alist todo-keywords)
+
+(defun todo-finalize-agenda-for-state (state)
+  (-let (((&amp;plist :name :icon :face) state))
+    (beginning-of-buffer)
+    (while (search-forward name nil 1)
+      (let* ((line-props (text-properties-at (point)))
+             (line-props (ecl-plist-remove line-props 'face)))
+        (call-interactively 'set-mark-command)
+        (search-backward name)
+        (call-interactively 'kill-region)
+        (let ((symbol-pos (point)))
+          (insert icon)
+          (beginning-of-line)
+          (let ((start (point))
+                (end (progn (end-of-line) (point))))
+            (add-text-properties start end line-props)
+            (add-face-text-property symbol-pos (+ 1 symbol-pos) face))))))
+  (beginning-of-buffer)
+  (replace-regexp "[[:space:]]+[=]+" ""))
+
+(defun todo-finalize-agenda ()
+  (--each (todo-parse-sequences-data todo-keywords)
+    (-each it 'todo-finalize-agenda-for-state)))
+
+(add-hook 'org-agenda-finalize-hook 'todo-finalize-agenda)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgab657c3" class="outline-3">
-<h3 id="orgab657c3">poly-org</h3>
-<div class="outline-text-3" id="text-orgab657c3">
+<div id="outline-container-org8dc97eb" class="outline-3">
+<h3 id="org8dc97eb">poly-org</h3>
+<div class="outline-text-3" id="text-org8dc97eb">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>;; (use-package poly-org)</code>
+<pre class="src src-emacs-lisp">;; (use-package poly-org)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org49963cf" class="outline-3">
-<h3 id="org49963cf">org-modules</h3>
-<div class="outline-text-3" id="text-org49963cf">
+<div id="outline-container-org052b771" class="outline-3">
+<h3 id="org052b771">org-modules</h3>
+<div class="outline-text-3" id="text-org052b771">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
+<pre class="src src-emacs-lisp">
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orga3d0048" class="outline-3">
-<h3 id="orga3d0048">org-babel</h3>
-<div class="outline-text-3" id="text-orga3d0048">
+<div id="outline-container-org9772a78" class="outline-3">
+<h3 id="org9772a78">org-babel</h3>
+<div class="outline-text-3" id="text-org9772a78">
 </div>
-<div id="outline-container-org78bc59e" class="outline-4">
-<h4 id="org78bc59e">add languages to babel</h4>
-<div class="outline-text-4" id="text-org78bc59e">
+<div id="outline-container-org3cd6a33" class="outline-4">
+<h4 id="org3cd6a33">add languages to babel</h4>
+<div class="outline-text-4" id="text-org3cd6a33">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(with-eval-after-load 'org</code>
-<code>  (org-babel-do-load-languages</code>
-<code>   'org-babel-load-languages</code>
-<code>   '((shell . t)</code>
-<code>     (emacs-lisp . t))))</code>
+<pre class="src src-emacs-lisp">(with-eval-after-load 'org
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((shell . t)
+     (emacs-lisp . t))))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org86c6e4f" class="outline-4">
-<h4 id="org86c6e4f">set default header args</h4>
-<div class="outline-text-4" id="text-org86c6e4f">
+<div id="outline-container-org90b7c7a" class="outline-4">
+<h4 id="org90b7c7a">set default header args</h4>
+<div class="outline-text-4" id="text-org90b7c7a">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(with-eval-after-load 'org</code>
-<code>  (setq org-babel-default-header-args</code>
-<code>        '((:session . "none")</code>
-<code>          (:results . "silent")</code>
-<code>          (:exports . "code")</code>
-<code>          (:cache . "no")</code>
-<code>          (:noweb . "no")</code>
-<code>          (:hlines . "no")</code>
-<code>          (:tangle . "no"))))</code>
+<pre class="src src-emacs-lisp">(with-eval-after-load 'org
+  (setq org-babel-default-header-args
+        '((:session . "none")
+          (:results . "silent")
+          (:exports . "code")
+          (:cache . "no")
+          (:noweb . "no")
+          (:hlines . "no")
+          (:tangle . "no"))))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org194ea0b" class="outline-4">
-<h4 id="org194ea0b">disable code evaluation prompts</h4>
-<div class="outline-text-4" id="text-org194ea0b">
+<div id="outline-container-orgdeba657" class="outline-4">
+<h4 id="orgdeba657">disable code evaluation prompts</h4>
+<div class="outline-text-4" id="text-orgdeba657">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(with-eval-after-load 'org</code>
-<code>  (setq org-confirm-babel-evaluate nil)</code>
-<code>  (setq org-confirm-shell-link-function nil)</code>
-<code>  (setq org-confirm-elisp-link-function nil))</code>
+<pre class="src src-emacs-lisp">(with-eval-after-load 'org
+  (setq org-confirm-babel-evaluate nil)
+  (setq org-confirm-shell-link-function nil)
+  (setq org-confirm-elisp-link-function nil))
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org77e6683" class="outline-3">
-<h3 id="org77e6683">org-helm</h3>
-<div class="outline-text-3" id="text-org77e6683">
+<div id="outline-container-orgb4e79aa" class="outline-3">
+<h3 id="orgb4e79aa">org-helm</h3>
+<div class="outline-text-3" id="text-orgb4e79aa">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package helm-org)</code>
+<pre class="src src-emacs-lisp">(use-package helm-org)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org46889b6" class="outline-3">
-<h3 id="org46889b6">org-projectile</h3>
-<div class="outline-text-3" id="text-org46889b6">
+<div id="outline-container-orgab538b3" class="outline-3">
+<h3 id="orgab538b3">org-projectile</h3>
+<div class="outline-text-3" id="text-orgab538b3">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package org-projectile</code>
-<code>  :config</code>
-<code>  (progn</code>
-<code>    (org-projectile-per-project)</code>
-<code>    (setq org-projectile-per-project-filepath "notes.org")</code>
-<code>    (add-to-list 'org-capture-templates</code>
-<code>                 (org-projectile-project-todo-entry</code>
-<code>                  :capture-character "l"</code>
-<code>                  :capture-heading "Linked Project TODO"))</code>
-<code>    (add-to-list 'org-capture-templates</code>
-<code>                 (org-projectile-project-todo-entry</code>
-<code>                  :capture-character "p"))</code>
-<code>    (setq org-confirm-elisp-link-function nil)))</code>
-<code></code>
-<code>(use-package org-projectile-helm</code>
-<code>  :after org-projectile</code>
-<code>  :bind (("C-c n p" . org-projectile-helm-template-or-project)))</code>
+<pre class="src src-emacs-lisp">(use-package org-projectile
+  :config
+  (progn
+    (org-projectile-per-project)
+    (setq org-projectile-per-project-filepath "notes.org")
+    (add-to-list 'org-capture-templates
+                 (org-projectile-project-todo-entry
+                  :capture-character "l"
+                  :capture-heading "Linked Project TODO"))
+    (add-to-list 'org-capture-templates
+                 (org-projectile-project-todo-entry
+                  :capture-character "p"))
+    (setq org-confirm-elisp-link-function nil)))
+
+(use-package org-projectile-helm
+  :after org-projectile
+  :bind (("C-c n p" . org-projectile-helm-template-or-project)))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orge3a9333" class="outline-3">
-<h3 id="orge3a9333">org-capture</h3>
-<div class="outline-text-3" id="text-orge3a9333">
+<div id="outline-container-org08c4180" class="outline-3">
+<h3 id="org08c4180">org-capture</h3>
+<div class="outline-text-3" id="text-org08c4180">
 </div>
-<div id="outline-container-org474c344" class="outline-4">
-<h4 id="org474c344">set default notes file</h4>
-<div class="outline-text-4" id="text-org474c344">
+<div id="outline-container-org5668760" class="outline-4">
+<h4 id="org5668760">set default notes file</h4>
+<div class="outline-text-4" id="text-org5668760">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(with-eval-after-load 'org</code>
-<code>  (setq org-default-notes-file (my/org-file-name "inbox.org")))</code>
+<pre class="src src-emacs-lisp">(with-eval-after-load 'org
+  (setq org-default-notes-file (my/org-file-name "inbox.org")))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org8c57232" class="outline-4">
-<h4 id="org8c57232">bind a key for capture</h4>
-<div class="outline-text-4" id="text-org8c57232">
+<div id="outline-container-org039284f" class="outline-4">
+<h4 id="org039284f">bind a key for capture</h4>
+<div class="outline-text-4" id="text-org039284f">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(with-eval-after-load 'org</code>
-<code>  (global-set-key (kbd "C-c c") 'org-capture))</code>
+<pre class="src src-emacs-lisp">(with-eval-after-load 'org
+  (global-set-key (kbd "C-c c") 'org-capture))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgb7dfa6d" class="outline-4">
-<h4 id="orgb7dfa6d">automatically visit new capture</h4>
-<div class="outline-text-4" id="text-orgb7dfa6d">
+<div id="outline-container-orga3aa8a3" class="outline-4">
+<h4 id="orga3aa8a3">automatically visit new capture</h4>
+<div class="outline-text-4" id="text-orga3aa8a3">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(with-eval-after-load 'org</code>
-<code>  (add-to-list 'org-capture-after-finalize-hook 'org-capture-goto-last-stored))</code>
+<pre class="src src-emacs-lisp">(with-eval-after-load 'org
+  (add-to-list 'org-capture-after-finalize-hook 'org-capture-goto-last-stored))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org3d685be" class="outline-4">
-<h4 id="org3d685be">capture templates</h4>
-<div class="outline-text-4" id="text-org3d685be">
+<div id="outline-container-orgf2666dc" class="outline-4">
+<h4 id="orgf2666dc">capture templates</h4>
+<div class="outline-text-4" id="text-orgf2666dc">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
+<pre class="src src-emacs-lisp">
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org4900b3a" class="outline-3">
-<h3 id="org4900b3a">org-agenda</h3>
-<div class="outline-text-3" id="text-org4900b3a">
+<div id="outline-container-orga1b98c5" class="outline-3">
+<h3 id="orga1b98c5">org-agenda</h3>
+<div class="outline-text-3" id="text-orga1b98c5">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq org-directory my/org-directory</code>
-<code>      org-agenda-todo-keyword-format ""</code>
-<code>      org-agenda-prefix-format '((todo . "  %(org-get-todo-state)"))</code>
-<code>      org-agenda-files (-filter 'f-exists? (append</code>
-<code>                                            (f-glob (my/org-file-name "*.org"))</code>
-<code>                                            (f-glob (my/project-directory "*/*.org"))</code>
-<code>                                            (f-glob (my/source-directory "*/*.org")))))</code>
-<code></code>
-<code>(eval `(use-package org-super-agenda</code>
-<code>         ;; :straight (org-super-agenda</code>
-<code>         ;;            :local-repo ,(my/source-directory "org-super-agenda"))</code>
-<code>         :config (org-super-agenda-mode)))</code>
-<code></code>
-<code>(defun org-agenda-transformer (it)</code>
-<code>  (-let* (((blank todo rest) (s-split-up-to</code>
-<code>                              "[[:blank:]]+"</code>
-<code>                              (substring-no-properties it) 2))</code>
-<code>          (project-name (-&gt;&gt; it</code>
-<code>                             (get-text-property 0 'org-marker)</code>
-<code>                             (marker-buffer)</code>
-<code>                             (buffer-file-name)</code>
-<code>                             (f-parent)</code>
-<code>                             (f-base)))</code>
-<code>          it)</code>
-<code>    (format "  %s %s / %s" todo project-name rest)))</code>
-<code></code>
-<code>(setq org-agenda-custom-commands</code>
-<code>      (list</code>
-<code>       (quote</code>
-<code>        ("a" "agenda view"</code>
-<code>         ((agenda "" ((org-agenda-span 'day)</code>
-<code>                      (org-super-agenda-groups</code>
-<code>                       '((:name "Today"</code>
-<code>                                :time-grid t</code>
-<code>                                :date today</code>
-<code>                                :todo "TODAY"</code>
-<code>                                :scheduled today</code>
-<code>                                :order 1)))))</code>
-<code>          (alltodo "" ((org-agenda-overriding-header "")</code>
-<code>                       (org-super-agenda-groups</code>
-<code>                        '((:name "Active"</code>
-<code>                                 :todo "DOING"</code>
-<code>                                 :order 1</code>
-<code>                                 :transformer (org-agenda-transformer it))</code>
-<code>                          (:name "Important"</code>
-<code>                                 :tag "Important"</code>
-<code>                                 :priority "A"</code>
-<code>                                 :order 6)</code>
-<code>                          (:name "Due Today"</code>
-<code>                                 :deadline today</code>
-<code>                                 :order 2)</code>
-<code>                          (:name "Overdue"</code>
-<code>                                 :deadline past</code>
-<code>                                 :order 7)</code>
-<code>                          (:name "Assignments"</code>
-<code>                                 :tag "Assignment"</code>
-<code>                                 :order 10)</code>
-<code>                          (:name "Issues"</code>
-<code>                                 :tag "Issue"</code>
-<code>                                 :order 12)</code>
-<code>                          (:name "Done"</code>
-<code>                                 :todo "DONE")</code>
-<code>                          (:discard (:anything t))))))</code>
-<code></code>
-<code>          (alltodo "" ((org-agenda-overriding-header "")</code>
-<code>                       (org-super-agenda-groups</code>
-<code>                        '((:auto-group-map</code>
-<code>                           (lambda (item)</code>
-<code>                             (-when-let* ((marker (or (get-text-property 0 'org-marker item)</code>
-<code>                                                      (get-text-property 0 'org-hd-marker item)))</code>
-<code>                                          (file-path (-&gt;&gt; marker marker-buffer buffer-file-name))</code>
-<code>                                          (parent (f-dirname file-path))</code>
-<code>                                          (type (f-dirname parent)))</code>
-<code>                               (when (equal "src" (f-filename type))</code>
-<code>                                 (f-filename parent)))))</code>
-<code>                          (:discard (:anything t))))))</code>
-<code>          (alltodo "" ((org-agenda-overriding-header "")</code>
-<code>                       (org-super-agenda-groups</code>
-<code>                        '((:auto-group-map</code>
-<code>                           (lambda (item)</code>
-<code>                             (if (-contains? (get-text-property 0 'tags item) "mine")</code>
-<code>                                 (-when-let* ((marker (or (get-text-property 0 'org-marker item)</code>
-<code>                                                          (get-text-property 0 'org-hd-marker item)))</code>
-<code>                                              (file-path (-&gt;&gt; marker marker-buffer buffer-file-name))</code>
-<code>                                              (parent (f-dirname file-path))</code>
-<code>                                              (type (f-dirname parent)))</code>
-<code>                                   ;; TODO this wont work on windows, use variables</code>
-<code>                                   (when (equal "ext" (f-filename type))</code>
-<code>                                     (f-filename parent))))))</code>
-<code>                          (:discard (:anything t)))))))))))</code>
-<code></code>
+<pre class="src src-emacs-lisp">(setq org-directory my/org-directory
+      org-agenda-todo-keyword-format ""
+      org-agenda-prefix-format '((todo . "  %(org-get-todo-state)"))
+      org-agenda-files (-filter 'f-exists? (append
+                                            (f-glob (my/org-file-name "*.org"))
+                                            (f-glob (my/project-directory "*/*.org"))
+                                            (f-glob (my/source-directory "*/*.org")))))
+
+(eval `(use-package org-super-agenda
+         ;; :straight (org-super-agenda
+         ;;            :local-repo ,(my/source-directory "org-super-agenda"))
+         :config (org-super-agenda-mode)))
+
+(defun org-agenda-transformer (it)
+  (-let* (((blank todo rest) (s-split-up-to
+                              "[[:blank:]]+"
+                              (substring-no-properties it) 2))
+          (project-name (-&gt;&gt; it
+                             (get-text-property 0 'org-marker)
+                             (marker-buffer)
+                             (buffer-file-name)
+                             (f-parent)
+                             (f-base)))
+          it)
+    (format "  %s %s / %s" todo project-name rest)))
+
+(setq org-agenda-custom-commands
+      (list
+       (quote
+        ("a" "agenda view"
+         ((agenda "" ((org-agenda-span 'day)
+                      (org-super-agenda-groups
+                       '((:name "Today"
+                                :time-grid t
+                                :date today
+                                :todo "TODAY"
+                                :scheduled today
+                                :order 1)))))
+          (alltodo "" ((org-agenda-overriding-header "")
+                       (org-super-agenda-groups
+                        '((:name "Active"
+                                 :todo "DOING"
+                                 :order 1
+                                 :transformer (org-agenda-transformer it))
+                          (:name "Important"
+                                 :tag "Important"
+                                 :priority "A"
+                                 :order 6)
+                          (:name "Due Today"
+                                 :deadline today
+                                 :order 2)
+                          (:name "Overdue"
+                                 :deadline past
+                                 :order 7)
+                          (:name "Assignments"
+                                 :tag "Assignment"
+                                 :order 10)
+                          (:name "Issues"
+                                 :tag "Issue"
+                                 :order 12)
+                          (:name "Done"
+                                 :todo "DONE")
+                          (:discard (:anything t))))))
+
+          (alltodo "" ((org-agenda-overriding-header "")
+                       (org-super-agenda-groups
+                        '((:auto-group-map
+                           (lambda (item)
+                             (-when-let* ((marker (or (get-text-property 0 'org-marker item)
+                                                      (get-text-property 0 'org-hd-marker item)))
+                                          (file-path (-&gt;&gt; marker marker-buffer buffer-file-name))
+                                          (parent (f-dirname file-path))
+                                          (type (f-dirname parent)))
+                               (when (equal "src" (f-filename type))
+                                 (f-filename parent)))))
+                          (:discard (:anything t))))))
+          (alltodo "" ((org-agenda-overriding-header "")
+                       (org-super-agenda-groups
+                        '((:auto-group-map
+                           (lambda (item)
+                             (if (-contains? (get-text-property 0 'tags item) "mine")
+                                 (-when-let* ((marker (or (get-text-property 0 'org-marker item)
+                                                          (get-text-property 0 'org-hd-marker item)))
+                                              (file-path (-&gt;&gt; marker marker-buffer buffer-file-name))
+                                              (parent (f-dirname file-path))
+                                              (type (f-dirname parent)))
+                                   ;; TODO this wont work on windows, use variables
+                                   (when (equal "ext" (f-filename type))
+                                     (f-filename parent))))))
+                          (:discard (:anything t)))))))))))
+
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7f908ce" class="outline-3">
-<h3 id="org7f908ce">linkmarks</h3>
-<div class="outline-text-3" id="text-org7f908ce">
+<div id="outline-container-org6f9088e" class="outline-3">
+<h3 id="org6f9088e">org-fragtog</h3>
+<div class="outline-text-3" id="text-org6f9088e">
+<p>
+Automatic LaTex fragment previews in org-mode.
+</p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(eval `(use-package linkmarks</code>
-<code>         :straight (linkmarks :type git :host github :repo "dustinlacewell/linkmarks")</code>
-<code>         ;; :straight (linkmarks :type git :local-repo ,(my/project-directory "linkmarks/") :files ("linkmarks.el"))</code>
-<code>         ))</code>
+<pre class="src src-emacs-lisp">(use-package org-fragtog
+  :config
+  (add-hook 'org-mode-hook 'org-fragtog-mode))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5a5b008" class="outline-3">
+<h3 id="org5a5b008">linkmarks</h3>
+<div class="outline-text-3" id="text-org5a5b008">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(eval `(use-package linkmarks
+         :straight (linkmarks :type git :host github :repo "dustinlacewell/linkmarks")
+         ;; :straight (linkmarks :type git :local-repo ,(my/project-directory "linkmarks/") :files ("linkmarks.el"))
+         ))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgc88fd1b" class="outline-3">
-<h3 id="orgc88fd1b">outshine</h3>
-<div class="outline-text-3" id="text-orgc88fd1b">
+<div id="outline-container-orgec4bf65" class="outline-3">
+<h3 id="orgec4bf65">outshine</h3>
+<div class="outline-text-3" id="text-orgec4bf65">
 <p>
 Outshine provides org-mode like functionality in other files like elisp source.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
-<code>(use-package outshine</code>
-<code>  :init (defvar outline-minor-mode-prefix "\M-#")</code>
-<code>  :config (setq outshine-use-speed-commands t)</code>
-<code>  :hook ((emacs-lisp-mode . outshine-mode) (nix-mode . outshine-mode)))</code>
+<pre class="src src-emacs-lisp">
+(use-package outshine
+  :init (defvar outline-minor-mode-prefix "\M-#")
+  :config (setq outshine-use-speed-commands t)
+  :hook ((emacs-lisp-mode . outshine-mode) (nix-mode . outshine-mode)))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org3c36d38" class="outline-3">
-<h3 id="org3c36d38">org-ql</h3>
-<div class="outline-text-3" id="text-org3c36d38">
+<div id="outline-container-org58cd020" class="outline-3">
+<h3 id="org58cd020">org-ql</h3>
+<div class="outline-text-3" id="text-org58cd020">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(eval `(use-package org-ql</code>
-<code>         :demand t</code>
-<code>         :straight (org-ql :type git :host github :repo "dustinlacewell/org-ql")</code>
-<code>         ;; :straight (org-ql :type git :local-repo ,(my/source-directory "org-ql"))</code>
-<code>         ))</code>
-<code></code>
-<code>(eval `(use-package org-olp</code>
-<code>         :demand t</code>
-<code>         :straight (org-olp :type git :host github :repo "dustinlacewell/org-olp")</code>
-<code>         ;; :straight (org-olp :type git :local-repo ,(my/project-directory "org-olp"))</code>
-<code>         ))</code>
-<code></code>
-<code>(defun get-candidates (filename query)</code>
-<code>  (let* ((headlines (eval `(org-ql ,filename ,query)))</code>
-<code>         (items (--map (plist-get it 'headline) headlines))</code>
-<code>         (items (--sort (&lt; (plist-get it :begin)</code>
-<code>                           (plist-get other :begin)) items)))</code>
-<code>    (cl-loop for item in items</code>
-<code>             for olp = (with-temp-buffer</code>
-<code>                         (insert-file-contents filename)</code>
-<code>                         (org-mode)</code>
-<code>                         (goto-char (plist-get item :begin))</code>
-<code>                         (org-get-outline-path t))</code>
-<code>             for label = (string-join olp " / ")</code>
-<code>             collect (list label item))))</code>
-<code></code>
-<code>;; (get-candidates (my/org-file-name "notes.org") '(todo "TODO"))</code>
-<code></code>
-<code>(defun select-candidate (filename query)</code>
-<code>  (let* ((candidates (get-candidates filename query)))</code>
-<code>    (car (helm :sources</code>
-<code>               (helm-build-sync-source "active-todos"</code>
-<code>                 :candidates candidates</code>
-<code>                 :fuzzy-match t)))))</code>
-<code></code>
-<code>;; (select-candidate (my/org-file-name "notes.org") '(todo "TODO"))</code>
-<code></code>
-<code>(defun visit-candidate (filename query)</code>
-<code>  (let ((selection (select-candidate filename query)))</code>
-<code>    (find-file filename)</code>
-<code>    (goto-char (plist-get selection :begin))</code>
-<code>    (beginning-of-line)</code>
-<code>    (call-interactively 'org-shifttab)</code>
-<code>    (call-interactively 'org-cycle)))</code>
-<code></code>
-<code>;; (visit-candidate my/notes-file-name '(todo))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org5c51f19" class="outline-3">
-<h3 id="org5c51f19">i-read-this</h3>
-<div class="outline-text-3" id="text-org5c51f19">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun i-read-this ()</code>
-<code>  (interactive)</code>
-<code>  (org-entry-add-to-multivalued-property nil "readby" user-login-name))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org33c5420" class="outline-3">
-<h3 id="org33c5420">don't prompt to confirm not prompting to confirm</h3>
-<div class="outline-text-3" id="text-org33c5420">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq safe-local-variable-values '((org-confirm-elisp-link-function . nil)))</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orga66ade0" class="outline-2">
-<h2 id="orga66ade0">projectile</h2>
-<div class="outline-text-2" id="text-orga66ade0">
-<p>
-<a href="https://github.com/bbatsov/projectile">Projectile</a> offers a number of features related to project interaction. It can
-track the root directories and sibling files of files you edit
-automatically. Combined with Helm, you can very quickly navigate related files.
-</p>
-
-<p>
-Projectile's default prefix is <code>C-c p</code>
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package projectile</code>
-<code>  :config</code>
-<code>  (setq projectile-enable-caching t)</code>
-<code>  (projectile-mode t))</code>
-</pre>
-</div>
-</div>
-
-<div id="outline-container-org56c304f" class="outline-3">
-<h3 id="org56c304f">project discovery</h3>
-<div class="outline-text-3" id="text-org56c304f">
-<p>
-Customize <code>nougat-project-root</code> to set the location of the majority of your
-projects/repositories.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
-<code>(projectile-discover-projects-in-directory</code>
-<code> (file-name-as-directory my/projects-directory))</code>
-<code>(projectile-discover-projects-in-directory</code>
-<code> (file-name-as-directory my/sources-directory))</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgaf5d3a4" class="outline-2">
-<h2 id="orgaf5d3a4">helm</h2>
-<div class="outline-text-2" id="text-orgaf5d3a4">
-<p>
-Helm is a fast completion/selection framework for Emacs. It pops up a buffer with
-choices which you narrows by fuzzy search. This can be used for finding files,
-switching buffers, etc.
-</p>
-
-<p>
-The following keys are bound by default:
-</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">default key</th>
-<th scope="col" class="org-left">override symbol</th>
-<th scope="col" class="org-left">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left">M-x</td>
-<td class="org-left">kbd-helm-M-x</td>
-<td class="org-left">execute commands</td>
-</tr>
-
-<tr>
-<td class="org-left">C-h f</td>
-<td class="org-left">kbd-helm-apropos</td>
-<td class="org-left">get help for any symbol</td>
-</tr>
-
-<tr>
-<td class="org-left">C-x C-f</td>
-<td class="org-left">kbd-helm-find-files</td>
-<td class="org-left">find files</td>
-</tr>
-
-<tr>
-<td class="org-left">C-c y</td>
-<td class="org-left">kbd-helm-show-kill-ring</td>
-<td class="org-left">view kill ring history</td>
-</tr>
-
-<tr>
-<td class="org-left">C-x C-r</td>
-<td class="org-left">kbd-helm-recentf</td>
-<td class="org-left">open recently viewed files</td>
-</tr>
-</tbody>
-</table>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package helm</code>
-<code>  :config</code>
-<code>  (helm-mode 1)</code>
-<code>  (require 'helm-config)</code>
-<code></code>
-<code>  (global-set-key (kbd "M-x") 'helm-M-x)</code>
-<code>  (global-set-key (kbd "C-h f") 'helm-apropos)</code>
-<code>  (global-set-key (kbd "C-x C-f") 'helm-find-files)</code>
-<code>  (global-set-key (kbd "C-x b") 'helm-mini)</code>
-<code>  (global-set-key (kbd "C-c y") 'helm-show-kill-ring)</code>
-<code>  (global-set-key (kbd "C-x C-r") 'helm-recentf))</code>
-</pre>
-</div>
-</div>
-
-<div id="outline-container-orgb782aee" class="outline-3">
-<h3 id="orgb782aee">ace-jump-helm-line</h3>
-<div class="outline-text-3" id="text-orgb782aee">
-<p>
-Use (<code>M-;</code> / <code>kbd-helm-ace-jump</code>) to show a unique letter combination next to each Helm
-candidate. Pressing a combination instantly selects that candidate.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
-<code>(with-eval-after-load 'helm</code>
-<code>  (use-package ace-jump-helm-line</code>
-<code>    :commands ace-jump-helm-line</code>
-<code>    :config (define-key helm-map</code>
-<code>            (kbd "M-;")</code>
-<code>            'ace-jump-helm-line)))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgb4fcece" class="outline-3">
-<h3 id="orgb4fcece">helm-bookmarks</h3>
-<div class="outline-text-3" id="text-orgb4fcece">
-<p>
-Use (<code>C-x C-b</code> / <code>kbd-helm-bookmarks</code>) to manage bookmarks with Helm.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
-<code>(with-eval-after-load 'helm</code>
-<code>  (require 'helm-bookmark)</code>
-<code>  (global-set-key (kbd "C-x C-b") 'helm-bookmark))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org7b8e7f6" class="outline-3">
-<h3 id="org7b8e7f6">helm-ag</h3>
-<div class="outline-text-3" id="text-org7b8e7f6">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package helm-ag)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgc8d1377" class="outline-3">
-<h3 id="orgc8d1377">helm-descbinds</h3>
-<div class="outline-text-3" id="text-orgc8d1377">
-<p>
-Use (<code>C-h b</code> / <code>kbd-helm-descbinds</code>) to inspect current bindings with Helm.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
-<code>(use-package helm-descbinds</code>
-<code>  :after (helm)</code>
-<code>  :commands helm-descbinds</code>
-<code>  :config</code>
-<code>  (global-set-key (kbd "C-h b") 'helm-descbinds))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org2fb6896" class="outline-3">
-<h3 id="org2fb6896">helm-flyspell</h3>
-<div class="outline-text-3" id="text-org2fb6896">
-<p>
-With <code>flyspell-mode</code> on, use (<code>C-;</code> / <code>kbd-helm-flyspell</code>) after a word to correct it with
-Helm.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
-<code>(use-package helm-flyspell</code>
-<code>  :after (helm)</code>
-<code>  :commands helm-flyspell-correct</code>
-<code>  :config (global-set-key (kbd "C-;") 'helm-flyspell-correct))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org801d1d4" class="outline-3">
-<h3 id="org801d1d4">helm-org-rifle</h3>
-<div class="outline-text-3" id="text-org801d1d4">
-<p>
-Use (<code>M-r</code> / <code>kbd-helm-org-rifle</code>) to rifle through the current org-mode buffer or
-all open org-mode buffers if one is not focused.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
-<code>(use-package helm-org-rifle</code>
-<code>  :after (helm org)</code>
-<code>  :commands helm-org-rifle-current-buffer</code>
-<code>  :config</code>
-<code>  (define-key org-mode-map (kbd "M-r") 'helm-org-rifle-current-buffer))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org81198cb" class="outline-3">
-<h3 id="org81198cb">helm-projectile</h3>
-<div class="outline-text-3" id="text-org81198cb">
-<p>
-Use (<code>C-x c p</code> / <code>kbd-helm-projectile</code>) to view the buffers and files in the current
-Projectile project.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
-<code>(use-package helm-projectile</code>
-<code>    :after (helm projectile)</code>
-<code>    :commands helm-projectile</code>
-<code>    :config</code>
-<code>    (global-set-key (kbd "C-x c p") 'helm-projectile))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orge0c59ed" class="outline-3">
-<h3 id="orge0c59ed">auto full frame</h3>
-<div class="outline-text-3" id="text-orge0c59ed">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defvar helm-full-frame-threshold 0.75)</code>
-<code></code>
-<code>(when window-system</code>
-<code>  (defun helm-full-frame-hook ()</code>
-<code>  (let ((threshold (* helm-full-frame-threshold (x-display-pixel-height))))</code>
-<code>    (setq helm-full-frame (&lt; (frame-height) threshold))))</code>
-<code></code>
-<code>  (add-hook 'helm-before-initialize-hook 'helm-full-frame-hook))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgd5c1461" class="outline-3">
-<h3 id="orgd5c1461">filter nix wrappers</h3>
-<div class="outline-text-3" id="text-orgd5c1461">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(require 'helm-external)</code>
-<code>(setq helm-external-commands-list</code>
-<code>      (seq-filter (lambda (v) (not (string-match "^\\." v)))</code>
-<code>                  (helm-external-commands-list-1 'sort)))</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgc66bd39" class="outline-2">
-<h2 id="orgc66bd39">magit</h2>
-<div class="outline-text-2" id="text-orgc66bd39">
-<p>
-Use (<code>C-x g</code> / <code>kbd-magit-status</code>) to open the best front-end to Git there is!
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
-<code>(use-package magit</code>
-<code>  :demand t</code>
-<code>  :config</code>
-<code>  (global-set-key (kbd "C-x g") 'magit-status))</code>
-</pre>
-</div>
-</div>
-
-<div id="outline-container-orge042500" class="outline-3">
-<h3 id="orge042500">forge</h3>
-<div class="outline-text-3" id="text-orge042500">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>;; (use-package closql)</code>
-<code>;; (use-package forge</code>
-<code>;;   :demand t</code>
-<code>;;   :straight (forge :type git :host github :repo "magit/forge" :files ("lisp/*.el")))</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org2a891fc" class="outline-2">
-<h2 id="org2a891fc">language support</h2>
-<div class="outline-text-2" id="text-org2a891fc">
-</div>
-<div id="outline-container-org93e3813" class="outline-3">
-<h3 id="org93e3813">flycheck</h3>
-<div class="outline-text-3" id="text-org93e3813">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package flycheck)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgc8f7423" class="outline-3">
-<h3 id="orgc8f7423">elisp</h3>
-<div class="outline-text-3" id="text-orgc8f7423">
-</div>
-<div id="outline-container-org1190560" class="outline-4">
-<h4 id="org1190560">macrostep</h4>
-<div class="outline-text-4" id="text-org1190560">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package macrostep</code>
-<code>  :straight (macrostep :type git :host github :repo "joddie/macrostep")</code>
-<code>  :config (define-key emacs-lisp-mode-map (kbd "C-c e") 'macrostep-expand))</code>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-orgd007212" class="outline-4">
-<h4 id="orgd007212">context-help</h4>
-<div class="outline-text-4" id="text-orgd007212">
-<p>
-Use (<code>C-c h</code> / <code>kbd-toggle-context-help</code>) to turn on a help-window that will
-automatically update to display the help of the symbol before point.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun toggle-context-help ()</code>
-<code>  "Turn on or off the context help.</code>
-<code>Note that if ON and you hide the help buffer then you need to</code>
-<code>manually reshow it. A double toggle will make it reappear"</code>
-<code>  (interactive)</code>
-<code>  (with-current-buffer (help-buffer)</code>
-<code>    (unless (local-variable-p 'context-help)</code>
-<code>      (set (make-local-variable 'context-help) t))</code>
-<code>    (if (setq context-help (not context-help))</code>
-<code>        (progn</code>
-<code>           (if (not (get-buffer-window (help-buffer)))</code>
-<code>               (display-buffer (help-buffer)))))</code>
-<code>    (message "Context help %s" (if context-help "ON" "OFF"))))</code>
-<code></code>
-<code>(defun context-help ()</code>
-<code>  "Display function or variable at point in *Help* buffer if visible.</code>
-<code>Default behaviour can be turned off by setting the buffer local</code>
-<code>context-help to false"</code>
-<code>  (interactive)</code>
-<code>  (let ((rgr-symbol (symbol-at-point))) ; symbol-at-point http://www.emacswiki.org/cgi-bin/wiki/thingatpt%2B.el</code>
-<code>    (with-current-buffer (help-buffer)</code>
-<code>     (unless (local-variable-p 'context-help)</code>
-<code>       (set (make-local-variable 'context-help) t))</code>
-<code>     (if (and context-help (get-buffer-window (help-buffer))</code>
-<code>         rgr-symbol)</code>
-<code>       (if (fboundp  rgr-symbol)</code>
-<code>           (describe-function rgr-symbol)</code>
-<code>         (if (boundp  rgr-symbol) (describe-variable rgr-symbol)))))))</code>
-<code></code>
-<code>(defadvice eldoc-print-current-symbol-info</code>
-<code>  (around eldoc-show-c-tag activate)</code>
-<code>  (cond</code>
-<code>        ((eq major-mode 'emacs-lisp-mode) (context-help) ad-do-it)</code>
-<code>        ((eq major-mode 'lisp-interaction-mode) (context-help) ad-do-it)</code>
-<code>        ((eq major-mode 'apropos-mode) (context-help) ad-do-it)</code>
-<code>        (t ad-do-it)))</code>
-<code></code>
-<code>(global-set-key (kbd "C-c h") 'toggle-context-help)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org08d1cde" class="outline-4">
-<h4 id="org08d1cde">lispy-mode</h4>
-<div class="outline-text-4" id="text-org08d1cde">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package lispy</code>
-<code>  :config</code>
-<code>  (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)))</code>
-<code>  (add-hook 'lisp-interaction-mode-hook (lambda () (lispy-mode 1)))</code>
-<code>  (bind-key (kbd ":") 'self-insert-command lispy-mode-map)</code>
-<code>  :bind (:map emacs-lisp-mode-map</code>
-<code>              ("[" . lispy-open-square)</code>
-<code>              ("]" . lispy-close-square)))</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org25cd1ae" class="outline-3">
-<h3 id="org25cd1ae">markdown-mode</h3>
-<div class="outline-text-3" id="text-org25cd1ae">
-<p>
-All the internet uses it.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
-<code>(use-package markdown-mode</code>
-<code>  :commands (markdown-mode gfm-mode)</code>
-<code>  :mode (("README\\.md\\'" . gfm-mode)</code>
-<code>         ("\\.md\\'" . markdown-mode)</code>
-<code>         ("\\.markdown\\'" . markdown-mode))</code>
-<code>  :config (setq markdown-command "multimarkdown"))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgc31ef10" class="outline-3">
-<h3 id="orgc31ef10">python</h3>
-<div class="outline-text-3" id="text-orgc31ef10">
-</div>
-<div id="outline-container-org6b88ccb" class="outline-4">
-<h4 id="org6b88ccb">elpy</h4>
-<div class="outline-text-4" id="text-org6b88ccb">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>;(use-package elpy)</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org4dc5d56" class="outline-3">
-<h3 id="org4dc5d56">typescript</h3>
-<div class="outline-text-3" id="text-org4dc5d56">
-</div>
-<div id="outline-container-org1e5b3e2" class="outline-4">
-<h4 id="org1e5b3e2">typescript-mode</h4>
-<div class="outline-text-4" id="text-org1e5b3e2">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package typescript-mode)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgad83856" class="outline-4">
-<h4 id="orgad83856">jsx</h4>
-<div class="outline-text-4" id="text-orgad83856">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package web-mode</code>
-<code>  :demand t</code>
-<code>  :config</code>
-<code>  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))</code>
-<code>  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))</code>
-<code>  (setq web-mode-engines-alist</code>
-<code>        '(("django"    . "\\.html\\'")))</code>
-<code>  (add-hook 'web-mode-hook</code>
-<code>            (lambda ()</code>
-<code>              (when (string-equal "tsx" (file-name-extension buffer-file-name))</code>
-<code>                (setup-tide-mode))))</code>
-<code>  ;; enable typescript-tslint checker</code>
-<code>  (flycheck-add-mode 'typescript-tslint 'web-mode))</code>
-<code></code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org67f6290" class="outline-3">
-<h3 id="org67f6290">yaml</h3>
-<div class="outline-text-3" id="text-org67f6290">
-</div>
-<div id="outline-container-org467391d" class="outline-4">
-<h4 id="org467391d">yaml-mode</h4>
-<div class="outline-text-4" id="text-org467391d">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package yaml-mode</code>
-<code>  :demand t</code>
-<code>  :config</code>
-<code>  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org01503c8" class="outline-3">
-<h3 id="org01503c8">web-mode</h3>
-<div class="outline-text-3" id="text-org01503c8">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package less-css-mode)</code>
-<code></code>
-<code>(use-package web-mode</code>
-<code>  :config</code>
-<code>  (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode)))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgfea3ba6" class="outline-3">
-<h3 id="orgfea3ba6">go-mode</h3>
-<div class="outline-text-3" id="text-orgfea3ba6">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package go-mode</code>
-<code>  :config (add-hook 'go-mode-hook</code>
-<code>                    (lambda ()</code>
-<code>                      (add-hook 'before-save-hook 'gofmt-before-save)</code>
-<code>                      (setq tab-width 4)</code>
-<code>                      (setq indent-tabs-mode 1))))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgd940ca2" class="outline-3">
-<h3 id="orgd940ca2">lojban</h3>
-<div class="outline-text-3" id="text-orgd940ca2">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>;; (eval `(use-package sutysisku</code>
-<code>;;    :demand t</code>
-<code>;;    :straight (sutysisku :local-repo ,(my/project-directory "sutysisku.el/"))))</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgd6ff8e6" class="outline-2">
-<h2 id="orgd6ff8e6">tooling support</h2>
-<div class="outline-text-2" id="text-orgd6ff8e6">
-</div>
-<div id="outline-container-org729de61" class="outline-3">
-<h3 id="org729de61">rec-mode</h3>
-<div class="outline-text-3" id="text-org729de61">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package rec-mode</code>
-<code>  :straight (rec-mode :type git :repo "https://git.savannah.gnu.org/git/recutils.git" :files ("etc/rec-mode.el")))</code>
-</pre>
-</div>
-</div>
-
-<div id="outline-container-org99a35e8" class="outline-4">
-<h4 id="org99a35e8">support</h4>
-<div class="outline-text-4" id="text-org99a35e8">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun rec-books-save-hook ()</code>
-<code>  (message (buffer-name)))</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org31da5ec" class="outline-3">
-<h3 id="org31da5ec">docker</h3>
-<div class="outline-text-3" id="text-org31da5ec">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package dockerfile-mode</code>
-<code>  :demand t</code>
-<code>  :config</code>
-<code>  (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgf296546" class="outline-3">
-<h3 id="orgf296546">nix</h3>
-<div class="outline-text-3" id="text-orgf296546">
-</div>
-<div id="outline-container-org54be6a0" class="outline-4">
-<h4 id="org54be6a0">nix-mode</h4>
-<div class="outline-text-4" id="text-org54be6a0">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package nix-mode</code>
-<code>  :straight (helpful :type git :host github :repo "NixOS/nix-mode")</code>
-<code>  :mode "\\.nix\\'"</code>
-<code>  :config</code>
-<code>  (remove-hook 'before-save-hook #'nix-mode-format))</code>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org8ca7b6d" class="outline-4">
-<h4 id="org8ca7b6d">nix-sandbox</h4>
-<div class="outline-text-4" id="text-org8ca7b6d">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package nix-sandbox)</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org32e0dce" class="outline-2">
-<h2 id="org32e0dce">yasnippet</h2>
-<div class="outline-text-2" id="text-org32e0dce">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package yasnippet</code>
-<code>  :config</code>
-<code>  (setq yas-snippet-dirs '(my/yas-directory))</code>
-<code>  (yas-global-mode 1))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgee292fe" class="outline-2">
-<h2 id="orgee292fe">org-brain</h2>
-<div class="outline-text-2" id="text-orgee292fe">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(eval `(use-package org-brain</code>
-<code>         ;; :straight (helpful :type git :host github :repo "Kungsgeten/org-brain")</code>
-<code>         :straight (org-brain :local-repo ,(my/source-directory "org-brain"))</code>
-<code>         :config</code>
-<code>         (setcdr org-brain-visualize-mode-map nil)</code>
-<code>         (setq org-brain-visualize-default-choices 'root</code>
-<code>               org-brain-path "/home/ldlework/src/episteme/brain/"</code>
-<code>               org-brain-include-file-entries t</code>
-<code>               org-brain-scan-for-header-entries nil</code>
-<code>               org-brain-file-entries-use-title t</code>
-<code>               org-brain-show-full-entry t</code>
-<code>               org-brain-show-text t</code>
-<code>               org-id-track-globally t</code>
-<code>               org-brain-vis-current-title-append-functions '(org-brain-entry-tags-string)</code>
-<code>               org-brain-title-max-length 24)))</code>
-</pre>
-</div>
-</div>
-
-<div id="outline-container-org0cdd118" class="outline-3">
-<h3 id="org0cdd118">Navigation Helpers</h3>
-<div class="outline-text-3" id="text-org0cdd118">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun my/org-brain-visualize-parent ()</code>
-<code>  (interactive)</code>
-<code>  (when (org-brain-parents (org-brain-entry-at-pt)) (org-brain-visualize-parent (org-brain-entry-at-pt))))</code>
-<code></code>
-<code>(defun my/org-brain-visualize-child (entry &amp;optional all)</code>
-<code>  (interactive (list (org-brain-entry-at-pt)))</code>
-<code>  (when (org-brain-children entry)</code>
-<code>    (let* ((entries (if all (org-brain-children entry)</code>
-<code>                    (org-brain--linked-property-entries</code>
-<code>                     entry org-brain-children-property-name)))</code>
-<code>         (child (cond</code>
-<code>                 ((equal 1 (length entries)) (car-safe entries))</code>
-<code>                 ((not entries) (error (concat entry " has no children")))</code>
-<code>                 (t (org-brain-choose-entry "Goto child: " entries nil t)))))</code>
-<code>      (org-brain-visualize child))))</code>
-<code></code>
-<code>(defun my/next-button-with-category (category)</code>
-<code>  (let ((original-point (point))</code>
-<code>        (first-result (text-property-search-forward 'brain-category category t t)))</code>
-<code>    (when first-result</code>
-<code>          (goto-char (prop-match-beginning first-result)))</code>
-<code>    (when (eq original-point (point))</code>
-<code>      (beginning-of-buffer)</code>
-<code>      (let ((second-result (text-property-search-forward 'brain-category category t t)))</code>
-<code>        (when second-result</code>
-<code>          (goto-char (prop-match-beginning second-result))))</code>
-<code>      (when (eq 0 (point))</code>
-<code>        (goto-char original-point))</code>
-<code>      )</code>
-<code>    ))</code>
-<code></code>
-<code>(defun my/previous-button-with-category (category)</code>
-<code>  (let ((result (text-property-search-backwards 'brain-category category nil t)))))</code>
-<code></code>
-<code>(defun my/next-brain-child ()</code>
-<code>  (interactive)</code>
-<code>  (my/next-button-with-category 'child))</code>
-<code></code>
-<code>(defun my/next-brain-history ()</code>
-<code>  (interactive)</code>
-<code>  (my/next-button-with-category 'history))</code>
-<code></code>
-<code>(defun my/avy-brain-jump (category)</code>
-<code>  (avy-jump "\\&lt;." :pred (lambda () (and (eq category (get-text-property (point) 'brain-category))</code>
-<code>                                    (eq (- (point) 1) (button-start (button-at (point))))))</code>
-<code>            :action (lambda (p) (goto-char (+ 1 p)) (push-button))))</code>
-<code></code>
-<code>(defun my/avy-brain-jump-history ()</code>
-<code>  (interactive)</code>
-<code>  (my/avy-brain-jump 'history))</code>
-<code></code>
-<code>(defun my/avy-brain-jump-child ()</code>
-<code>  (interactive)</code>
-<code>  (my/avy-brain-jump 'child))</code>
-<code></code>
-<code>(defun my/avy-brain-jump-parent ()</code>
-<code>  (interactive)</code>
-<code>  (my/avy-brain-jump 'parent))</code>
-<code></code>
-<code>(defun my/avy-brain-jump-friend ()</code>
-<code>  (interactive)</code>
-<code>  (my/avy-brain-jump 'friend))</code>
-<code></code>
-<code>(defun my/avy-brain-jump-sibling ()</code>
-<code>  (interactive)</code>
-<code>  (my/avy-brain-jump 'sibling))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org19e480f" class="outline-3">
-<h3 id="org19e480f">polybrain</h3>
-<div class="outline-text-3" id="text-org19e480f">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(eval `(use-package polybrain</code>
-<code>         :defer nil</code>
-<code>         :straight (polybrain :local-repo ,(my/project-directory "polybrain"))</code>
-<code>         :bind (</code>
-<code>                :map org-brain-visualize-mode-map</code>
-<code>                ("m" . org-brain-visualize-mind-map)</code>
-<code>                ("&lt;tab&gt;" . backward-button)</code>
-<code>                ("S-&lt;tab&gt;" . forward-button)</code>
-<code>                ("DEL" . org-brain-visualize-back)</code>
-<code>                ("r" . org-brain-open-resource)</code>
-<code>                ("v" . org-brain-visualize)</code>
-<code></code>
-<code>                ("i" . org-brain-pin)</code>
-<code>                ("T" . org-brain-set-title)</code>
-<code>                ("t" . org-brain-set-tags)</code>
-<code>                ("d" . org-brain-delete-entry)</code>
-<code>                ("R" . org-brain-visualize-add-resource)</code>
-<code>                ("o" . org-brain-goto-current)</code>
-<code>                ("O" . org-brain-goto)</code>
-<code></code>
-<code>                ("c" . org-brain-add-child)</code>
-<code>                ("C" . org-brain-remove-child)</code>
-<code></code>
-<code>                ("p" . org-brain-add-parent)</code>
-<code>                ("P" . org-brain-remove-parent)</code>
-<code></code>
-<code>                ("f" . org-brain-add-friendship)</code>
-<code>                ("F" . org-brain-remove-friendship)</code>
-<code></code>
-<code>                ("e" . org-brain-annotate-edge)</code>
-<code></code>
-<code></code>
-<code>                ("M-p" . my/avy-brain-jump-parent)</code>
-<code>                ("M-c" . my/avy-brain-jump-child)</code>
-<code>                ("M-s" . my/avy-brain-jump-sibling)</code>
-<code>                ("M-f" . my/avy-brain-jump-friend)</code>
-<code>                ("M-h" . my/avy-brain-jump-history)</code>
-<code></code>
-<code></code>
-<code>                :map poly-brain-mode-map</code>
-<code>                ("C-x C-s" . polybrain-save)</code>
-<code>                ("&lt;M-SPC&gt;" . polybrain-switch))))</code>
-<code></code>
-<code>;; (require 'polybrain)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgb397499" class="outline-3">
-<h3 id="orgb397499">search</h3>
-<div class="outline-text-3" id="text-orgb397499">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun episteme-search ()</code>
-<code>  (interactive)</code>
-<code>  (helm-do-ag (my/project-directory "episteme/brain"))</code>
-<code>  (let* ((p (point))</code>
-<code>         (f (org-brain-first-headline-position))</code>
-<code>         (adjusted-point (max 0 (- p f))))</code>
-<code>    (org-brain-visualize (file-name-sans-extension (buffer-name)))</code>
-<code>    (with-current-buffer "*org-brain*"</code>
-<code>      (let ((minmax (polybrain--get-point-min-max)))</code>
-<code>        (goto-char (+ (car minmax) adjusted-point))))))</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org7a7c118" class="outline-2">
-<h2 id="org7a7c118">hydra</h2>
-<div class="outline-text-2" id="text-org7a7c118">
-</div>
-<div id="outline-container-org1176530" class="outline-3">
-<h3 id="org1176530">pretty-hydra</h3>
-<div class="outline-text-3" id="text-org1176530">
-<p>
-<a href="https://github.com/jerrypnz/major-mode-hydra.el#pretty-hydra">Pretty-hydra</a> provides a macro that makes it easy to get good looking Hydras.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package pretty-hydra</code>
-<code>  :demand t</code>
-<code>  :straight (pretty-hydra :type git :host github</code>
-<code>                          :repo "jerrypnz/major-mode-hydra.el"</code>
-<code>                          :branch "c6554ea"</code>
-<code>                          :files ("pretty-hydra.el")))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgbec70bf" class="outline-3">
-<h3 id="orgbec70bf">major-mode-hydra</h3>
-<div class="outline-text-3" id="text-orgbec70bf">
-<p>
-<a href="https://github.com/jerrypnz/major-mode-hydra.el">Major-mode-hydra</a> provides an macro for defining major-mode specific Hydras.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package major-mode-hydra</code>
-<code>  :demand t</code>
-<code>  :straight (major-mode-hydra :type git :host github</code>
-<code>                              :repo "jerrypnz/major-mode-hydra.el"</code>
-<code>                              :branch "c6554ea"</code>
-<code>                              :files ("major-mode-hydra.el"))</code>
-<code>  :config</code>
-<code>  (global-set-key (kbd "C-&lt;f19&gt;") 'major-mode-hydra)</code>
-<code>  (global-set-key (kbd "C-&lt;f12&gt;") 'major-mode-hydra))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org9cd3bc4" class="outline-3">
-<h3 id="org9cd3bc4">hera</h3>
-<div class="outline-text-3" id="text-org9cd3bc4">
-<p>
-<a href="https://github.com/dustinlacewell/hera">Hera</a> provides for a few Hydra niceties including an API that allows your Hydras to
-form a stack.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package hera</code>
-<code>  :demand t</code>
-<code>  :straight (hera :type git :host github :repo "dustinlacewell/hera"))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgb5e635f" class="outline-3">
-<h3 id="orgb5e635f">nougat-hydra</h3>
-<div class="outline-text-3" id="text-orgb5e635f">
-<p>
-This is the main macro for defining Hydras in Nougat.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
-<code>(defun nougat--inject-hint (symbol hint)</code>
-<code>  (-let* ((name (symbol-name symbol))</code>
-<code>          (hint-symbol (intern (format "%s/hint" name)))</code>
-<code>          (format-form (eval hint-symbol))</code>
-<code>          (string-cdr (nthcdr 1 format-form))</code>
-<code>          (format-string (string-trim (car string-cdr)))</code>
-<code>          (amended-string (format "%s\n\n%s" format-string hint)))</code>
-<code>    (setcar string-cdr amended-string)))</code>
-<code></code>
-<code>(defun nougat--make-head-hint (head default-color)</code>
-<code>  (-let (((key _ hint . rest) head))</code>
-<code>    (when key</code>
-<code>      (-let* (((&amp;plist :color color) rest)</code>
-<code>              (color (or color default-color))</code>
-<code>              (face (intern (format "hydra-face-%s" color)))</code>
-<code>              (propertized-key (propertize key 'face face)))</code>
-<code>        (format " [%s]: %s" propertized-key hint)))))</code>
-<code></code>
-<code>(defun nougat--make-hint (heads default-color)</code>
-<code>  (string-join</code>
-<code>   (cl-loop for head in heads</code>
-<code>            for hint = (nougat--make-head-hint head default-color)</code>
-<code>            do (pp hint)</code>
-<code>            collect hint) "\n"))</code>
-<code></code>
-<code>(defun nougat--clear-hint (head)</code>
-<code>  (-let* (((key form _ . rest) head))</code>
-<code>    `(,key ,form nil ,@rest)))</code>
-<code></code>
-<code>(defun nougat--add-exit-head (heads)</code>
-<code>  (let ((exit-head '("SPC" (hera-pop) "to exit" :color blue)))</code>
-<code>    (append heads `(,exit-head))))</code>
-<code></code>
-<code>(defun nougat--add-heads (columns extra-heads)</code>
-<code>  (let* ((cell (nthcdr 1 columns))</code>
-<code>         (heads (car cell))</code>
-<code>         (extra-heads (mapcar 'nougat--clear-hint extra-heads)))</code>
-<code>    (setcar cell (append heads extra-heads))))</code>
-<code></code>
-<code>(defmacro nougat-hydra (name body columns &amp;optional extra-heads)</code>
-<code>  (declare (indent defun))</code>
-<code>  (-let* (((&amp;plist :color default-color :major-mode mode) body)</code>
-<code>          (extra-heads (nougat--add-exit-head extra-heads))</code>
-<code>          (extra-hint (nougat--make-hint extra-heads default-color))</code>
-<code>          (body (plist-put body :hint nil))</code>
-<code>          (body-name (format "%s/body" (symbol-name name)))</code>
-<code>          (body-symbol (intern body-name))</code>
-<code>          (mode-support</code>
-<code>           `(when ',mode</code>
-<code>              (setq major-mode-hydra--body-cache</code>
-<code>                    (a-assoc major-mode-hydra--body-cache ',mode ',body-symbol)))))</code>
-<code>    (nougat--add-heads columns extra-heads)</code>
-<code>    (when mode</code>
-<code>      (cl-remf body :major-mode))</code>
-<code>    `(progn</code>
-<code>       (pretty-hydra-define ,name ,body ,columns)</code>
-<code>       (nougat--inject-hint ',name ,extra-hint)</code>
-<code>       ,mode-support)))</code>
-<code></code>
-<code>;; (nougat-hydra hydra-test (:color red :major-mode fundamental-mode)</code>
-<code>;;   ("First"</code>
-<code>;;    (("a" (message "first - a") "msg a" :color blue)</code>
-<code>;;     ("b" (message "first - b") "msg b"))</code>
-<code>;;    "Second"</code>
-<code>;;    (("c" (message "second - c") "msg c" :color blue)</code>
-<code>;;     ("d" (message "second - d") "msg d"))))</code>
-<code></code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org43740d7" class="outline-3">
-<h3 id="org43740d7">hydra-dwim</h3>
-<div class="outline-text-3" id="text-org43740d7">
-<p>
-I have <code>&lt;f12&gt;</code> bound to caps-lock and <code>&lt;f19&gt;</code> as the key second-to-the-right of
-spacebar. I use these for closing hydras.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun my/hydra-dwim ()</code>
-<code>  (interactive)</code>
-<code>  (-let (((&amp;alist major-mode mode) major-mode-hydra--body-cache))</code>
-<code>    (if mode (major-mode-hydra)</code>
-<code>      (hera-start 'hydra-default/body))))</code>
-<code></code>
-<code>(setq kbd-hera-pop "&lt;f12&gt;")</code>
-<code>(global-set-key (kbd "&lt;f13&gt;") 'my/hydra-dwim)</code>
-<code>(global-set-key (kbd "&lt;f12&gt;") (lambda () (interactive) (hera-start 'hydra-default/body)))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org206dbdf" class="outline-3">
-<h3 id="org206dbdf">helm-org-bm</h3>
-<div class="outline-text-3" id="text-org206dbdf">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(require 'seq)</code>
-<code></code>
-<code>(defun helm-org-bm--element (regexp)</code>
-<code>  (search-forward-regexp regexp)</code>
-<code>  (next-line)</code>
-<code>  (org-element-context))</code>
-<code></code>
-<code>(defun helm-org-bm--format (element)</code>
-<code>  (format "[[%s]]" (plist-get (nth 1 element) :raw-link)))</code>
-<code></code>
-<code>(defun helm-org-bm--filter-candidates (canididates)</code>
-<code>  (cl-loop for c in candidates</code>
-<code>           for label = (nth 0 c)</code>
-<code>           for regexp = (nth 2 c)</code>
-<code>           for element = (helm-org-bm--element regexp)</code>
-<code>           if (equal 'link (car element))</code>
-<code>           collect (list label (helm-org-bm--format element))))</code>
-<code></code>
-<code>(defun helm-org-bm--get-bookmarks ()</code>
-<code>  (let* ((org-refile-targets '((nil :maxlevel . 99)))</code>
-<code>         (candidates (org-refile-get-targets)))</code>
-<code>    (helm-org-bm--filter-candidates candidates)))</code>
-<code></code>
-<code>(defun helm-org-bm--pick-bookmark (targets)</code>
-<code>  (let ((choice (completing-read "&gt;" (mapcar 'car targets))))</code>
-<code>    (seq-find (lambda (i) (string-equal choice (car i))) targets)))</code>
-<code></code>
-<code>(defun helm-org-bm-bookmark ()</code>
-<code>  (interactive)</code>
-<code>  (save-excursion</code>
-<code>    (with-temp-buffer</code>
-<code>      (insert-file-contents (my/org-file-name "bookmarks.org"))</code>
-<code>      (org-mode)</code>
-<code>      (outline-show-all)</code>
-<code>      (beginning-of-buffer)</code>
-<code>      (let* ((targets (helm-org-bm--get-bookmarks))</code>
-<code>             (choice (helm-org-bm--pick-bookmark targets))</code>
-<code>             (org-link-frame-setup '((file . find-file)))</code>
-<code>             (org-confirm-elisp-link-function nil))</code>
-<code>        (org-open-link-from-string (cadr choice) (current-buffer))))))</code>
-<code></code>
-<code>(defun helm-org-bm-capture ()</code>
-<code>  (interactive)</code>
-<code>  (let ((org-capture-entry helm-org-bm-entry))</code>
-<code>    (setq org-refile-use-outline-path t)</code>
-<code>    (setq org-outline-path-complete-in-steps nil)</code>
-<code>    (setq org-refile-targets '((nil :maxlevel . 99)))</code>
-<code>    (ignore-errors (org-capture))))</code>
-<code></code>
-<code>(setq helm-org-bm-entry</code>
-<code>      '("t" "Bookmark" entry (file (my/org-file-name "bookmarks.org"))</code>
-<code>        "* %^{Title}\n[[%?]]\n  added: %U" '(:kill-buffer)))</code>
-<code></code>
-<code>(setq helm-org-bm-actions</code>
-<code>      '(("Open bookmark" . helm-org-bm--goto)</code>
-<code>        ("Go to heading" . helm-org-goto-marker)</code>
-<code>        ("Open in indirect buffer `C-c i'" .</code>
-<code>         helm-org--open-heading-in-indirect-buffer)</code>
-<code>        ("Refile heading(s) `C-c w`" .</code>
-<code>         helm-org--refile-heading-to)</code>
-<code>        ("Insert link to this heading `C-c l`" .</code>
-<code>         helm-org-insert-link-to-heading-at-marker)))</code>
-<code></code>
-<code>(nougat-hydra hydra-bookmarks (:color blue)</code>
-<code>  ("Bookmarks" (("n" (helm-org-bm-capture) "new")</code>
-<code>                ("b" (helm-org-bm-bookmark) "bookmarks"))))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org1e573a4" class="outline-3">
-<h3 id="org1e573a4">major-mode hydra key</h3>
-<div class="outline-text-3" id="text-org1e573a4">
-<p>
-I have <code>&lt;f19&gt;</code> bound to the second-key right of spacebar. I use it to open any
-available major-mode hydra.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(global-set-key (kbd "&lt;f19&gt;") 'major-mode-hydra)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org9ed6ecc" class="outline-3">
-<h3 id="org9ed6ecc">hydra-help</h3>
-<div class="outline-text-3" id="text-org9ed6ecc">
-<p>
-Many of the Emacs help facilities at your fingertips!
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
-<code>(nougat-hydra hydra-help (:color blue)</code>
-<code>  ("Describe"</code>
-<code>   (("c" describe-function "function")</code>
-<code>    ("p" describe-package "package")</code>
-<code>    ("m" describe-mode "mode")</code>
-<code>    ("v" describe-variable "variable"))</code>
-<code>   "Keys"</code>
-<code>   (("k" describe-key "key")</code>
-<code>    ("K" describe-key-briefly "brief key")</code>
-<code>    ("w" where-is "where-is")</code>
-<code>    ("b" helm-descbinds "bindings"))</code>
-<code>   "Search"</code>
-<code>   (("a" helm-apropos "apropos")</code>
-<code>    ("d" apropos-documentation "documentation")</code>
-<code>    ("s" info-lookup-symbol "symbol info"))</code>
-<code>   "Docs"</code>
-<code>   (("i" info "info")</code>
-<code>    ("n" helm-man-woman "man")</code>
-<code>    ("h" helm-dash "dash"))</code>
-<code>   "View"</code>
-<code>   (("e" view-echo-area-messages "echo area")</code>
-<code>    ("l" view-lossage "lossage")</code>
-<code>    ("c" describe-coding-system "encoding")</code>
-<code>    ("I" describe-input-method "input method")</code>
-<code>    ("C" describe-char "char at point"))))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org3381d7f" class="outline-3">
-<h3 id="org3381d7f">hydra-mark</h3>
-<div class="outline-text-3" id="text-org3381d7f">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun unpop-to-mark-command ()</code>
-<code>  "Unpop off mark ring. Does nothing if mark ring is empty."</code>
-<code>  (when mark-ring</code>
-<code>    (setq mark-ring (cons (copy-marker (mark-marker)) mark-ring))</code>
-<code>    (set-marker (mark-marker) (car (last mark-ring)) (current-buffer))</code>
-<code>    (when (null (mark t)) (ding))</code>
-<code>    (setq mark-ring (nbutlast mark-ring))</code>
-<code>    (goto-char (marker-position (car (last mark-ring))))))</code>
-<code></code>
-<code>(defun push-mark ()</code>
-<code>  (interactive)</code>
-<code>  (set-mark-command nil)</code>
-<code>  (set-mark-command nil))</code>
-<code></code>
-<code>(nougat-hydra hydra-mark (:color pink)</code>
-<code>  ("Mark"</code>
-<code>   (("m" push-mark "mark here")</code>
-<code>    ("p" (lambda () (interactive) (set-mark-command '(4))) "previous")</code>
-<code>    ("n" (lambda () (interactive) (unpop-to-mark-command)) "next")</code>
-<code>    ("c" (lambda () (interactive) (setq mark-ring nil)) "clear"))))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgc831242" class="outline-3">
-<h3 id="orgc831242">hydra-projectile</h3>
-<div class="outline-text-3" id="text-orgc831242">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun projectile-readme ()</code>
-<code>    (interactive)</code>
-<code>    (let ((file-name (-find (lambda (f) (s-matches? "^readme" f))</code>
-<code>                            (projectile-current-project-files))))</code>
-<code>      (find-file (concat (projectile-project-root) "/" file-name))))</code>
-<code></code>
-<code>(use-package helm-projectile :demand t</code>
-<code>  :config</code>
-<code>  (defun projectile-dwim ()</code>
-<code>    (interactive)</code>
-<code>    (if (string= "-" (projectile-project-name))</code>
-<code>        (helm-projectile-switch-project)</code>
-<code>      (hydra-projectile/body)))</code>
-<code></code>
-<code>  (nougat-hydra hydra-projectile (:color blue)</code>
-<code>    ("Open"</code>
-<code>     (("f" (helm-projectile-find-file-dwim) "file")</code>
-<code>      ("p" (helm-projectile-switch-project) "project")</code>
-<code>      ("b" (helm-projectile-switch-to-buffer) "buffer")</code>
-<code>      ("w" (hydra-treemacs/body) "workspace"))</code>
-<code>     "Do"</code>
-<code>     (("s" (call-interactively 'helm-ag-project-root) "search")</code>
-<code>      ("c" (org-projectile-helm-template-or-project) "capture"))</code>
-<code>     "Cache"</code>
-<code>     (("C" projectile-invalidate-cache "clear")</code>
-<code>      ("x" (projectile-remove-known-project) "remove project")</code>
-<code>      ("X" (projectile-cleanup-known-projects) "cleanup")))))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org31b5da0" class="outline-3">
-<h3 id="org31b5da0">hydra-registers</h3>
-<div class="outline-text-3" id="text-org31b5da0">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(nougat-hydra hydra-registers (:color pink)</code>
-<code>  ("Point"</code>
-<code>   (("r" point-to-register "save point")</code>
-<code>    ("j" jump-to-register "jump")</code>
-<code>    ("v" view-register "view all"))</code>
-<code>   "Text"</code>
-<code>   (("c" copy-to-register "copy region")</code>
-<code>    ("C" copy-rectangle-to-register "copy rect")</code>
-<code>    ("i" insert-register "insert")</code>
-<code>    ("p" prepend-to-register "prepend")</code>
-<code>    ("a" append-to-register "append"))</code>
-<code>   "Macros"</code>
-<code>   (("m" kmacro-to-register "store")</code>
-<code>    ("e" jump-to-register "execute"))))</code>
-<code></code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org27f25aa" class="outline-3">
-<h3 id="org27f25aa">hydra-window</h3>
-<div class="outline-text-3" id="text-org27f25aa">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package ace-window)</code>
-<code>(winner-mode 1)</code>
-<code></code>
-<code>(nougat-hydra hydra-window (:color red)</code>
-<code>  ("Jump"</code>
-<code>   (("h" windmove-left "left")</code>
-<code>    ("l" windmove-right "right")</code>
-<code>    ("k" windmove-up "up")</code>
-<code>    ("j" windmove-down "down")</code>
-<code>    ("a" ace-select-window "ace"))</code>
-<code>   "Split"</code>
-<code>   (("q" split-window-right "left")</code>
-<code>    ("r" (progn (split-window-right) (call-interactively 'other-window)) "right")</code>
-<code>    ("e" split-window-below "up")</code>
-<code>    ("w" (progn (split-window-below) (call-interactively 'other-window)) "down"))</code>
-<code>   "Do"</code>
-<code>   (("d" delete-window "delete")</code>
-<code>    ("o" delete-other-windows "delete others")</code>
-<code>    ("u" winner-undo "undo")</code>
-<code>    ("R" winner-redo "redo")</code>
-<code>    ("t" nougat-hydra-toggle-window "toggle"))))</code>
-</pre>
-</div>
-</div>
-
-<div id="outline-container-orgea9530b" class="outline-4">
-<h4 id="orgea9530b">Toggle Window Split</h4>
-<div class="outline-text-4" id="text-orgea9530b">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun my/toggle-window-split (&amp;optional arg)</code>
-<code>    "Switch between 2 windows split horizontally or vertically.</code>
-<code>    With ARG, swap them instead."</code>
-<code>    (interactive "P")</code>
-<code>    (unless (= (count-windows) 2)</code>
-<code>      (user-error "Not two windows"))</code>
-<code>    ;; Swap two windows</code>
-<code>    (if arg</code>
-<code>        (let ((this-win-buffer (window-buffer))</code>
-<code>              (next-win-buffer (window-buffer (next-window))))</code>
-<code>          (set-window-buffer (selected-window) next-win-buffer)</code>
-<code>          (set-window-buffer (next-window) this-win-buffer))</code>
-<code>      ;; Swap between horizontal and vertical splits</code>
-<code>      (let* ((this-win-buffer (window-buffer))</code>
-<code>             (next-win-buffer (window-buffer (next-window)))</code>
-<code>             (this-win-edges (window-edges (selected-window)))</code>
-<code>             (next-win-edges (window-edges (next-window)))</code>
-<code>             (this-win-2nd (not (and (&lt;= (car this-win-edges)</code>
-<code>                                         (car next-win-edges))</code>
-<code>                                     (&lt;= (cadr this-win-edges)</code>
-<code>                                         (cadr next-win-edges)))))</code>
-<code>             (splitter</code>
-<code>              (if (= (car this-win-edges)</code>
-<code>                     (car (window-edges (next-window))))</code>
-<code>                  'split-window-horizontally</code>
-<code>                'split-window-vertically)))</code>
-<code>        (delete-other-windows)</code>
-<code>        (let ((first-win (selected-window)))</code>
-<code>          (funcall splitter)</code>
-<code>          (if this-win-2nd (other-window 1))</code>
-<code>          (set-window-buffer (selected-window) this-win-buffer)</code>
-<code>          (set-window-buffer (next-window) next-win-buffer)</code>
-<code>          (select-window first-win)</code>
-<code>          (if this-win-2nd (other-window 1))))))</code>
-<code></code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orga170a00" class="outline-3">
-<h3 id="orga170a00">hydra-yank-pop</h3>
-<div class="outline-text-3" id="text-orga170a00">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(nougat-hydra hydra-yank-pop (:color red)</code>
-<code>  ("Yank/Pop"</code>
-<code>   (("y" (yank-pop 1) "previous")</code>
-<code>    ("Y" (yank-pop -1) "next")</code>
-<code>    ("l" helm-show-kill-ring "list" :color blue))))</code>
-<code></code>
-<code>(global-set-key</code>
-<code> (kbd "C-y")</code>
-<code> (lambda () (interactive) (yank) (hydra-yank-pop/body)))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orga1cef7f" class="outline-3">
-<h3 id="orga1cef7f">hydra-zoom</h3>
-<div class="outline-text-3" id="text-orga1cef7f">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package zoom-frm</code>
-<code>  :straight (zoom-frm :type git</code>
-<code>                      :host github</code>
-<code>                      :repo "emacsmirror/emacswiki.org"</code>
-<code>                      :files ("zoom-frm.el")))</code>
-<code></code>
-<code>(nougat-hydra hydra-zoom (:color red)</code>
-<code>  ("Buffer"</code>
-<code>   (("i" text-scale-increase "in")</code>
-<code>    ("o" text-scale-decrease "out"))</code>
-<code>   "Frame"</code>
-<code>   (("I" zoom-frm-in "in")</code>
-<code>    ("O" zoom-frm-out "out")</code>
-<code>    ("r" toggle-zoom-frame "reset" :color blue))))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org573a178" class="outline-3">
-<h3 id="org573a178">emacs-lisp</h3>
-<div class="outline-text-3" id="text-org573a178">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(nougat-hydra hydra-elisp (:color blue :major-mode emacs-lisp-mode)</code>
-<code>  ("Execute"</code>
-<code>   (("d" eval-defun "defun")</code>
-<code>    ("b" eval-current-buffer "buffer")</code>
-<code>    ("r" eval-region "region"))</code>
-<code>   "Debug"</code>
-<code>   (("D" edebug-defun "defun")</code>
-<code>    ("a" edebug-all-defs "all definitions" :color red)</code>
-<code>    ("A" edebug-all-forms "all forms" :color red)</code>
-<code>    ("x" macrostep-expand "expand macro"))))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org3c13e55" class="outline-3">
-<h3 id="org3c13e55">org-mode</h3>
-<div class="outline-text-3" id="text-org3c13e55">
-</div>
-<div id="outline-container-org37f9c72" class="outline-4">
-<h4 id="org37f9c72">hydra-org-goto-first-sibling</h4>
-<div class="outline-text-4" id="text-org37f9c72">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun hydra-org-goto-first-sibling () (interactive)</code>
-<code>       (org-backward-heading-same-level 99999999))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org0a323bd" class="outline-4">
-<h4 id="org0a323bd">hydra-org-goto-last-sibling</h4>
-<div class="outline-text-4" id="text-org0a323bd">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun hydra-org-goto-last-sibling () (interactive)</code>
-<code>       (org-forward-heading-same-level 99999999))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgff1fe05" class="outline-4">
-<h4 id="orgff1fe05">hydra-org-parent-level</h4>
-<div class="outline-text-4" id="text-orgff1fe05">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun hydra-org-parent-level ()</code>
-<code>  (interactive)</code>
-<code>  (let ((o-point (point)))</code>
-<code>    (if (save-excursion</code>
-<code>          (beginning-of-line)</code>
-<code>          (looking-at org-heading-regexp))</code>
-<code>        (progn</code>
-<code>          (call-interactively 'outline-up-heading)</code>
-<code>          (org-cycle-internal-local))</code>
-<code>      (progn</code>
-<code>        (call-interactively 'org-previous-visible-heading)</code>
-<code>        (org-cycle-internal-local)))</code>
-<code>    (when (and (/= o-point (point))</code>
-<code>               org-tidy-p)</code>
-<code>      (call-interactively 'hydra-org-tidy))))</code>
-<code></code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org6f42d4d" class="outline-4">
-<h4 id="org6f42d4d">hydra-org-child-level</h4>
-<div class="outline-text-4" id="text-org6f42d4d">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun hydra-org-child-level ()</code>
-<code>  (interactive)</code>
-<code>  (org-show-entry)</code>
-<code>  (org-show-children)</code>
-<code>  (when (not (org-goto-first-child))</code>
-<code>    (when (save-excursion</code>
-<code>            (beginning-of-line)</code>
-<code>            (looking-at org-heading-regexp))</code>
-<code>      (next-line))))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org3bf10e6" class="outline-4">
-<h4 id="org3bf10e6">hydra-org</h4>
-<div class="outline-text-4" id="text-org3bf10e6">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(require 'helm-org)</code>
-<code>(nougat-hydra hydra-org (:color red :major-mode org-mode)</code>
-<code>  ("Shift"</code>
-<code>   (("K" org-move-subtree-up "up")</code>
-<code>    ("J" org-move-subtree-down "down")</code>
-<code>    ("h" org-promote-subtree "promote")</code>
-<code>    ("l" org-demote-subtree "demote"))</code>
-<code>   "Travel"</code>
-<code>   (("p" org-backward-heading-same-level "backward")</code>
-<code>    ("n" org-forward-heading-same-level "forward")</code>
-<code>    ("j" hydra-org-child-level "to child")</code>
-<code>    ("k" hydra-org-parent-level "to parent")</code>
-<code>    ("a" hydra-org-goto-first-sibling "first sibling")</code>
-<code>    ("e" hydra-org-goto-last-sibling "last sibling"))</code>
-<code>   "Perform"</code>
-<code>   (("b" helm-org-in-buffer-headings "browse")</code>
-<code>    ("r" (lambda () (interactive)</code>
-<code>           (helm-org-rifle-current-buffer)</code>
-<code>           (call-interactively 'org-cycle)</code>
-<code>           (call-interactively 'org-cycle)) "rifle")</code>
-<code>    ("v" avy-org-goto-heading-timer "avy")</code>
-<code>    ("L" org-toggle-link-display "toggle links"))))</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orge7c6247" class="outline-3">
-<h3 id="orge7c6247">hydra-brain</h3>
-<div class="outline-text-3" id="text-orge7c6247">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(nougat-hydra hydra-brain (:color red :major-mode org-brain-visualize-mode)</code>
-<code>  (</code>
-<code>   "View"</code>
-<code>   (("m" (polybrain-top-then 'org-brain-visualize-mind-map) "mind-map")</code>
-<code>    ("R" (polybrain-top-then 'org-brain-visualize-add-resource) "add resource")</code>
-<code>    ("M-SPC" polybrain-switch "switch"))</code>
-<code>   "Navigate"</code>
-<code>   (("o" (polybrain-top-then 'org-brain-visualize) "open")</code>
-<code>    ("DEL" (polybrain-top-then 'org-brain-visualize-back) "back")</code>
-<code>    ("M-p" (polybrain-top-then 'my/avy-brain-jump-parent) "parent")</code>
-<code>    ("M-c" (polybrain-top-then 'my/avy-brain-jump-child) "child")</code>
-<code>    ("M-f" (polybrain-top-then 'my/avy-brain-jump-friend) "friend")</code>
-<code>    ("M-s" (polybrain-top-then 'my/avy-brain-jump-sibling) "sibling")</code>
-<code>    ("M-h" (polybrain-top-then 'my/avy-brain-jump-history) "history")</code>
-<code>    ("r" (polybrain-top-then 'org-brain-open-resource) "open resource"))</code>
-<code>   "Relations"</code>
-<code>   (("c" (polybrain-top-then 'org-brain-add-child) "add child")</code>
-<code>    ("C" (polybrain-top-then 'org-brain-remove-child) "remove child")</code>
-<code>    ("p" (polybrain-top-then 'org-brain-add-parent) "add parent")</code>
-<code>    ("P" (polybrain-top-then 'org-brain-remove-parent) "remove parent")</code>
-<code>    ("f" (polybrain-top-then 'org-brain-add-friendship) "add friend")</code>
-<code>    ("F" (polybrain-top-then 'org-brain-remove-friendship) "remove friend"))</code>
-<code>   "Manipulate"</code>
-<code>   (("e" (polybrain-top-then 'org-brain-goto-current) "edit")</code>
-<code>    ("D" (polybrain-top-then 'org-brain-delete-entry) "delete")</code>
-<code>    ("t" (polybrain-top-then 'org-brain-set-tags) "tags")</code>
-<code>    ("i" (polybrain-top-then 'org-brain-pin) "pin"))</code>
-<code>   ))</code>
-<code>(nougat-hydra hydra-brain (:color red :major-mode org-brain-visualize-mode)</code>
-<code>  (</code>
-<code>   "View"</code>
-<code>   (("m" (polybrain-top-then 'org-brain-visualize-mind-map) "mind-map")</code>
-<code>    ("R" (polybrain-top-then 'org-brain-visualize-add-resource) "add resource")</code>
-<code>    ("M-SPC" polybrain-switch "switch"))</code>
-<code>   "Navigate"</code>
-<code>   (("o" (polybrain-top-then 'org-brain-visualize) "open")</code>
-<code>    ("DEL" (polybrain-top-then 'org-brain-visualize-back) "back")</code>
-<code>    ("M-p" (polybrain-top-then 'my/avy-brain-jump-parent) "parent")</code>
-<code>    ("M-c" (polybrain-top-then 'my/avy-brain-jump-child) "child")</code>
-<code>    ("M-f" (polybrain-top-then 'my/avy-brain-jump-friend) "friend")</code>
-<code>    ("M-s" (polybrain-top-then 'my/avy-brain-jump-sibling) "sibling")</code>
-<code>    ("M-h" (polybrain-top-then 'my/avy-brain-jump-history) "history")</code>
-<code>    ("r" (polybrain-top-then 'org-brain-open-resource) "open resource"))</code>
-<code>   "Relations"</code>
-<code>   (("c" (polybrain-top-then 'org-brain-add-child) "add child")</code>
-<code>    ("C" (polybrain-top-then 'org-brain-remove-child) "remove child")</code>
-<code>    ("p" (polybrain-top-then 'org-brain-add-parent) "add parent")</code>
-<code>    ("P" (polybrain-top-then 'org-brain-remove-parent) "remove parent")</code>
-<code>    ("f" (polybrain-top-then 'org-brain-add-friendship) "add friend")</code>
-<code>    ("F" (polybrain-top-then 'org-brain-remove-friendship) "remove friend"))</code>
-<code>   "Manipulate"</code>
-<code>   (("e" (polybrain-top-then 'org-brain-goto-current) "edit")</code>
-<code>    ("D" (polybrain-top-then 'org-brain-delete-entry) "delete")</code>
-<code>    ("t" (polybrain-top-then 'org-brain-set-tags) "tags")</code>
-<code>    ("i" (polybrain-top-then 'org-brain-pin) "pin"))</code>
-<code>   ))</code>
-</pre>
-</div>
-</div>
-
-<div id="outline-container-org92a1f98" class="outline-4">
-<h4 id="org92a1f98">Toggle Window Split</h4>
-<div class="outline-text-4" id="text-org92a1f98">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun my/toggle-window-split (&amp;optional arg)</code>
-<code>    "Switch between 2 windows split horizontally or vertically.</code>
-<code>    With ARG, swap them instead."</code>
-<code>    (interactive "P")</code>
-<code>    (unless (= (count-windows) 2)</code>
-<code>      (user-error "Not two windows"))</code>
-<code>    ;; Swap two windows</code>
-<code>    (if arg</code>
-<code>        (let ((this-win-buffer (window-buffer))</code>
-<code>              (next-win-buffer (window-buffer (next-window))))</code>
-<code>          (set-window-buffer (selected-window) next-win-buffer)</code>
-<code>          (set-window-buffer (next-window) this-win-buffer))</code>
-<code>      ;; Swap between horizontal and vertical splits</code>
-<code>      (let* ((this-win-buffer (window-buffer))</code>
-<code>             (next-win-buffer (window-buffer (next-window)))</code>
-<code>             (this-win-edges (window-edges (selected-window)))</code>
-<code>             (next-win-edges (window-edges (next-window)))</code>
-<code>             (this-win-2nd (not (and (&lt;= (car this-win-edges)</code>
-<code>                                         (car next-win-edges))</code>
-<code>                                     (&lt;= (cadr this-win-edges)</code>
-<code>                                         (cadr next-win-edges)))))</code>
-<code>             (splitter</code>
-<code>              (if (= (car this-win-edges)</code>
-<code>                     (car (window-edges (next-window))))</code>
-<code>                  'split-window-horizontally</code>
-<code>                'split-window-vertically)))</code>
-<code>        (delete-other-windows)</code>
-<code>        (let ((first-win (selected-window)))</code>
-<code>          (funcall splitter)</code>
-<code>          (if this-win-2nd (other-window 1))</code>
-<code>          (set-window-buffer (selected-window) this-win-buffer)</code>
-<code>          (set-window-buffer (next-window) next-win-buffer)</code>
-<code>          (select-window first-win)</code>
-<code>          (if this-win-2nd (other-window 1))))))</code>
-<code></code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org5a2211d" class="outline-2">
-<h2 id="org5a2211d">treemacs</h2>
-<div class="outline-text-2" id="text-org5a2211d">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package treemacs</code>
-<code>  :demand t</code>
-<code>  :config (progn</code>
-<code>          (setq treemacs-width 25)</code>
-<code>          (global-set-key (kbd "M-&lt;f12&gt;") 'treemacs)</code>
-<code>          (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action)</code>
-<code>          (setq treemacs-project-follow-cleanup t)</code>
-<code>          (setq treemacs-is-never-other-window t)))</code>
-<code></code>
-<code>(setq treemacs-icon-open-png   (propertize "⊖ " 'face 'treemacs-directory-face)</code>
-<code>      treemacs-icon-closed-png (propertize "⊕ " 'face 'treemacs-directory-face))</code>
-<code></code>
-<code>(use-package treemacs-projectile)</code>
-<code>(use-package treemacs-magit)</code>
-</pre>
-</div>
-</div>
-
-<div id="outline-container-orgf1e1679" class="outline-3">
-<h3 id="orgf1e1679">Hydra</h3>
-<div class="outline-text-3" id="text-orgf1e1679">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(nougat-hydra hydra-treemacs (:color red)</code>
-<code>  ("Workspace"</code>
-<code>   (("o" treemacs-switch-workspace "open")</code>
-<code>    ("n" treemacs-create-workspace "new")</code>
-<code>    ("k" treemacs-delete-workspace "kill")</code>
-<code>    ("r" treemacs-rename-workspace "rename"))))</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org3d2f5dc" class="outline-2">
-<h2 id="org3d2f5dc">elfeed</h2>
-<div class="outline-text-2" id="text-org3d2f5dc">
-</div>
-<div id="outline-container-org01e0f9f" class="outline-3">
-<h3 id="org01e0f9f">boilerplate</h3>
-<div class="outline-text-3" id="text-org01e0f9f">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun advice-unadvice (sym)</code>
-<code>  "Remove all advices from symbol SYM."</code>
-<code>  (interactive "aFunction symbol: ")</code>
-<code>  (advice-mapc (lambda (advice _props) (advice-remove sym advice)) sym))</code>
-<code></code>
-<code>(defun elfeed-font-size-hook ()</code>
-<code>  (buffer-face-set '(:height 1.35)))</code>
-<code></code>
-<code>(defun elfeed-visual-fill-hook ()</code>
-<code>  (visual-fill-column-mode--enable))</code>
-<code></code>
-<code>(defun elfeed-show-refresh-advice (entry)</code>
-<code>  (elfeed-font-size-hook)</code>
-<code>  (visual-fill-column-mode 1)</code>
-<code>  (setq word-wrap 1)</code>
-<code>  (elfeed-show-refresh))</code>
-<code></code>
-<code>(defun elfeed-show ()</code>
-<code>  (interactive)</code>
-<code>  (elfeed)</code>
-<code>  (delete-other-windows))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org3d11b57" class="outline-3">
-<h3 id="org3d11b57">setup</h3>
-<div class="outline-text-3" id="text-org3d11b57">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package elfeed</code>
-<code>  :bind (("C-x w" . elfeed-show))</code>
-<code>  :config</code>
-<code>  (add-hook 'elfeed-search-update-hook 'elfeed-font-size-hook)</code>
-<code>  (advice-unadvice 'elfeed-show-entry)</code>
-<code>  (advice-add 'elfeed-show-entry :after 'elfeed-show-refresh-advice))</code>
-<code></code>
-<code>(use-package elfeed-org</code>
-<code>  :after (elfeed)</code>
-<code>  :config</code>
-<code>  (elfeed-org)</code>
-<code>  (setq rmh-elfeed-org-files (list (my/org-file-name "notes.org"))))</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgf2da900" class="outline-2">
-<h2 id="orgf2da900">misc</h2>
-<div class="outline-text-2" id="text-orgf2da900">
-<p>
-Miscellaneous packages that don't really need their own section.
-</p>
-</div>
-
-<div id="outline-container-orgbd3bfdc" class="outline-3">
-<h3 id="orgbd3bfdc">emacsql</h3>
-<div class="outline-text-3" id="text-orgbd3bfdc">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package emacsql-sqlite)</code>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org4d42b91" class="outline-3">
-<h3 id="org4d42b91">gist</h3>
-<div class="outline-text-3" id="text-org4d42b91">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package gist</code>
-<code>  :straight (gist :type git :host github :repo "defunkt/gist.el"))</code>
-<code></code>
-<code></code>
-<code>(nougat-hydra hydra-gist (:color blue)</code>
-<code>  ("Gist" (("p" (gist-region-or-buffer) "public")</code>
-<code>           ("P" (gist-region-or-buffer-private) "private")</code>
-<code>           ("b" (browse-url "https://gist.github.com/dustinlacewell") "browse"))))</code>
-<code></code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org5049c20" class="outline-3">
-<h3 id="org5049c20">poker.el</h3>
-<div class="outline-text-3" id="text-org5049c20">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package poker</code>
-<code>  :straight (poker :type git :host github :repo "mlang/poker.el"))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org1cd4426" class="outline-3">
-<h3 id="org1cd4426">decide-mode</h3>
-<div class="outline-text-3" id="text-org1cd4426">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package decide</code>
-<code>  :straight (decide :type git :host github :repo "lifelike/decide-mode"))</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgb33b255" class="outline-2">
-<h2 id="orgb33b255">entrypoint</h2>
-<div class="outline-text-2" id="text-orgb33b255">
-</div>
-<div id="outline-container-orgcb4892d" class="outline-3">
-<h3 id="orgcb4892d">ep-notes-file</h3>
-<div class="outline-text-3" id="text-orgcb4892d">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq ep-notes-file (my/org-file-name "notes.org"))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org05a04e6" class="outline-3">
-<h3 id="org05a04e6">ep-notes-find-file</h3>
-<div class="outline-text-3" id="text-org05a04e6">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun ep-notes-find-file () (find-file ep-notes-file))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org370dc49" class="outline-3">
-<h3 id="org370dc49">ep-notes-visit</h3>
-<div class="outline-text-3" id="text-org370dc49">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun ep-notes-visit (&amp;rest olp) (org-olp-visit ep-notes-file olp))</code>
-<code>;; (ep-notes-visit "Workiva" "Runbooks")</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org05e72c6" class="outline-3">
-<h3 id="org05e72c6">ep-notes-select-then-visit</h3>
-<div class="outline-text-3" id="text-org05e72c6">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun ep-notes-select-then-visit (&amp;rest olp) (org-olp-select-then-visit ep-notes-file olp))</code>
-<code>;; (ep-notes-select-then-visit "Workiva" "Tasks")</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org50b35e1" class="outline-3">
-<h3 id="org50b35e1">bookmarks</h3>
-<div class="outline-text-3" id="text-org50b35e1">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(nougat-hydra hydra-bookmarks (:color blue)</code>
-<code>  ("Bookmarks" (("n" (linkmarks-capture) "new")</code>
-<code>                ("b" (linkmarks-select) "browse")</code>
-<code>                ("e" (find-file my/bookmarks-file-name)))))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org2a6b5a6" class="outline-3">
-<h3 id="org2a6b5a6">docs</h3>
-<div class="outline-text-3" id="text-org2a6b5a6">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(nougat-hydra hydra-docs (:color blue)</code>
-<code>  ("Docs" (("n" (hera-push 'hydra-nix/body) "Nix"))))</code>
-</pre>
-</div>
-</div>
-</div>
+<pre class="src src-emacs-lisp">;; (eval `(use-package org-ql
+;;          :demand t
+;;          :straight (org-ql :type git :host github :repo "dustinlacewell/org-ql")
+;;          ;; :straight (org-ql :type git :local-repo ,(my/source-directory "org-ql"))
+;;          ))
 
-<div id="outline-container-org815619a" class="outline-3">
-<h3 id="org815619a">nix</h3>
-<div class="outline-text-3" id="text-org815619a">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(nougat-hydra hydra-nix (:color blue)</code>
-<code>  ("Nix" (("p" (progn (find-file (my/org-file-name "nixpkgs.org"))</code>
-<code>                      (helm-org-in-buffer-headings)</code>
-<code>                      (recenter-top-bottom 1)</code>
-<code>                      (org-narrow-to-subtree)</code>
-<code>                      (sit-for 5)</code>
-<code>                      (widen)) "nixpkgs"))))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org27632dc" class="outline-3">
-<h3 id="org27632dc">hydra-default</h3>
-<div class="outline-text-3" id="text-org27632dc">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(require 'org-olp)</code>
-<code></code>
-<code>(nougat-hydra hydra-tasks (:color blue)</code>
-<code>  ("Todos"</code>
-<code>   (("t" (visit-candidate my/notes-file-name '(todo "TODO")) "todo")</code>
-<code>    ("d" (visit-candidate my/notes-file-name '(todo "DOING")) "doing")</code>
-<code>    ("D" (visit-candidate my/notes-file-name '(todo "DONE")) "done"))))</code>
-<code></code>
-<code>(nougat-hydra hydra-notes (:color blue)</code>
-<code>  ("Notes"</code>
-<code>   (("f" (org-olp-find my/notes-file-name) "find")</code>
-<code>    ("t" (hera-push 'hydra-tasks/body) "tasks")</code>
-<code>    ("p" (org-olp-visit</code>
-<code>          my/notes-file-name</code>
-<code>          '("Software" "Emacs" "Packages")) "emacs packages"))))</code>
-<code></code>
-<code>(nougat-hydra hydra-default (:color blue)</code>
-<code>  ("Open"</code>
-<code>   (("a" (org-agenda nil "a") "agenda")</code>
-<code>    ("p" (hera-push 'hydra-projectile/body) "projectile")</code>
-<code>    ("c" (org-capture) "capture")</code>
-<code>    ("b" (hera-push 'hydra-bookmarks/body) "bookmarks"))</code>
-<code>   "Emacs"</code>
-<code>   (("h" (hera-push 'hydra-help/body) "help")</code>
-<code>    ("m" (hera-push 'hydra-mark/body) "mark")</code>
-<code>    ("w" (hera-push 'hydra-window/body) "windows")</code>
-<code>    ("z" (hera-push 'hydra-zoom/body) "zoom")</code>
-<code>    ("r" (hera-push 'hydra-registers/body) "registers"))</code>
-<code>   "Misc"</code>
-<code>   (("n" (hera-push 'hydra-notes/body) "notes")</code>
-<code>    ("d" (hera-push 'hydra-docs/body) "docs")</code>
-<code>    ("g" (hera-push 'hydra-gist/body) "gist")</code>
-<code>    ("B" org-brain-visualize "brain")</code>
-<code>    ("?" episteme-search "search brain")</code>
-<code>    ("l" (progn (setq this-command 'sutysisku-search-helm)</code>
-<code>                (call-interactively 'sutysisku-search-helm)) "lojban"))))</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org8a3b927" class="outline-2">
-<h2 id="org8a3b927">linux configuration</h2>
-<div class="outline-text-2" id="text-org8a3b927">
-</div>
-<div id="outline-container-org638b863" class="outline-3">
-<h3 id="org638b863">preamble</h3>
-<div class="outline-text-3" id="text-org638b863">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(when (string-equal system-type "gnu/linux")</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org585e6c0" class="outline-3">
-<h3 id="org585e6c0">nixos</h3>
-<div class="outline-text-3" id="text-org585e6c0">
-<p>
-NixOS' ZSH module drops some PATH modification stuff in <code>~/.config/zsh/.zshrc</code>
-which causes the following message on startup:
-</p>
-
-<pre class="example">
-<code>You appear to be setting environment variables ("PATH") in your .bashrc or .zshrc:</code>
-<code>those files are only read by interactive shells, so you should instead set</code>
-<code>environment variables in startup files like .profile, .bash_profile or .zshenv.</code>
-<code>Refer to your shell's man page for more info.</code>
-<code></code>
-<code>Customize `exec-path-from-shell-arguments` to remove "-i" when done, or disable</code>
-<code>`exec-path-from-shell-check-startup-files` to disable this message.</code>
-</pre>
-
-<p>
-The following line prevents the warning above:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq exec-path-from-shell-check-startup-files nil)</code>
-</pre>
-</div>
-</div>
-
-<div id="outline-container-org5cd5e6f" class="outline-4">
-<h4 id="org5cd5e6f">lorri</h4>
-<div class="outline-text-4" id="text-org5cd5e6f">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package direnv</code>
-<code> :config</code>
-<code> (direnv-mode))</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orga55d99d" class="outline-3">
-<h3 id="orga55d99d">aesthetics</h3>
-<div class="outline-text-3" id="text-orga55d99d">
-</div>
-<div id="outline-container-orgb6bfe10" class="outline-4">
-<h4 id="orgb6bfe10">theme</h4>
-<div class="outline-text-4" id="text-orgb6bfe10">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(load-file "~/.config/wpg/templates/theme.el")</code>
-<code>(enable-theme 'xresources)</code>
-</pre>
-</div>
-</div>
-<ul class="org-ul">
-<li><a id="orgf463acc"></a>Automatically update theme<br />
-<div class="outline-text-5" id="text-orgf463acc">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun theme-callback (event)</code>
-<code>  (load-file "~/.config/wpg/templates/theme.el")</code>
-<code>  (set-eyeliner-colors)</code>
-<code>  (eyeliner/install)</code>
-<code>  (enable-theme 'xresources))</code>
-<code></code>
-<code>(require 'filenotify)</code>
-<code>(setq theme-watch-handle</code>
-<code>      (file-notify-add-watch</code>
-<code>       "/home/ldlework/.config/wpg/templates/theme.el" '(change) 'theme-callback))</code>
-</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-<div id="outline-container-org054f903" class="outline-4">
-<h4 id="org054f903">default font</h4>
-<div class="outline-text-4" id="text-org054f903">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq powerline-height 32)</code>
-<code>(set-face-attribute 'default nil :family "Source Code Pro" :weight 'light)</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org14c7327" class="outline-4">
-<h4 id="org14c7327">unicode fonts</h4>
-<div class="outline-text-4" id="text-org14c7327">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package unicode-fonts</code>
-<code>  :config</code>
-<code>  (unicode-fonts-setup)</code>
-<code>  (set-face-attribute 'default nil :font "Source Code Pro")</code>
-<code>  ;(set-fontset-font "fontset-default" 'unicode "Consolas" nil)</code>
-<code>  (set-fontset-font "fontset-default" 'unicode "DejaVu Sans Mono" nil)</code>
-<code>  (set-fontset-font "fontset-default" 'unicode "Symbola" nil)</code>
-<code> )</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org73e8767" class="outline-4">
-<h4 id="org73e8767">eyeliner for modeline</h4>
-<div class="outline-text-4" id="text-org73e8767">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun set-eyeliner-colors ()</code>
-<code>  (setq buffer-name-color "#ff0000")</code>
-<code>  (setq buffer-name-modified-color "#ff0000")</code>
-<code>  (setq eyeliner/warm-color (theme-color 'red))</code>
-<code>  (setq eyeliner/cool-color (theme-color 'cyan))</code>
-<code>  (setq eyeliner/plain-color (theme-color 'foreground))</code>
-<code>  (custom-set-faces</code>
-<code>   `(powerline-active0</code>
-<code>     ((t (:background ,(theme-color 'foreground)))))</code>
-<code>   `(powerline-inactive0</code>
-<code>     ((t (:background ,(theme-color 'foreground)))))</code>
-<code>   `(powerline-active1</code>
-<code>     ((t (:background ,(theme-color 'foreground)</code>
-<code>                      :foreground ,(theme-color 'background)))))</code>
-<code>   `(powerline-inactive1</code>
-<code>     ((t (:background ,(theme-color 'foreground)</code>
-<code>                      :foreground ,(theme-color 'background)))))</code>
-<code>   `(powerline-active2</code>
-<code>     ((t (:background ,(theme-color 'background)))))</code>
-<code>   `(powerline-inactive2</code>
-<code>     ((t (:background ,(theme-color 'background)))))))</code>
-<code></code>
-<code>(eval `(use-package eyeliner</code>
-<code>   ;; :straight (eyeliner :type git :host github :repo "dustinlacewell/eyeliner")</code>
-<code>   :demand t</code>
-<code>   :straight (eyeliner :local-repo ,(my/project-directory "eyeliner"))</code>
-<code>   :config</code>
-<code>   (spaceline-helm-mode 1)</code>
-<code>   (set-eyeliner-colors)</code>
-<code>   (eyeliner/install)))</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
+(eval `(use-package org-olp
+         :demand t
+         :straight (org-olp :type git :host github :repo "dustinlacewell/org-olp")
+         ;; :straight (org-olp :type git :local-repo ,(my/project-directory "org-olp"))
+         ))
 
-<div id="outline-container-org05affcd" class="outline-3">
-<h3 id="org05affcd">core</h3>
-<div class="outline-text-3" id="text-org05affcd">
-</div>
-<div id="outline-container-orge77f0c5" class="outline-4">
-<h4 id="orge77f0c5">minor modes</h4>
-<div class="outline-text-4" id="text-orge77f0c5">
-</div>
-<ul class="org-ul">
-<li><a id="org99fd5ed"></a>ispell-minor-mode<br />
-<div class="outline-text-5" id="text-org99fd5ed">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq ispell-program-name (concat my/home-directory ".nix-profile/bin/aspell"))</code>
-</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-
-<div id="outline-container-org21ed572" class="outline-4">
-<h4 id="org21ed572">backup every save</h4>
-<div class="outline-text-4" id="text-org21ed572">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package backup-each-save</code>
-<code>  :config (add-hook 'after-save-hook 'backup-each-save))</code>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org4019e7b" class="outline-4">
-<h4 id="org4019e7b">fix tooltips</h4>
-<div class="outline-text-4" id="text-org4019e7b">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(setq x-gtk-use-system-tooltips nil)</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org8554c16" class="outline-3">
-<h3 id="org8554c16">org</h3>
-<div class="outline-text-3" id="text-org8554c16">
-</div>
-<div id="outline-container-org96ce065" class="outline-4">
-<h4 id="org96ce065">look</h4>
-<div class="outline-text-4" id="text-org96ce065">
-</div>
-<ul class="org-ul">
-<li><a id="org22a1ca0"></a>theme customizations<br />
-<div class="outline-text-5" id="text-org22a1ca0">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(when window-system</code>
-<code>  (use-package org-beautify-theme</code>
-<code>    :after (org)</code>
-<code>    :config</code>
-<code>    (setq org-fontify-whole-heading-line t)</code>
-<code>    (setq org-fontify-quote-and-verse-blocks t)</code>
-<code>    (setq org-hide-emphasis-markers t)))</code>
-</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org4929c49" class="outline-3">
-<h3 id="org4929c49">language support</h3>
-<div class="outline-text-3" id="text-org4929c49">
-</div>
-<div id="outline-container-orga84c299" class="outline-4">
-<h4 id="orga84c299">python</h4>
-<div class="outline-text-4" id="text-orga84c299">
-</div>
-<ul class="org-ul">
-<li><a id="org3369c7c"></a>jedi<br />
-<div class="outline-text-5" id="text-org3369c7c">
-<p>
-<a href="https://github.com/tkf/emacs-jedi">Jedi</a> is an auto-completion server for Python.
-</p>
+(defun get-candidates (filename query)
+  ;; (let* ((headlines (eval `(org-ql ,filename ,query)))
+  ;;        (items (--map (plist-get it 'headline) headlines))
+  ;;        (items (--sort (&lt; (plist-get it :begin)
+  ;;                          (plist-get other :begin)) items)))
+  ;;   (cl-loop for item in items
+  ;;            for olp = (with-temp-buffer
+  ;;                        (insert-file-contents filename)
+  ;;                        (org-mode)
+  ;;                        (goto-char (plist-get item :begin))
+  ;;                        (org-get-outline-path t))
+  ;;            for label = (string-join olp " / ")
+  ;;            collect (list label item)))
+  )
 
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code></code>
-<code>(use-package jedi</code>
-<code>  :init</code>
-<code>  (progn</code>
-<code>    (add-hook 'python-mode-hook 'jedi:setup)</code>
-<code>    (setq jedi:complete-on-dot t)))</code>
-</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-
-<div id="outline-container-org54885ec" class="outline-4">
-<h4 id="org54885ec">typescript</h4>
-<div class="outline-text-4" id="text-org54885ec">
-</div>
-<ul class="org-ul">
-<li><a id="org163e5b4"></a>tide<br />
-<div class="outline-text-5" id="text-org163e5b4">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(defun setup-tide-mode ()</code>
-<code>  (interactive)</code>
-<code>  (direnv-mode)</code>
-<code>  (direnv-update-environment)</code>
-<code>  (tide-setup)</code>
-<code>  (flycheck-mode +1)</code>
-<code>  (setq flycheck-check-syntax-automatically '(save mode-enabled))</code>
-<code>  (eldoc-mode +1)</code>
-<code>  (tide-hl-identifier-mode +1)</code>
-<code>  (company-mode +1))</code>
-<code></code>
-<code>(use-package tide</code>
-<code>  :config</code>
-<code>  (add-hook 'before-save-hook 'tide-format-before-save)</code>
-<code>  (add-hook 'typescript-mode-hook #'setup-tide-mode)</code>
-<code>  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))</code>
-<code>  (add-hook 'web-mode-hook</code>
-<code>            (lambda ()</code>
-<code>              (when (string-equal "tsx" (file-name-extension buffer-file-name))</code>
-<code>                (setup-tide-mode))))</code>
-<code>  (flycheck-add-mode 'typescript-tslint 'web-mode))</code>
-</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
+;; (get-candidates (my/org-file-name "notes.org") '(todo "TODO"))
 
-<div id="outline-container-org35cf921" class="outline-4">
-<h4 id="org35cf921">f#</h4>
-<div class="outline-text-4" id="text-org35cf921">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(with-eval-after-load 'fsharp-mode</code>
-<code>  (add-to-list 'exec-path "/nix/var/nix/profiles/default/bin")</code>
-<code>  (add-to-list 'exec-path (expand-file-name "~/.nix-profile/bin"))</code>
-<code>  (add-to-list 'auto-mode-alist '("\\.fs[iylx]?$" . fsharp-mode)))</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
+(defun select-candidate (filename query)
+  ;; (let* ((candidates (get-candidates filename query)))
+  ;;   (car (helm :sources
+  ;;              (helm-build-sync-source "active-todos"
+  ;;                :candidates candidates
+  ;;                :fuzzy-match t))))
+  )
 
-<div id="outline-container-org4a97052" class="outline-3">
-<h3 id="org4a97052">helm</h3>
-<div class="outline-text-3" id="text-org4a97052">
-</div>
-<div id="outline-container-org2572217" class="outline-4">
-<h4 id="org2572217">theme customizations</h4>
-<div class="outline-text-4" id="text-org2572217">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(set-face-attribute</code>
-<code> 'helm-selection nil</code>
-<code> :inherit t</code>
-<code> :background (theme-color 'blue)</code>
-<code> :foreground (theme-color 'background)</code>
-<code> :height 1.0</code>
-<code> :weight 'ultra-bold</code>
-<code> :inverse-video nil)</code>
-<code></code>
-<code>(set-face-attribute</code>
-<code> 'helm-source-header nil</code>
-<code> :inherit nil</code>
-<code> :underline nil</code>
-<code> :background (theme-color 'background)</code>
-<code> :foreground (theme-color 'light-red)</code>
-<code> :height 1.9)</code>
-<code></code>
-<code>(set-face-attribute</code>
-<code> 'helm-header nil</code>
-<code> :inherit nil</code>
-<code> :height 0.8</code>
-<code> :background (theme-color 'background)</code>
-<code> :foreground (theme-color 'cyan))</code>
-<code></code>
-<code>(set-face-attribute</code>
-<code> 'helm-separator nil</code>
-<code> :height 0.8</code>
-<code> :foreground (theme-color 'light-red))</code>
-<code></code>
-<code>(set-face-attribute</code>
-<code> 'helm-match nil</code>
-<code> :weight 'bold</code>
-<code> :foreground (theme-color 'green))</code>
-<code></code>
-</pre>
-</div>
-</div>
-</div>
-</div>
+;; (select-candidate (my/org-file-name "notes.org") '(todo "TODO"))
 
-<div id="outline-container-orgf24f02d" class="outline-3">
-<h3 id="orgf24f02d">postamble</h3>
-<div class="outline-text-3" id="text-orgf24f02d">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(enable-theme 'xresources)</code>
-<code></code>
-<code>)</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
+(defun visit-candidate (filename query)
+  ;; (let ((selection (select-candidate filename query)))
+  ;;   (find-file filename)
+  ;;   (goto-char (plist-get selection :begin))
+  ;;   (beginning-of-line)
+  ;;   (call-interactively 'org-shifttab)
+  ;;   (call-interactively 'org-cycle))
+  )
 
-<div id="outline-container-orgaf37110" class="outline-2">
-<h2 id="orgaf37110">windows configuration</h2>
-<div class="outline-text-2" id="text-orgaf37110">
-</div>
-<div id="outline-container-org372a449" class="outline-3">
-<h3 id="org372a449">preamble</h3>
-<div class="outline-text-3" id="text-org372a449">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(when (string-equal system-type "windows-nt")</code>
+;; (visit-candidate my/notes-file-name '(todo))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgd11986f" class="outline-3">
-<h3 id="orgd11986f">theme</h3>
-<div class="outline-text-3" id="text-orgd11986f">
+<div id="outline-container-org7371913" class="outline-3">
+<h3 id="org7371913">i-read-this</h3>
+<div class="outline-text-3" id="text-org7371913">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(use-package dracula-theme)</code>
+<pre class="src src-emacs-lisp">(defun i-read-this ()
+  (interactive)
+  (org-entry-add-to-multivalued-property nil "readby" user-login-name))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org3968b0d" class="outline-3">
-<h3 id="org3968b0d">postamble</h3>
-<div class="outline-text-3" id="text-org3968b0d">
+<div id="outline-container-org76cae90" class="outline-3">
+<h3 id="org76cae90">don't prompt to confirm not prompting to confirm</h3>
+<div class="outline-text-3" id="text-org76cae90">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>)</code>
+<pre class="src src-emacs-lisp">(setq safe-local-variable-values '((org-confirm-elisp-link-function . nil)))
 </pre>
 </div>
 </div>
@@ -4395,8 +1158,8 @@ The following line prevents the warning above:
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2020-09-04 Fri 14:22</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2020-09-09 Wed 15:12</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>
