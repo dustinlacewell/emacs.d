@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-09-23 Wed 12:38 -->
+<!-- 2020-09-23 Wed 13:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ldlework's init.el</title>
@@ -44,393 +44,393 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4152ee0">bootstrap</a>
+<li><a href="#orgccfeef4">bootstrap</a>
 <ul>
-<li><a href="#orgabb1788">lexical binding</a></li>
-<li><a href="#org830b6f7">package management via straight.el</a>
+<li><a href="#org4f657b2">lexical binding</a></li>
+<li><a href="#orgdfdb45c">package management via straight.el</a>
 <ul>
-<li><a href="#org54ea8bc">use-package integration</a></li>
+<li><a href="#orge517a6b">use-package integration</a></li>
 </ul>
 </li>
-<li><a href="#org009918f">general dependencies</a></li>
-<li><a href="#org787789e">boilerplate</a>
+<li><a href="#org6632b85">general dependencies</a></li>
+<li><a href="#orgdb64ef6">boilerplate</a>
 <ul>
-<li><a href="#org06f1147">my/get-org-file</a></li>
-<li><a href="#org4d61cd4">my/get-project-directory</a></li>
-<li><a href="#org7f81d47">my/get-source-directory</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgf69a36f">local settings</a>
-<ul>
-<li><a href="#org75048c3">linux paths</a></li>
-<li><a href="#org3239431">windows paths</a></li>
-<li><a href="#orga78012e">data paths</a></li>
-<li><a href="#org6af5cfc">external browser</a></li>
-<li><a href="#orgb5e02b3">default zoom</a></li>
-</ul>
-</li>
-<li><a href="#org52f0c6c">helpers</a>
-<ul>
-<li><a href="#org83fcd1f">:function</a></li>
-<li><a href="#org0efec85">:command</a></li>
-<li><a href="#orgbe63cb7">:after</a></li>
-<li><a href="#org55d27da">:hook</a></li>
-<li><a href="#orgb78fe3d">:push</a></li>
-<li><a href="#orgb3192ba">:bind</a></li>
-</ul>
-</li>
-<li><a href="#org6fcac3b">global keybinds</a>
-<ul>
-<li><a href="#org76e22d9">default hydra</a></li>
-<li><a href="#org531d7db">major mode hydra</a></li>
-<li><a href="#org1ba1820">org capture</a></li>
-<li><a href="#orgb3dac19">magit status</a></li>
-<li><a href="#org68b6830">treemacs</a></li>
-<li><a href="#orgb884a9e">meta n &amp; p</a></li>
-<li><a href="#org41be4e1">toggle contextual help</a></li>
-</ul>
-</li>
-<li><a href="#org1f5b10c">aesthetics</a>
-<ul>
-<li><a href="#orgdcd6f84">vertical border</a></li>
-<li><a href="#org0139d83">blend in the fringes</a></li>
-<li><a href="#org41a0ac6">column number</a></li>
-<li><a href="#org9bb995a">doom modeline</a></li>
-</ul>
-</li>
-<li><a href="#org71961a9">core settings</a>
-<ul>
-<li><a href="#org3d1aad1">autosaves</a>
-<ul>
-<li><a href="#org2c6c7a4">autosave every file buffer</a></li>
-<li><a href="#orgfd228ca">save every 20 secs or 20 keystrokes</a></li>
-<li><a href="#org4c668a5">keep autosaves in a single place</a></li>
-</ul>
-</li>
-<li><a href="#org19af834">backups</a>
-<ul>
-<li><a href="#org618d6bb">backup every save</a></li>
-<li><a href="#org502e3e7">keep 10 backups</a></li>
-<li><a href="#org4b52c97">delete old backups</a></li>
-<li><a href="#org947ac8c">copy files to avoid various problems</a></li>
-<li><a href="#orgab228a7">backup files even if version controlled</a></li>
-<li><a href="#orgb6e228a">keep backups in a single place</a></li>
-</ul>
-</li>
-<li><a href="#orga582c05">cursor</a>
-<ul>
-<li><a href="#org6173976">box style</a></li>
-<li><a href="#org916ea81">blinking</a></li>
-</ul>
-</li>
-<li><a href="#org938e84c">disable</a>
-<ul>
-<li><a href="#orgf50ffee">menubar</a></li>
-<li><a href="#org31a2c00">toolbar</a></li>
-<li><a href="#orgaa89c7d">scrollbar</a></li>
-<li><a href="#orgde3cb7e">startup message</a></li>
-<li><a href="#orgfd8f9c5">customizations file</a></li>
-</ul>
-</li>
-<li><a href="#org70d36e8">editing</a>
-<ul>
-<li><a href="#org0aad50d">use spaces</a></li>
-<li><a href="#org5ffa132">visual fill-column</a></li>
-<li><a href="#orgb00db00">wrap lines at 79 characters</a></li>
-<li><a href="#org374f83d">autowrap in text-mode</a></li>
-<li><a href="#orgb3947fa">ssh for tramp</a></li>
-<li><a href="#org94e8013">just-one-space</a></li>
-</ul>
-</li>
-<li><a href="#orgb069fc7">minor-modes</a>
-<ul>
-<li><a href="#org4b69acf">whitespace-mode</a></li>
-<li><a href="#org15ded15">prettify-symbols-mode</a></li>
-<li><a href="#org4802aa5">electric-pair-mode</a></li>
-<li><a href="#org1f08f56">rainbow-delimeters-mode</a></li>
-<li><a href="#org189745d">show-paren-mode</a></li>
-<li><a href="#orgb24ed0a">which-key-mode</a></li>
-<li><a href="#orgff1951f">company-mode</a></li>
-</ul>
-</li>
-<li><a href="#orgef7c880">shorten prompts</a></li>
-<li><a href="#org1d8b059">zoom</a></li>
-<li><a href="#org556b985">cache</a></li>
-<li><a href="#orgbbdf336">eval depth</a></li>
-<li><a href="#org52e8ee5">debug on error</a></li>
-</ul>
-</li>
-<li><a href="#org650774f">direnv</a></li>
-<li><a href="#org76bbd51">helpful</a>
-<ul>
-<li><a href="#orge123644">contextual help</a>
-<ul>
-<li><a href="#orgce3ddab">toggle-context-help</a></li>
-<li><a href="#org354ee74">context-help</a></li>
-<li><a href="#orgf5ebf0b">advise symbol eldoc</a></li>
+<li><a href="#org537b808">my/get-org-file</a></li>
+<li><a href="#org7821dba">my/get-project-directory</a></li>
+<li><a href="#orgb648372">my/get-source-directory</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org3ae9c37">projectile</a>
+<li><a href="#org92f65ab">local settings</a>
 <ul>
-<li><a href="#orgc2175ad">project discovery</a></li>
+<li><a href="#org0fd7510">linux paths</a></li>
+<li><a href="#org074cd37">windows paths</a></li>
+<li><a href="#org489749e">data paths</a></li>
+<li><a href="#org5f49a52">external browser</a></li>
+<li><a href="#org070b6e7">default zoom</a></li>
 </ul>
 </li>
-<li><a href="#org7d40e84">helm</a>
+<li><a href="#org2ddb2ff">helpers</a>
 <ul>
-<li><a href="#org41067ca">ace jump</a></li>
-<li><a href="#org2965e6c">helm-ag</a></li>
-<li><a href="#orgc171ebb">helm-descbinds</a></li>
-<li><a href="#org2c1df14">helm-flyspell</a></li>
-<li><a href="#org912d31f">helm-projectile</a>
-<ul>
-<li><a href="#orge01bfbb">projectile-readme</a></li>
-<li><a href="#org3d856c9">hydra-projectile-dwim</a></li>
+<li><a href="#orgcb6d0c2">:function</a></li>
+<li><a href="#org2e025d8">:command</a></li>
+<li><a href="#org2caf8bd">:after</a></li>
+<li><a href="#orgebaa2d3">:hook</a></li>
+<li><a href="#org77e5fb6">:push</a></li>
+<li><a href="#orgae93375">:bind</a></li>
 </ul>
 </li>
-<li><a href="#org67b86b1">auto full frame</a></li>
+<li><a href="#org5c132b7">global keybinds</a>
+<ul>
+<li><a href="#org47aa64b">default hydra</a></li>
+<li><a href="#orga3b7113">major mode hydra</a></li>
+<li><a href="#orgd0b09f9">org capture</a></li>
+<li><a href="#orgd0dc289">magit status</a></li>
+<li><a href="#org6c00752">treemacs</a></li>
+<li><a href="#orgc6cde6f">meta n &amp; p</a></li>
+<li><a href="#orgaff5e23">toggle contextual help</a></li>
 </ul>
 </li>
-<li><a href="#org357d5b3">treemacs</a>
+<li><a href="#orgf9f9ff7">aesthetics</a>
 <ul>
-<li><a href="#org3541cb8">toggle-autopeek</a></li>
-<li><a href="#org233c18f">treemacs-dwim</a></li>
+<li><a href="#orgd9acb09">vertical border</a></li>
+<li><a href="#orge9424a2">blend in the fringes</a></li>
+<li><a href="#orgd248226">column number</a></li>
+<li><a href="#orgc649c25">doom modeline</a></li>
 </ul>
 </li>
-<li><a href="#org15e8626">yasnippet</a></li>
-<li><a href="#org648eabd">magit</a></li>
-<li><a href="#org5504614">org-mode</a>
+<li><a href="#orgfac03a2">core settings</a>
 <ul>
-<li><a href="#orge091b0b">straight.el fixes</a>
+<li><a href="#org44adba7">autosaves</a>
 <ul>
-<li><a href="#org188c608">fix-org-git-version</a></li>
-<li><a href="#org6058df3">fix-org-release</a></li>
+<li><a href="#orgeae1091">autosave every file buffer</a></li>
+<li><a href="#org88afd25">save every 20 secs or 20 keystrokes</a></li>
+<li><a href="#org7e89fd2">keep autosaves in a single place</a></li>
 </ul>
 </li>
-<li><a href="#orgff298ec">installation</a></li>
-<li><a href="#orgc3b9db6">look</a>
+<li><a href="#org9875bd5">backups</a>
 <ul>
-<li><a href="#orgaeb36c3">theme customizations</a></li>
-<li><a href="#org591ffb5">pretty symbols</a></li>
-<li><a href="#org30cc6ea">indent by header level</a></li>
-<li><a href="#org9acfac8">pretty heading bullets</a></li>
-<li><a href="#org3c007fb">pretty priority cookies</a></li>
-<li><a href="#org3251d06">pretty heading ellipsis</a></li>
-<li><a href="#org9d42ad2">prettify source blocks</a></li>
-<li><a href="#orgf90159f">dynamic tag position</a></li>
+<li><a href="#org69d70a9">backup every save</a></li>
+<li><a href="#orgcfd8135">keep 10 backups</a></li>
+<li><a href="#org459a47c">delete old backups</a></li>
+<li><a href="#org2beaa49">copy files to avoid various problems</a></li>
+<li><a href="#org1e8e2c7">backup files even if version controlled</a></li>
+<li><a href="#orgaf442a3">keep backups in a single place</a></li>
 </ul>
 </li>
-<li><a href="#orgdd056d9">feel</a>
+<li><a href="#org02c2dff">cursor</a>
 <ul>
-<li><a href="#org3a46e31">show all headings on startup</a></li>
-<li><a href="#org486f7b3">don't fold blocks on open</a></li>
-<li><a href="#orgcfe6b02">auto-fill paragraphs</a></li>
-<li><a href="#orgdc8e96c">resepect content on insert</a></li>
-<li><a href="#orgc8ba196">use helpful for help links</a></li>
-<li><a href="#org276b97a">ensure one-line between headers</a></li>
+<li><a href="#orgdb1d8f0">box style</a></li>
+<li><a href="#org9f04b1a">blinking</a></li>
 </ul>
 </li>
-<li><a href="#orgce05f81">todo keywords</a>
+<li><a href="#org5619c10">disable</a>
 <ul>
-<li><a href="#org214e2bf">boilerplate</a></li>
-<li><a href="#org0dbc5f0">keywords</a></li>
-<li><a href="#org68f8a87">org agenda finalization</a></li>
-<li><a href="#org2cbcab8">sorting</a></li>
+<li><a href="#orgdc15113">menubar</a></li>
+<li><a href="#org80de9c4">toolbar</a></li>
+<li><a href="#org2dd0798">scrollbar</a></li>
+<li><a href="#orgfdcd65a">startup message</a></li>
+<li><a href="#org326109f">customizations file</a></li>
 </ul>
 </li>
-<li><a href="#org327bdfb">org-capture</a>
+<li><a href="#orgf907024">editing</a>
 <ul>
-<li><a href="#orge3b2b6b">org-directory</a></li>
-<li><a href="#org35aef26">set default notes file</a></li>
-<li><a href="#org54d831e">automatically visit new capture</a></li>
-<li><a href="#orgecfa70b">capture templates</a></li>
+<li><a href="#org603122f">use spaces</a></li>
+<li><a href="#orgd41a346">visual fill-column</a></li>
+<li><a href="#org01c578f">wrap lines at 79 characters</a></li>
+<li><a href="#org27853aa">autowrap in text-mode</a></li>
+<li><a href="#org475b471">ssh for tramp</a></li>
+<li><a href="#orga4a507b">just-one-space</a></li>
 </ul>
 </li>
-<li><a href="#org94f2875">org-babel</a>
+<li><a href="#org5c9a482">minor-modes</a>
 <ul>
-<li><a href="#orgab941d2">babel languages</a></li>
-<li><a href="#org7ace7e6">enable languages</a></li>
-<li><a href="#org1db63e8">default header args</a></li>
-<li><a href="#org6ffad48">disable evaluation prompts</a></li>
-<li><a href="#orgf495eef">install babel handlers</a></li>
+<li><a href="#orgb72d773">whitespace-mode</a></li>
+<li><a href="#orgcd5c344">prettify-symbols-mode</a></li>
+<li><a href="#org014ce35">electric-pair-mode</a></li>
+<li><a href="#org44a226a">rainbow-delimeters-mode</a></li>
+<li><a href="#orgbed6746">show-paren-mode</a></li>
+<li><a href="#orgf581cab">which-key-mode</a></li>
+<li><a href="#org42e0252">company-mode</a></li>
 </ul>
 </li>
-<li><a href="#org2305dd5">helm-org</a></li>
-<li><a href="#org3d87a63">helm-org-rifle</a></li>
-<li><a href="#org9a398c5">org-projectile</a>
-<ul>
-<li><a href="#org39465ad">org-projectile-helm</a></li>
+<li><a href="#org335d51e">shorten prompts</a></li>
+<li><a href="#org8db3333">zoom</a></li>
+<li><a href="#org4853929">cache</a></li>
+<li><a href="#org880f64a">eval depth</a></li>
+<li><a href="#org6103a92">debug on error</a></li>
 </ul>
 </li>
-<li><a href="#org0e9b40e">super-agenda</a>
+<li><a href="#orgacac80b">direnv</a></li>
+<li><a href="#orgb1e7e6e">helpful</a>
 <ul>
-<li><a href="#org018139b">narrow agenda by header</a></li>
-<li><a href="#org802eeee">transform agenda items</a></li>
-<li><a href="#orgc6d6ba0">group items by project &amp; filename</a></li>
-<li><a href="#orgdaad208">agenda layout</a></li>
-</ul>
-</li>
-<li><a href="#org201baf7">org-agenda</a>
+<li><a href="#org2923e69">contextual help</a>
 <ul>
-<li><a href="#org640d6ca">super agenda mode</a></li>
-<li><a href="#orgef6f5a5">don't format todo keywords</a></li>
-<li><a href="#orgd44a60e">sorting strategy</a></li>
-<li><a href="#org4897c65">agenda files</a></li>
-</ul>
-</li>
-<li><a href="#org2156ac5">org-fragtog</a></li>
-<li><a href="#orgaf88d41">linkmarks</a></li>
-<li><a href="#orgc5da380">org-ql</a></li>
-<li><a href="#orge952ebc">helm-org-walk</a></li>
-<li><a href="#org0e3fe3f">quiet file-local variables</a></li>
-</ul>
-</li>
-<li><a href="#org040a526">outshine</a></li>
-<li><a href="#orga797aa3">language support</a>
-<ul>
-<li><a href="#org341e0fb">flycheck</a></li>
-<li><a href="#org078206e">elisp</a>
-<ul>
-<li><a href="#orgff0192a">macrostep</a></li>
-<li><a href="#orgff753e1">lispy-mode</a></li>
-</ul>
-</li>
-<li><a href="#org459a8bc">markdown-mode</a></li>
-<li><a href="#org9e65ac1">python</a>
-<ul>
-<li><a href="#org5ef99a4">elpy</a></li>
-<li><a href="#orgbd77933">jedi</a></li>
-</ul>
-</li>
-<li><a href="#org0020d04">javascript</a></li>
-<li><a href="#org84058df">typescript</a></li>
-<li><a href="#org3af27d2">nim</a></li>
-<li><a href="#org95b8407">yaml</a></li>
-<li><a href="#orga226f05">web-mode</a></li>
-<li><a href="#org1f9f721">go-mode</a></li>
-<li><a href="#orgbbffec7">csharp</a></li>
-<li><a href="#org8d2eb80">fsharp</a></li>
-</ul>
-</li>
-<li><a href="#org56db06b">tooling support</a>
-<ul>
-<li><a href="#org14654e1">docker</a></li>
-<li><a href="#org73d4326">nix</a>
-<ul>
-<li><a href="#orgef6cecc">nix-sandbox</a></li>
+<li><a href="#org64d3cf1">toggle-context-help</a></li>
+<li><a href="#orgd72151a">context-help</a></li>
+<li><a href="#org7fbb4fe">advise symbol eldoc</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgc79db14">elfeed</a>
+<li><a href="#orgc7de0a6">projectile</a>
 <ul>
-<li><a href="#orgb1fd5a2">boilerplate</a></li>
-<li><a href="#orgc599dbe">setup</a></li>
+<li><a href="#org2bb9fc3">project discovery</a></li>
 </ul>
 </li>
-<li><a href="#orgab70b57">misc</a>
+<li><a href="#org3ead527">helm</a>
 <ul>
-<li><a href="#orgd198953">htmlize</a></li>
-<li><a href="#orgc163ef3">emacsql</a></li>
-<li><a href="#orgd972681">gist</a></li>
-<li><a href="#orgfd9d551">poker.el</a></li>
-<li><a href="#org0a2bf36">decide-mode</a></li>
-<li><a href="#org0626c2a">lojban</a></li>
+<li><a href="#org14d76c9">ace jump</a></li>
+<li><a href="#orgc44c8a1">helm-ag</a></li>
+<li><a href="#orgcc274a2">helm-descbinds</a></li>
+<li><a href="#org215b991">helm-flyspell</a></li>
+<li><a href="#org48debfb">helm-projectile</a>
+<ul>
+<li><a href="#org0133c6f">projectile-readme</a></li>
+<li><a href="#orgc15ffe2">hydra-projectile-dwim</a></li>
 </ul>
 </li>
-<li><a href="#orgeaa717c">hydra</a>
+<li><a href="#org81585db">auto full frame</a></li>
+</ul>
+</li>
+<li><a href="#orgd92f309">treemacs</a>
 <ul>
-<li><a href="#orga7f17c7">pretty-hydra</a></li>
-<li><a href="#orgd5203f6">major-mode-hydra</a></li>
-<li><a href="#orge17d330">hera</a></li>
-<li><a href="#orga8feeb7">:hydra</a>
+<li><a href="#orgf7c907e">toggle-autopeek</a></li>
+<li><a href="#orgf8c910a">treemacs-dwim</a></li>
+</ul>
+</li>
+<li><a href="#org291fbc1">yasnippet</a></li>
+<li><a href="#org347d9eb">magit</a></li>
+<li><a href="#org4406fcb">org-mode</a>
 <ul>
-<li><a href="#org39d48e7">boilerplate</a></li>
-<li><a href="#org35417ab">macro</a></li>
-<li><a href="#orgd038dbf">tests</a></li>
+<li><a href="#org62fb4d9">straight.el fixes</a>
+<ul>
+<li><a href="#org538793f">fix-org-git-version</a></li>
+<li><a href="#org15e393d">fix-org-release</a></li>
+</ul>
+</li>
+<li><a href="#orgdee6f2c">installation</a></li>
+<li><a href="#org21fe61b">look</a>
+<ul>
+<li><a href="#org65d8381">theme customizations</a></li>
+<li><a href="#org0fa3286">pretty symbols</a></li>
+<li><a href="#orge9f5e97">indent by header level</a></li>
+<li><a href="#org6ba309f">pretty heading bullets</a></li>
+<li><a href="#org971c345">pretty priority cookies</a></li>
+<li><a href="#orgb6612a0">pretty heading ellipsis</a></li>
+<li><a href="#org81a67a0">prettify source blocks</a></li>
+<li><a href="#orgce9f0e7">dynamic tag position</a></li>
+</ul>
+</li>
+<li><a href="#org67b70bb">feel</a>
+<ul>
+<li><a href="#org191b533">show all headings on startup</a></li>
+<li><a href="#orgc23e218">don't fold blocks on open</a></li>
+<li><a href="#org2ec6319">auto-fill paragraphs</a></li>
+<li><a href="#org9797ee2">resepect content on insert</a></li>
+<li><a href="#org9e591ce">use helpful for help links</a></li>
+<li><a href="#orgc2b951c">ensure one-line between headers</a></li>
+</ul>
+</li>
+<li><a href="#orgd3c0c5f">todo keywords</a>
+<ul>
+<li><a href="#orgeeb061c">boilerplate</a></li>
+<li><a href="#org3ca97a5">keywords</a></li>
+<li><a href="#org847c60b">org agenda finalization</a></li>
+<li><a href="#org6eaaf4d">sorting</a></li>
+</ul>
+</li>
+<li><a href="#org2ea190e">org-capture</a>
+<ul>
+<li><a href="#org3d5c708">org-directory</a></li>
+<li><a href="#org7593709">set default notes file</a></li>
+<li><a href="#org66ea6f0">automatically visit new capture</a></li>
+<li><a href="#orgb80d9f9">capture templates</a></li>
+</ul>
+</li>
+<li><a href="#orgd84b9b4">org-babel</a>
+<ul>
+<li><a href="#orge8a8100">babel languages</a></li>
+<li><a href="#orgb9dc19d">enable languages</a></li>
+<li><a href="#org9832d37">default header args</a></li>
+<li><a href="#org31efdd8">disable evaluation prompts</a></li>
+<li><a href="#org32c2c8b">install babel handlers</a></li>
+</ul>
+</li>
+<li><a href="#org9fed39f">helm-org</a></li>
+<li><a href="#org8161bcb">helm-org-rifle</a></li>
+<li><a href="#orgba82365">org-projectile</a>
+<ul>
+<li><a href="#org4aabc9d">org-projectile-helm</a></li>
+</ul>
+</li>
+<li><a href="#org1dccf73">super-agenda</a>
+<ul>
+<li><a href="#org68e87b8">narrow agenda by header</a></li>
+<li><a href="#orgb003f4c">transform agenda items</a></li>
+<li><a href="#orgeb5a843">group items by project &amp; filename</a></li>
+<li><a href="#orga18148b">agenda layout</a></li>
+</ul>
+</li>
+<li><a href="#org404462f">org-agenda</a>
+<ul>
+<li><a href="#orgfa86ae8">super agenda mode</a></li>
+<li><a href="#org7eac8db">don't format todo keywords</a></li>
+<li><a href="#org7fef667">sorting strategy</a></li>
+<li><a href="#orgb1f2f7b">agenda files</a></li>
+</ul>
+</li>
+<li><a href="#org25814cc">org-fragtog</a></li>
+<li><a href="#orgf56777c">linkmarks</a></li>
+<li><a href="#org03fab04">org-ql</a></li>
+<li><a href="#org6dbad0c">helm-org-walk</a></li>
+<li><a href="#orgba2074f">quiet file-local variables</a></li>
+</ul>
+</li>
+<li><a href="#orgc660344">outshine</a></li>
+<li><a href="#org838b18a">language support</a>
+<ul>
+<li><a href="#org3c0601e">flycheck</a></li>
+<li><a href="#orgd1fea96">elisp</a>
+<ul>
+<li><a href="#org3f471ae">macrostep</a></li>
+<li><a href="#orgecf28d7">lispy-mode</a></li>
+</ul>
+</li>
+<li><a href="#orgf6465b2">markdown-mode</a></li>
+<li><a href="#org550142d">python</a>
+<ul>
+<li><a href="#org4f580ec">elpy</a></li>
+<li><a href="#org58abed4">jedi</a></li>
+</ul>
+</li>
+<li><a href="#org1cc3bca">javascript</a></li>
+<li><a href="#org737090c">typescript</a></li>
+<li><a href="#org755620e">nim</a></li>
+<li><a href="#org37a8a04">yaml</a></li>
+<li><a href="#org42adf5a">web-mode</a></li>
+<li><a href="#org1f8ef1c">go-mode</a></li>
+<li><a href="#orgc85dc68">csharp</a></li>
+<li><a href="#org610abe6">fsharp</a></li>
+</ul>
+</li>
+<li><a href="#org5af6e56">tooling support</a>
+<ul>
+<li><a href="#org0020d68">docker</a></li>
+<li><a href="#orgc2dd6e7">nix</a>
+<ul>
+<li><a href="#org8e297dd">nix-sandbox</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgc8e5dc2">default hydra</a>
+<li><a href="#org30e7112">elfeed</a>
 <ul>
-<li><a href="#org066e10a">hydra-bookmarks</a></li>
-<li><a href="#orgc6ed4c0">hydra-help</a></li>
-<li><a href="#orgd0a2c88">hydra-mark</a></li>
-<li><a href="#org4abbcf3">hydra-registers</a></li>
-<li><a href="#orgc4816d8">hydra-window</a></li>
-<li><a href="#org940e660">hydra-zoom</a></li>
-<li><a href="#orgdec5ac8">hydra-nix</a></li>
-<li><a href="#org64804e1">hydra-docs</a></li>
-<li><a href="#orgc8c4bbe">hydra-notes</a></li>
-<li><a href="#org97d40f0">hydra-gist</a></li>
-<li><a href="#orgf8e5f9e">hydra-projectile</a></li>
-<li><a href="#org05f47bd">hydra-default</a></li>
+<li><a href="#org330428a">boilerplate</a></li>
+<li><a href="#orgdb58f36">setup</a></li>
 </ul>
 </li>
-<li><a href="#org9039b2d">modal hydras</a>
+<li><a href="#org27fed7a">misc</a>
 <ul>
-<li><a href="#org1ff08bf">boilerplate</a>
-<ul>
-<li><a href="#orge1ce605">hydra-dwim</a></li>
+<li><a href="#orgc488fdb">htmlize</a></li>
+<li><a href="#org319ac1d">emacsql</a></li>
+<li><a href="#org6210a74">gist</a></li>
+<li><a href="#org925d26d">poker.el</a></li>
+<li><a href="#org01bd06f">decide-mode</a></li>
+<li><a href="#org26e316c">lojban</a></li>
 </ul>
 </li>
-<li><a href="#orge89a90f">hydra-yank-pop</a></li>
-<li><a href="#org46b57ad">hydra-elisp</a></li>
-<li><a href="#org2189954">hydra-treemacs</a></li>
-<li><a href="#org9c85a62">hydra-org</a>
+<li><a href="#orgfc39f6d">hydra</a>
 <ul>
-<li><a href="#orgc2d0954">hydra-org-goto-first-sibling</a></li>
-<li><a href="#org1df022d">hydra-org-goto-last-sibling</a></li>
-<li><a href="#orgcd827e2">hydra-org-parent-level</a></li>
-<li><a href="#org2681458">hydra-org-child-level</a></li>
-<li><a href="#org62db2e1">hydra-org</a></li>
-</ul>
-</li>
-<li><a href="#org24fa01a">hydra-js</a></li>
-</ul>
-</li>
-<li><a href="#org3e5a9a1">linux configuration</a>
+<li><a href="#org9c57235">pretty-hydra</a></li>
+<li><a href="#org7bb2cd4">major-mode-hydra</a></li>
+<li><a href="#org5e927ea">hera</a></li>
+<li><a href="#org8f0d7dc">:hydra</a>
 <ul>
-<li><a href="#orgb23a384">preamble</a></li>
-<li><a href="#orgcedbce9">nixos</a></li>
-<li><a href="#orgc5ff85e">theme</a>
-<ul>
-<li><a href="#orgad856ee">automatically update theme</a></li>
-<li><a href="#orgfffba06">default font</a></li>
-<li><a href="#orgac859d6">unicode fonts</a></li>
-</ul>
-</li>
-<li><a href="#org5baf85b">core</a>
-<ul>
-<li><a href="#org198a5cc">minor modes</a></li>
-<li><a href="#org202da18">fix tooltips</a></li>
-</ul>
-</li>
-<li><a href="#org5a7d559">helm</a>
-<ul>
-<li><a href="#orgc5e4316">theme customizations</a></li>
-<li><a href="#org93ecf15">filter nix wrappers</a></li>
-</ul>
-</li>
-<li><a href="#org78d2a90">postamble</a>
-<ul>
-<li><a href="#orgdd6df8f">csharp</a></li>
+<li><a href="#org8622134">boilerplate</a></li>
+<li><a href="#org34053d0">macro</a></li>
+<li><a href="#orgaf8ac07">tests</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org1cc8b5e">windows configuration</a>
+<li><a href="#org2fc418e">default hydra</a>
 <ul>
-<li><a href="#org8756b2d">preamble</a></li>
-<li><a href="#orgee86154">theme</a></li>
-<li><a href="#org43151a3">postamble</a></li>
+<li><a href="#orga6f39b1">hydra-bookmarks</a></li>
+<li><a href="#orgc9cb4ad">hydra-help</a></li>
+<li><a href="#orgd5d17f6">hydra-mark</a></li>
+<li><a href="#orgf6aefe6">hydra-registers</a></li>
+<li><a href="#orgf203d25">hydra-window</a></li>
+<li><a href="#orgb84511a">hydra-zoom</a></li>
+<li><a href="#org9c7ce64">hydra-nix</a></li>
+<li><a href="#orga717f11">hydra-docs</a></li>
+<li><a href="#orgc0f78fa">hydra-notes</a></li>
+<li><a href="#org035ba68">hydra-gist</a></li>
+<li><a href="#org3d3c1a8">hydra-projectile</a></li>
+<li><a href="#orgcb9d5cd">hydra-default</a></li>
 </ul>
 </li>
-<li><a href="#orga892b5b">postfix</a></li>
+<li><a href="#org9e3229c">modal hydras</a>
+<ul>
+<li><a href="#org559c889">boilerplate</a>
+<ul>
+<li><a href="#org87de1dd">hydra-dwim</a></li>
+</ul>
+</li>
+<li><a href="#org41f9702">hydra-yank-pop</a></li>
+<li><a href="#orgcf15f03">hydra-elisp</a></li>
+<li><a href="#org04b120c">hydra-treemacs</a></li>
+<li><a href="#org530401c">hydra-org</a>
+<ul>
+<li><a href="#org2b3e0c3">hydra-org-goto-first-sibling</a></li>
+<li><a href="#orgc4c1fec">hydra-org-goto-last-sibling</a></li>
+<li><a href="#orgf2784a6">hydra-org-parent-level</a></li>
+<li><a href="#orgfcea14d">hydra-org-child-level</a></li>
+<li><a href="#org170353c">hydra-org</a></li>
+</ul>
+</li>
+<li><a href="#org891a0c4">hydra-js</a></li>
+</ul>
+</li>
+<li><a href="#org840e2c8">linux configuration</a>
+<ul>
+<li><a href="#orgeeea78b">preamble</a></li>
+<li><a href="#org92117c0">nixos</a></li>
+<li><a href="#org8f5f902">theme</a>
+<ul>
+<li><a href="#org655b7f3">automatically update theme</a></li>
+<li><a href="#org1d62af7">default font</a></li>
+<li><a href="#orgb9151a3">unicode fonts</a></li>
+</ul>
+</li>
+<li><a href="#org224c6a7">core</a>
+<ul>
+<li><a href="#org53680c4">minor modes</a></li>
+<li><a href="#orge689b0a">fix tooltips</a></li>
+</ul>
+</li>
+<li><a href="#org2194a6e">helm</a>
+<ul>
+<li><a href="#org03fc215">theme customizations</a></li>
+<li><a href="#org33e6a71">filter nix wrappers</a></li>
+</ul>
+</li>
+<li><a href="#org6b0d09a">postamble</a>
+<ul>
+<li><a href="#org736c837">csharp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org9910a4e">windows configuration</a>
+<ul>
+<li><a href="#orgb7279ea">preamble</a></li>
+<li><a href="#orgc7df2cc">theme</a></li>
+<li><a href="#org5b0f9f6">postamble</a></li>
+</ul>
+</li>
+<li><a href="#org62bca3c">postfix</a></li>
 </ul>
 </div>
 </div>
@@ -438,13 +438,13 @@
 This config is best viewed in Emacs!
 </p>
 
-<div id="outline-container-org4152ee0" class="outline-2">
-<h2 id="org4152ee0">bootstrap</h2>
-<div class="outline-text-2" id="text-org4152ee0">
+<div id="outline-container-orgccfeef4" class="outline-2">
+<h2 id="orgccfeef4">bootstrap</h2>
+<div class="outline-text-2" id="text-orgccfeef4">
 </div>
-<div id="outline-container-orgabb1788" class="outline-3">
-<h3 id="orgabb1788">lexical binding</h3>
-<div class="outline-text-3" id="text-orgabb1788">
+<div id="outline-container-org4f657b2" class="outline-3">
+<h3 id="org4f657b2">lexical binding</h3>
+<div class="outline-text-3" id="text-org4f657b2">
 <p>
 Activate <a href="lexical-binding">lexical-binding</a> for the entire config.
 </p>
@@ -456,9 +456,9 @@ Activate <a href="lexical-binding">lexical-binding</a> for the entire config.
 </div>
 </div>
 
-<div id="outline-container-org830b6f7" class="outline-3">
-<h3 id="org830b6f7">package management via straight.el</h3>
-<div class="outline-text-3" id="text-org830b6f7">
+<div id="outline-container-orgdfdb45c" class="outline-3">
+<h3 id="orgdfdb45c">package management via straight.el</h3>
+<div class="outline-text-3" id="text-orgdfdb45c">
 <p>
 <a href="https://github.com/raxod502/straight.el">straight.el</a> is an alternative to <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Packages.html">package.el</a> with many advantages including the
 ability to integrate with <a href="https://github.com/jwiegley/use-package">use-package</a> and installing packages from git or
@@ -481,9 +481,9 @@ github.
 </div>
 </div>
 
-<div id="outline-container-org54ea8bc" class="outline-4">
-<h4 id="org54ea8bc">use-package integration</h4>
-<div class="outline-text-4" id="text-org54ea8bc">
+<div id="outline-container-orge517a6b" class="outline-4">
+<h4 id="orge517a6b">use-package integration</h4>
+<div class="outline-text-4" id="text-orge517a6b">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> straight-use-package-by-default t<span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-rainbow-delimiters-depth-1">(</span>straight-use-package 'use-package<span class="org-rainbow-delimiters-depth-1">)</span>
@@ -494,9 +494,9 @@ github.
 </div>
 </div>
 
-<div id="outline-container-org009918f" class="outline-3">
-<h3 id="org009918f">general dependencies</h3>
-<div class="outline-text-3" id="text-org009918f">
+<div id="outline-container-org6632b85" class="outline-3">
+<h3 id="org6632b85">general dependencies</h3>
+<div class="outline-text-3" id="text-org6632b85">
 <p>
 The following package dependencies are used throughout the rest of the
 configuration. They provide modern APIs for working with various elisp data
@@ -517,17 +517,17 @@ structures.
 </div>
 </div>
 
-<div id="outline-container-org787789e" class="outline-3">
-<h3 id="org787789e">boilerplate</h3>
-<div class="outline-text-3" id="text-org787789e">
+<div id="outline-container-orgdb64ef6" class="outline-3">
+<h3 id="orgdb64ef6">boilerplate</h3>
+<div class="outline-text-3" id="text-orgdb64ef6">
 <p>
 Calculate file paths relative to various locations.
 </p>
 </div>
 
-<div id="outline-container-org06f1147" class="outline-4">
-<h4 id="org06f1147">my/get-org-file</h4>
-<div class="outline-text-4" id="text-org06f1147">
+<div id="outline-container-org537b808" class="outline-4">
+<h4 id="org537b808">my/get-org-file</h4>
+<div class="outline-text-4" id="text-org537b808">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">my/get-org-file</span> <span class="org-rainbow-delimiters-depth-2">(</span>file-name<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>concat my/org-directory file-name<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -536,9 +536,9 @@ Calculate file paths relative to various locations.
 </div>
 </div>
 
-<div id="outline-container-org4d61cd4" class="outline-4">
-<h4 id="org4d61cd4">my/get-project-directory</h4>
-<div class="outline-text-4" id="text-org4d61cd4">
+<div id="outline-container-org7821dba" class="outline-4">
+<h4 id="org7821dba">my/get-project-directory</h4>
+<div class="outline-text-4" id="text-org7821dba">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">my/get-project-directory</span> <span class="org-rainbow-delimiters-depth-2">(</span>name<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>concat my/projects-directory name<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -547,9 +547,9 @@ Calculate file paths relative to various locations.
 </div>
 </div>
 
-<div id="outline-container-org7f81d47" class="outline-4">
-<h4 id="org7f81d47">my/get-source-directory</h4>
-<div class="outline-text-4" id="text-org7f81d47">
+<div id="outline-container-orgb648372" class="outline-4">
+<h4 id="orgb648372">my/get-source-directory</h4>
+<div class="outline-text-4" id="text-orgb648372">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">my/get-source-directory</span> <span class="org-rainbow-delimiters-depth-2">(</span>name<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>concat my/sources-directory name<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -560,17 +560,17 @@ Calculate file paths relative to various locations.
 </div>
 </div>
 
-<div id="outline-container-orgf69a36f" class="outline-2">
-<h2 id="orgf69a36f">local settings</h2>
-<div class="outline-text-2" id="text-orgf69a36f">
+<div id="outline-container-org92f65ab" class="outline-2">
+<h2 id="org92f65ab">local settings</h2>
+<div class="outline-text-2" id="text-org92f65ab">
 <p>
 These settings are specific to current machine.
 </p>
 </div>
 
-<div id="outline-container-org75048c3" class="outline-3">
-<h3 id="org75048c3">linux paths</h3>
-<div class="outline-text-3" id="text-org75048c3">
+<div id="outline-container-org0fd7510" class="outline-3">
+<h3 id="org0fd7510">linux paths</h3>
+<div class="outline-text-3" id="text-org0fd7510">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-2">(</span>string-equal system-type <span class="org-string">"gnu/linux"</span><span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">defvar</span> <span class="org-variable-name">my/home-directory</span> <span class="org-rainbow-delimiters-depth-3">(</span>expand-file-name <span class="org-string">"~/"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
@@ -584,9 +584,9 @@ These settings are specific to current machine.
 </div>
 </div>
 
-<div id="outline-container-org3239431" class="outline-3">
-<h3 id="org3239431">windows paths</h3>
-<div class="outline-text-3" id="text-org3239431">
+<div id="outline-container-org074cd37" class="outline-3">
+<h3 id="org074cd37">windows paths</h3>
+<div class="outline-text-3" id="text-org074cd37">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-2">(</span>string-equal system-type <span class="org-string">"windows-nt"</span><span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">defvar</span> <span class="org-variable-name">my/home-directory</span> <span class="org-rainbow-delimiters-depth-3">(</span>expand-file-name <span class="org-string">"b:/"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
@@ -601,9 +601,9 @@ These settings are specific to current machine.
 </div>
 </div>
 
-<div id="outline-container-orga78012e" class="outline-3">
-<h3 id="orga78012e">data paths</h3>
-<div class="outline-text-3" id="text-orga78012e">
+<div id="outline-container-org489749e" class="outline-3">
+<h3 id="org489749e">data paths</h3>
+<div class="outline-text-3" id="text-org489749e">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defvar</span> <span class="org-variable-name">my/notes-file-name</span> <span class="org-rainbow-delimiters-depth-2">(</span>my/get-org-file <span class="org-string">"notes.org"</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-doc">"Main notes file-name"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defvar</span> <span class="org-variable-name">my/bookmarks-file-name</span> <span class="org-rainbow-delimiters-depth-2">(</span>my/get-org-file <span class="org-string">"bookmarks.org"</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-doc">"Main bookmarks file-name"</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -614,9 +614,9 @@ These settings are specific to current machine.
 </div>
 </div>
 
-<div id="outline-container-org6af5cfc" class="outline-3">
-<h3 id="org6af5cfc">external browser</h3>
-<div class="outline-text-3" id="text-org6af5cfc">
+<div id="outline-container-org5f49a52" class="outline-3">
+<h3 id="org5f49a52">external browser</h3>
+<div class="outline-text-3" id="text-org5f49a52">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> browse-url-browser-function 'browse-url-chrome<span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> browse-url-chrome-program <span class="org-string">"chrome"</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -625,9 +625,9 @@ These settings are specific to current machine.
 </div>
 </div>
 
-<div id="outline-container-orgb5e02b3" class="outline-3">
-<h3 id="orgb5e02b3">default zoom</h3>
-<div class="outline-text-3" id="text-orgb5e02b3">
+<div id="outline-container-org070b6e7" class="outline-3">
+<h3 id="org070b6e7">default zoom</h3>
+<div class="outline-text-3" id="text-org070b6e7">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> my/default-zoom-level 4<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -636,17 +636,17 @@ These settings are specific to current machine.
 </div>
 </div>
 
-<div id="outline-container-org52f0c6c" class="outline-2">
-<h2 id="org52f0c6c">helpers</h2>
-<div class="outline-text-2" id="text-org52f0c6c">
+<div id="outline-container-org2ddb2ff" class="outline-2">
+<h2 id="org2ddb2ff">helpers</h2>
+<div class="outline-text-2" id="text-org2ddb2ff">
 <p>
 These macros are conveinent shorthands.
 </p>
 </div>
 
-<div id="outline-container-org83fcd1f" class="outline-3">
-<h3 id="org83fcd1f">:function</h3>
-<div class="outline-text-3" id="text-org83fcd1f">
+<div id="outline-container-orgcb6d0c2" class="outline-3">
+<h3 id="orgcb6d0c2">:function</h3>
+<div class="outline-text-3" id="text-orgcb6d0c2">
 <p>
 Make non-interactive functions out of forms or a symbol.
 </p>
@@ -681,9 +681,9 @@ e.g. <code>(:function foobar)</code>
 </div>
 
 
-<div id="outline-container-org0efec85" class="outline-3">
-<h3 id="org0efec85">:command</h3>
-<div class="outline-text-3" id="text-org0efec85">
+<div id="outline-container-org2e025d8" class="outline-3">
+<h3 id="org2e025d8">:command</h3>
+<div class="outline-text-3" id="text-org2e025d8">
 <p>
 Make interactive commands out of forms or a symbol.
 </p>
@@ -717,9 +717,9 @@ e.g. <code>(:command foobar)</code>
 </div>
 </div>
 
-<div id="outline-container-orgbe63cb7" class="outline-3">
-<h3 id="orgbe63cb7">:after</h3>
-<div class="outline-text-3" id="text-orgbe63cb7">
+<div id="outline-container-org2caf8bd" class="outline-3">
+<h3 id="org2caf8bd">:after</h3>
+<div class="outline-text-3" id="text-org2caf8bd">
 <p>
 Defer some forms until the given package is loaded.
 </p>
@@ -738,9 +738,9 @@ e.g. <code>(:after org (message "Hello world"))</code>
 </div>
 </div>
 
-<div id="outline-container-org55d27da" class="outline-3">
-<h3 id="org55d27da">:hook</h3>
-<div class="outline-text-3" id="text-org55d27da">
+<div id="outline-container-orgebaa2d3" class="outline-3">
+<h3 id="orgebaa2d3">:hook</h3>
+<div class="outline-text-3" id="text-orgebaa2d3">
 <p>
 Register some forms or a symbol with a hook.
 </p>
@@ -771,9 +771,9 @@ e.g. (:hook org-mode foobar)
 </div>
 </div>
 
-<div id="outline-container-orgb78fe3d" class="outline-3">
-<h3 id="orgb78fe3d">:push</h3>
-<div class="outline-text-3" id="text-orgb78fe3d">
+<div id="outline-container-org77e5fb6" class="outline-3">
+<h3 id="org77e5fb6">:push</h3>
+<div class="outline-text-3" id="text-org77e5fb6">
 <p>
 A wrapper around <a href="add-to-list">add-to-list</a>.
 </p>
@@ -793,9 +793,9 @@ e.g. <code>(:push some-list 1 2 3)</code>
 </div>
 </div>
 
-<div id="outline-container-orgb3192ba" class="outline-3">
-<h3 id="orgb3192ba">:bind</h3>
-<div class="outline-text-3" id="text-orgb3192ba">
+<div id="outline-container-orgae93375" class="outline-3">
+<h3 id="orgae93375">:bind</h3>
+<div class="outline-text-3" id="text-orgae93375">
 <p>
 Bind some forms or a symbol to a key.
 </p>
@@ -826,13 +826,13 @@ e.g. <code>(:bind org-mode "C-m" (message "Hello world."))</code>
 </div>
 </div>
 
-<div id="outline-container-org6fcac3b" class="outline-2">
-<h2 id="org6fcac3b">global keybinds</h2>
-<div class="outline-text-2" id="text-org6fcac3b">
+<div id="outline-container-org5c132b7" class="outline-2">
+<h2 id="org5c132b7">global keybinds</h2>
+<div class="outline-text-2" id="text-org5c132b7">
 </div>
-<div id="outline-container-org76e22d9" class="outline-3">
-<h3 id="org76e22d9">default hydra</h3>
-<div class="outline-text-3" id="text-org76e22d9">
+<div id="outline-container-org47aa64b" class="outline-3">
+<h3 id="org47aa64b">default hydra</h3>
+<div class="outline-text-3" id="text-org47aa64b">
 <p>
 Open the default hydra.
 </p>
@@ -844,9 +844,9 @@ Open the default hydra.
 </div>
 </div>
 
-<div id="outline-container-org531d7db" class="outline-3">
-<h3 id="org531d7db">major mode hydra</h3>
-<div class="outline-text-3" id="text-org531d7db">
+<div id="outline-container-orga3b7113" class="outline-3">
+<h3 id="orga3b7113">major mode hydra</h3>
+<div class="outline-text-3" id="text-orga3b7113">
 <p>
 Open the current major-mode hydra if it exists, or the default hydra.
 </p>
@@ -858,9 +858,9 @@ Open the current major-mode hydra if it exists, or the default hydra.
 </div>
 </div>
 
-<div id="outline-container-org1ba1820" class="outline-3">
-<h3 id="org1ba1820">org capture</h3>
-<div class="outline-text-3" id="text-org1ba1820">
+<div id="outline-container-orgd0b09f9" class="outline-3">
+<h3 id="orgd0b09f9">org capture</h3>
+<div class="outline-text-3" id="text-orgd0b09f9">
 <p>
 Activate org capture.
 </p>
@@ -872,9 +872,9 @@ Activate org capture.
 </div>
 </div>
 
-<div id="outline-container-orgb3dac19" class="outline-3">
-<h3 id="orgb3dac19">magit status</h3>
-<div class="outline-text-3" id="text-orgb3dac19">
+<div id="outline-container-orgd0dc289" class="outline-3">
+<h3 id="orgd0dc289">magit status</h3>
+<div class="outline-text-3" id="text-orgd0dc289">
 <p>
 Activate magit's git status.
 </p>
@@ -886,9 +886,9 @@ Activate magit's git status.
 </div>
 </div>
 
-<div id="outline-container-org68b6830" class="outline-3">
-<h3 id="org68b6830">treemacs</h3>
-<div class="outline-text-3" id="text-org68b6830">
+<div id="outline-container-org6c00752" class="outline-3">
+<h3 id="org6c00752">treemacs</h3>
+<div class="outline-text-3" id="text-org6c00752">
 <p>
 Toggle the file-browser sidebar.
 </p>
@@ -912,9 +912,9 @@ Toggle the file-browser sidebar.
 </div>
 </div>
 
-<div id="outline-container-orgb884a9e" class="outline-3">
-<h3 id="orgb884a9e">meta n &amp; p</h3>
-<div class="outline-text-3" id="text-orgb884a9e">
+<div id="outline-container-orgc6cde6f" class="outline-3">
+<h3 id="orgc6cde6f">meta n &amp; p</h3>
+<div class="outline-text-3" id="text-orgc6cde6f">
 <p>
 Quickly navigate buffer blocks/paragraphs.
 </p>
@@ -927,9 +927,9 @@ Quickly navigate buffer blocks/paragraphs.
 </div>
 </div>
 
-<div id="outline-container-org41be4e1" class="outline-3">
-<h3 id="org41be4e1">toggle contextual help</h3>
-<div class="outline-text-3" id="text-org41be4e1">
+<div id="outline-container-orgaff5e23" class="outline-3">
+<h3 id="orgaff5e23">toggle contextual help</h3>
+<div class="outline-text-3" id="text-orgaff5e23">
 <p>
 Toggle whether help buffers auto-update.
 </p>
@@ -942,13 +942,13 @@ Toggle whether help buffers auto-update.
 </div>
 </div>
 
-<div id="outline-container-org1f5b10c" class="outline-2">
-<h2 id="org1f5b10c">aesthetics</h2>
-<div class="outline-text-2" id="text-org1f5b10c">
+<div id="outline-container-orgf9f9ff7" class="outline-2">
+<h2 id="orgf9f9ff7">aesthetics</h2>
+<div class="outline-text-2" id="text-orgf9f9ff7">
 </div>
-<div id="outline-container-orgdcd6f84" class="outline-3">
-<h3 id="orgdcd6f84">vertical border</h3>
-<div class="outline-text-3" id="text-orgdcd6f84">
+<div id="outline-container-orgd9acb09" class="outline-3">
+<h3 id="orgd9acb09">vertical border</h3>
+<div class="outline-text-3" id="text-orgd9acb09">
 <p>
 Make the border between windows visible.
 </p>
@@ -960,9 +960,9 @@ Make the border between windows visible.
 </div>
 </div>
 
-<div id="outline-container-org0139d83" class="outline-3">
-<h3 id="org0139d83">blend in the fringes</h3>
-<div class="outline-text-3" id="text-org0139d83">
+<div id="outline-container-orge9424a2" class="outline-3">
+<h3 id="orge9424a2">blend in the fringes</h3>
+<div class="outline-text-3" id="text-orge9424a2">
 <p>
 Hide the default buffer margins.
 </p>
@@ -974,9 +974,9 @@ Hide the default buffer margins.
 </div>
 </div>
 
-<div id="outline-container-org41a0ac6" class="outline-3">
-<h3 id="org41a0ac6">column number</h3>
-<div class="outline-text-3" id="text-org41a0ac6">
+<div id="outline-container-orgd248226" class="outline-3">
+<h3 id="orgd248226">column number</h3>
+<div class="outline-text-3" id="text-orgd248226">
 <p>
 Show column number in addition to line number.
 </p>
@@ -988,9 +988,9 @@ Show column number in addition to line number.
 </div>
 </div>
 
-<div id="outline-container-org9bb995a" class="outline-3">
-<h3 id="org9bb995a">doom modeline</h3>
-<div class="outline-text-3" id="text-org9bb995a">
+<div id="outline-container-orgc649c25" class="outline-3">
+<h3 id="orgc649c25">doom modeline</h3>
+<div class="outline-text-3" id="text-orgc649c25">
 <p>
 Use <a href="https://github.com/seagle0128/doom-modeline">doom-modeline</a> to ornament the modeline.
 </p>
@@ -1018,21 +1018,21 @@ Use <a href="https://github.com/seagle0128/doom-modeline">doom-modeline</a> to o
 </div>
 </div>
 
-<div id="outline-container-org71961a9" class="outline-2">
-<h2 id="org71961a9">core settings</h2>
-<div class="outline-text-2" id="text-org71961a9">
+<div id="outline-container-orgfac03a2" class="outline-2">
+<h2 id="orgfac03a2">core settings</h2>
+<div class="outline-text-2" id="text-orgfac03a2">
 </div>
-<div id="outline-container-org3d1aad1" class="outline-3">
-<h3 id="org3d1aad1">autosaves</h3>
-<div class="outline-text-3" id="text-org3d1aad1">
+<div id="outline-container-org44adba7" class="outline-3">
+<h3 id="org44adba7">autosaves</h3>
+<div class="outline-text-3" id="text-org44adba7">
 <p>
 Periodically save a copy of open files.
 </p>
 </div>
 
-<div id="outline-container-org2c6c7a4" class="outline-4">
-<h4 id="org2c6c7a4">autosave every file buffer</h4>
-<div class="outline-text-4" id="text-org2c6c7a4">
+<div id="outline-container-orgeae1091" class="outline-4">
+<h4 id="orgeae1091">autosave every file buffer</h4>
+<div class="outline-text-4" id="text-orgeae1091">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> auto-save-default t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -1040,9 +1040,9 @@ Periodically save a copy of open files.
 </div>
 </div>
 
-<div id="outline-container-orgfd228ca" class="outline-4">
-<h4 id="orgfd228ca">save every 20 secs or 20 keystrokes</h4>
-<div class="outline-text-4" id="text-orgfd228ca">
+<div id="outline-container-org88afd25" class="outline-4">
+<h4 id="org88afd25">save every 20 secs or 20 keystrokes</h4>
+<div class="outline-text-4" id="text-org88afd25">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> auto-save-timeout 20
       auto-save-interval 20<span class="org-rainbow-delimiters-depth-1">)</span>
@@ -1051,9 +1051,9 @@ Periodically save a copy of open files.
 </div>
 </div>
 
-<div id="outline-container-org4c668a5" class="outline-4">
-<h4 id="org4c668a5">keep autosaves in a single place</h4>
-<div class="outline-text-4" id="text-org4c668a5">
+<div id="outline-container-org7e89fd2" class="outline-4">
+<h4 id="org7e89fd2">keep autosaves in a single place</h4>
+<div class="outline-text-4" id="text-org7e89fd2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">unless</span> <span class="org-rainbow-delimiters-depth-2">(</span>file-exists-p my/autosaves-directory<span class="org-rainbow-delimiters-depth-2">)</span>
     <span class="org-rainbow-delimiters-depth-2">(</span>make-directory my/autosaves-directory<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -1066,17 +1066,17 @@ Periodically save a copy of open files.
 </div>
 </div>
 
-<div id="outline-container-org19af834" class="outline-3">
-<h3 id="org19af834">backups</h3>
-<div class="outline-text-3" id="text-org19af834">
+<div id="outline-container-org9875bd5" class="outline-3">
+<h3 id="org9875bd5">backups</h3>
+<div class="outline-text-3" id="text-org9875bd5">
 <p>
 Backups are created everytime a buffer is manually saved.
 </p>
 </div>
 
-<div id="outline-container-org618d6bb" class="outline-4">
-<h4 id="org618d6bb">backup every save</h4>
-<div class="outline-text-4" id="text-org618d6bb">
+<div id="outline-container-org69d70a9" class="outline-4">
+<h4 id="org69d70a9">backup every save</h4>
+<div class="outline-text-4" id="text-org69d70a9">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">backup-each-save</span>
   <span class="org-builtin">:config</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">:hook</span> after-save backup-each-save<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -1085,9 +1085,9 @@ Backups are created everytime a buffer is manually saved.
 </div>
 </div>
 
-<div id="outline-container-org502e3e7" class="outline-4">
-<h4 id="org502e3e7">keep 10 backups</h4>
-<div class="outline-text-4" id="text-org502e3e7">
+<div id="outline-container-orgcfd8135" class="outline-4">
+<h4 id="orgcfd8135">keep 10 backups</h4>
+<div class="outline-text-4" id="text-orgcfd8135">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> kept-new-versions 10<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -1095,9 +1095,9 @@ Backups are created everytime a buffer is manually saved.
 </div>
 </div>
 
-<div id="outline-container-org4b52c97" class="outline-4">
-<h4 id="org4b52c97">delete old backups</h4>
-<div class="outline-text-4" id="text-org4b52c97">
+<div id="outline-container-org459a47c" class="outline-4">
+<h4 id="org459a47c">delete old backups</h4>
+<div class="outline-text-4" id="text-org459a47c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> delete-old-versions t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -1105,9 +1105,9 @@ Backups are created everytime a buffer is manually saved.
 </div>
 </div>
 
-<div id="outline-container-org947ac8c" class="outline-4">
-<h4 id="org947ac8c">copy files to avoid various problems</h4>
-<div class="outline-text-4" id="text-org947ac8c">
+<div id="outline-container-org2beaa49" class="outline-4">
+<h4 id="org2beaa49">copy files to avoid various problems</h4>
+<div class="outline-text-4" id="text-org2beaa49">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> backup-by-copying t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -1115,9 +1115,9 @@ Backups are created everytime a buffer is manually saved.
 </div>
 </div>
 
-<div id="outline-container-orgab228a7" class="outline-4">
-<h4 id="orgab228a7">backup files even if version controlled</h4>
-<div class="outline-text-4" id="text-orgab228a7">
+<div id="outline-container-org1e8e2c7" class="outline-4">
+<h4 id="org1e8e2c7">backup files even if version controlled</h4>
+<div class="outline-text-4" id="text-org1e8e2c7">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> vc-make-backup-files t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -1125,9 +1125,9 @@ Backups are created everytime a buffer is manually saved.
 </div>
 </div>
 
-<div id="outline-container-orgb6e228a" class="outline-4">
-<h4 id="orgb6e228a">keep backups in a single place</h4>
-<div class="outline-text-4" id="text-orgb6e228a">
+<div id="outline-container-orgaf442a3" class="outline-4">
+<h4 id="orgaf442a3">keep backups in a single place</h4>
+<div class="outline-text-4" id="text-orgaf442a3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">unless</span> <span class="org-rainbow-delimiters-depth-2">(</span>file-exists-p my/backups-directory<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>make-directory my/backups-directory<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -1142,13 +1142,13 @@ Backups are created everytime a buffer is manually saved.
 </div>
 </div>
 
-<div id="outline-container-orga582c05" class="outline-3">
-<h3 id="orga582c05">cursor</h3>
-<div class="outline-text-3" id="text-orga582c05">
+<div id="outline-container-org02c2dff" class="outline-3">
+<h3 id="org02c2dff">cursor</h3>
+<div class="outline-text-3" id="text-org02c2dff">
 </div>
-<div id="outline-container-org6173976" class="outline-4">
-<h4 id="org6173976">box style</h4>
-<div class="outline-text-4" id="text-org6173976">
+<div id="outline-container-orgdb1d8f0" class="outline-4">
+<h4 id="orgdb1d8f0">box style</h4>
+<div class="outline-text-4" id="text-orgdb1d8f0">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> cursor-type 'box<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -1156,9 +1156,9 @@ Backups are created everytime a buffer is manually saved.
 </div>
 </div>
 
-<div id="outline-container-org916ea81" class="outline-4">
-<h4 id="org916ea81">blinking</h4>
-<div class="outline-text-4" id="text-org916ea81">
+<div id="outline-container-org9f04b1a" class="outline-4">
+<h4 id="org9f04b1a">blinking</h4>
+<div class="outline-text-4" id="text-org9f04b1a">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>blink-cursor-mode 1<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -1167,18 +1167,18 @@ Backups are created everytime a buffer is manually saved.
 </div>
 </div>
 
-<div id="outline-container-org938e84c" class="outline-3">
-<h3 id="org938e84c">disable</h3>
-<div class="outline-text-3" id="text-org938e84c">
+<div id="outline-container-org5619c10" class="outline-3">
+<h3 id="org5619c10">disable</h3>
+<div class="outline-text-3" id="text-org5619c10">
 <p>
 Disable various UI and other features for a more minimal
 experience.
 </p>
 </div>
 
-<div id="outline-container-orgf50ffee" class="outline-4">
-<h4 id="orgf50ffee">menubar</h4>
-<div class="outline-text-4" id="text-orgf50ffee">
+<div id="outline-container-orgdc15113" class="outline-4">
+<h4 id="orgdc15113">menubar</h4>
+<div class="outline-text-4" id="text-orgdc15113">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>menu-bar-mode -1<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -1186,9 +1186,9 @@ experience.
 </div>
 </div>
 
-<div id="outline-container-org31a2c00" class="outline-4">
-<h4 id="org31a2c00">toolbar</h4>
-<div class="outline-text-4" id="text-org31a2c00">
+<div id="outline-container-org80de9c4" class="outline-4">
+<h4 id="org80de9c4">toolbar</h4>
+<div class="outline-text-4" id="text-org80de9c4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>tool-bar-mode -1<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -1196,9 +1196,9 @@ experience.
 </div>
 </div>
 
-<div id="outline-container-orgaa89c7d" class="outline-4">
-<h4 id="orgaa89c7d">scrollbar</h4>
-<div class="outline-text-4" id="text-orgaa89c7d">
+<div id="outline-container-org2dd0798" class="outline-4">
+<h4 id="org2dd0798">scrollbar</h4>
+<div class="outline-text-4" id="text-org2dd0798">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>scroll-bar-mode -1<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -1206,9 +1206,9 @@ experience.
 </div>
 </div>
 
-<div id="outline-container-orgde3cb7e" class="outline-4">
-<h4 id="orgde3cb7e">startup message</h4>
-<div class="outline-text-4" id="text-orgde3cb7e">
+<div id="outline-container-orgfdcd65a" class="outline-4">
+<h4 id="orgfdcd65a">startup message</h4>
+<div class="outline-text-4" id="text-orgfdcd65a">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> inhibit-startup-message t
       initial-scratch-message nil<span class="org-rainbow-delimiters-depth-1">)</span>
@@ -1217,9 +1217,9 @@ experience.
 </div>
 </div>
 
-<div id="outline-container-orgfd8f9c5" class="outline-4">
-<h4 id="orgfd8f9c5">customizations file</h4>
-<div class="outline-text-4" id="text-orgfd8f9c5">
+<div id="outline-container-org326109f" class="outline-4">
+<h4 id="org326109f">customizations file</h4>
+<div class="outline-text-4" id="text-org326109f">
 <p>
 Disable the customizations file so there's no temptation to use the
 customization interface.
@@ -1233,13 +1233,13 @@ customization interface.
 </div>
 </div>
 
-<div id="outline-container-org70d36e8" class="outline-3">
-<h3 id="org70d36e8">editing</h3>
-<div class="outline-text-3" id="text-org70d36e8">
+<div id="outline-container-orgf907024" class="outline-3">
+<h3 id="orgf907024">editing</h3>
+<div class="outline-text-3" id="text-orgf907024">
 </div>
-<div id="outline-container-org0aad50d" class="outline-4">
-<h4 id="org0aad50d">use spaces</h4>
-<div class="outline-text-4" id="text-org0aad50d">
+<div id="outline-container-org603122f" class="outline-4">
+<h4 id="org603122f">use spaces</h4>
+<div class="outline-text-4" id="text-org603122f">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> indent-tabs-mode nil<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -1247,9 +1247,9 @@ customization interface.
 </div>
 </div>
 
-<div id="outline-container-org5ffa132" class="outline-4">
-<h4 id="org5ffa132">visual fill-column</h4>
-<div class="outline-text-4" id="text-org5ffa132">
+<div id="outline-container-orgd41a346" class="outline-4">
+<h4 id="orgd41a346">visual fill-column</h4>
+<div class="outline-text-4" id="text-orgd41a346">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">visual-fill-column</span>
   <span class="org-builtin">:config</span>
@@ -1259,9 +1259,9 @@ customization interface.
 </div>
 </div>
 
-<div id="outline-container-orgb00db00" class="outline-4">
-<h4 id="orgb00db00">wrap lines at 79 characters</h4>
-<div class="outline-text-4" id="text-orgb00db00">
+<div id="outline-container-org01c578f" class="outline-4">
+<h4 id="org01c578f">wrap lines at 79 characters</h4>
+<div class="outline-text-4" id="text-org01c578f">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> fill-column 79<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -1269,9 +1269,9 @@ customization interface.
 </div>
 </div>
 
-<div id="outline-container-org374f83d" class="outline-4">
-<h4 id="org374f83d">autowrap in text-mode</h4>
-<div class="outline-text-4" id="text-org374f83d">
+<div id="outline-container-org27853aa" class="outline-4">
+<h4 id="org27853aa">autowrap in text-mode</h4>
+<div class="outline-text-4" id="text-org27853aa">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">:hook</span> text-mode 'turn-on-auto-fill<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -1279,9 +1279,9 @@ customization interface.
 </div>
 </div>
 
-<div id="outline-container-orgb3947fa" class="outline-4">
-<h4 id="orgb3947fa">ssh for tramp</h4>
-<div class="outline-text-4" id="text-orgb3947fa">
+<div id="outline-container-org475b471" class="outline-4">
+<h4 id="org475b471">ssh for tramp</h4>
+<div class="outline-text-4" id="text-org475b471">
 <p>
 Default method for transferring files with Tramp.
 </p>
@@ -1294,9 +1294,9 @@ Default method for transferring files with Tramp.
 </div>
 </div>
 
-<div id="outline-container-org94e8013" class="outline-4">
-<h4 id="org94e8013">just-one-space</h4>
-<div class="outline-text-4" id="text-org94e8013">
+<div id="outline-container-orga4a507b" class="outline-4">
+<h4 id="orga4a507b">just-one-space</h4>
+<div class="outline-text-4" id="text-orga4a507b">
 <p>
 Reduce white-space to just one space.
 </p>
@@ -1304,13 +1304,13 @@ Reduce white-space to just one space.
 </div>
 </div>
 
-<div id="outline-container-orgb069fc7" class="outline-3">
-<h3 id="orgb069fc7">minor-modes</h3>
-<div class="outline-text-3" id="text-orgb069fc7">
+<div id="outline-container-org5c9a482" class="outline-3">
+<h3 id="org5c9a482">minor-modes</h3>
+<div class="outline-text-3" id="text-org5c9a482">
 </div>
-<div id="outline-container-org4b69acf" class="outline-4">
-<h4 id="org4b69acf">whitespace-mode</h4>
-<div class="outline-text-4" id="text-org4b69acf">
+<div id="outline-container-orgb72d773" class="outline-4">
+<h4 id="orgb72d773">whitespace-mode</h4>
+<div class="outline-text-4" id="text-orgb72d773">
 <p>
 Visually display trailing whitespace
 </p>
@@ -1327,9 +1327,9 @@ Visually display trailing whitespace
 </div>
 </div>
 
-<div id="outline-container-org15ded15" class="outline-4">
-<h4 id="org15ded15">prettify-symbols-mode</h4>
-<div class="outline-text-4" id="text-org15ded15">
+<div id="outline-container-orgcd5c344" class="outline-4">
+<h4 id="orgcd5c344">prettify-symbols-mode</h4>
+<div class="outline-text-4" id="text-orgcd5c344">
 <p>
 Replace various symbols with nice looking unicode glyphs.
 </p>
@@ -1341,9 +1341,9 @@ Replace various symbols with nice looking unicode glyphs.
 </div>
 </div>
 
-<div id="outline-container-org4802aa5" class="outline-4">
-<h4 id="org4802aa5">electric-pair-mode</h4>
-<div class="outline-text-4" id="text-org4802aa5">
+<div id="outline-container-org014ce35" class="outline-4">
+<h4 id="org014ce35">electric-pair-mode</h4>
+<div class="outline-text-4" id="text-org014ce35">
 <p>
 Automatically insert matching close-brackets for any open bracket.
 </p>
@@ -1355,9 +1355,9 @@ Automatically insert matching close-brackets for any open bracket.
 </div>
 </div>
 
-<div id="outline-container-org1f08f56" class="outline-4">
-<h4 id="org1f08f56">rainbow-delimeters-mode</h4>
-<div class="outline-text-4" id="text-org1f08f56">
+<div id="outline-container-org44a226a" class="outline-4">
+<h4 id="org44a226a">rainbow-delimeters-mode</h4>
+<div class="outline-text-4" id="text-org44a226a">
 <p>
 Color parenthesis based on their depth, using the golden ratio (because why
 not).
@@ -1413,9 +1413,9 @@ not).
 </div>
 </div>
 
-<div id="outline-container-org189745d" class="outline-4">
-<h4 id="org189745d">show-paren-mode</h4>
-<div class="outline-text-4" id="text-org189745d">
+<div id="outline-container-orgbed6746" class="outline-4">
+<h4 id="orgbed6746">show-paren-mode</h4>
+<div class="outline-text-4" id="text-orgbed6746">
 <p>
 Highlight the matching open or closing bracket.
 </p>
@@ -1434,9 +1434,9 @@ Highlight the matching open or closing bracket.
 </div>
 </div>
 
-<div id="outline-container-orgb24ed0a" class="outline-4">
-<h4 id="orgb24ed0a">which-key-mode</h4>
-<div class="outline-text-4" id="text-orgb24ed0a">
+<div id="outline-container-orgf581cab" class="outline-4">
+<h4 id="orgf581cab">which-key-mode</h4>
+<div class="outline-text-4" id="text-orgf581cab">
 <p>
 Show possible followups after pressing a key prefix.
 </p>
@@ -1454,9 +1454,9 @@ Show possible followups after pressing a key prefix.
 </div>
 </div>
 
-<div id="outline-container-orgff1951f" class="outline-4">
-<h4 id="orgff1951f">company-mode</h4>
-<div class="outline-text-4" id="text-orgff1951f">
+<div id="outline-container-org42e0252" class="outline-4">
+<h4 id="org42e0252">company-mode</h4>
+<div class="outline-text-4" id="text-org42e0252">
 <p>
 Show popup autocompletion.
 </p>
@@ -1471,9 +1471,9 @@ Show popup autocompletion.
 </div>
 </div>
 
-<div id="outline-container-orgef7c880" class="outline-3">
-<h3 id="orgef7c880">shorten prompts</h3>
-<div class="outline-text-3" id="text-orgef7c880">
+<div id="outline-container-org335d51e" class="outline-3">
+<h3 id="org335d51e">shorten prompts</h3>
+<div class="outline-text-3" id="text-org335d51e">
 <p>
 Shorten yes/no prompts to one letter.
 </p>
@@ -1485,9 +1485,9 @@ Shorten yes/no prompts to one letter.
 </div>
 </div>
 
-<div id="outline-container-org1d8b059" class="outline-3">
-<h3 id="org1d8b059">zoom</h3>
-<div class="outline-text-3" id="text-org1d8b059">
+<div id="outline-container-org8db3333" class="outline-3">
+<h3 id="org8db3333">zoom</h3>
+<div class="outline-text-3" id="text-org8db3333">
 <p>
 Adjust font size in buffers or globally.
 </p>
@@ -1505,9 +1505,9 @@ Adjust font size in buffers or globally.
 </div>
 </div>
 
-<div id="outline-container-org556b985" class="outline-3">
-<h3 id="org556b985">cache</h3>
-<div class="outline-text-3" id="text-org556b985">
+<div id="outline-container-org4853929" class="outline-3">
+<h3 id="org4853929">cache</h3>
+<div class="outline-text-3" id="text-org4853929">
 <p>
 This speeds up <a href="unicode-fonts-setup">unicode-fonts-setup</a> after first run.
 </p>
@@ -1519,9 +1519,9 @@ This speeds up <a href="unicode-fonts-setup">unicode-fonts-setup</a> after first
 </div>
 </div>
 
-<div id="outline-container-orgbbdf336" class="outline-3">
-<h3 id="orgbbdf336">eval depth</h3>
-<div class="outline-text-3" id="text-orgbbdf336">
+<div id="outline-container-org880f64a" class="outline-3">
+<h3 id="org880f64a">eval depth</h3>
+<div class="outline-text-3" id="text-org880f64a">
 <p>
 Avoid elision (&#x2026;) in messages.
 </p>
@@ -1536,9 +1536,9 @@ Avoid elision (&#x2026;) in messages.
 </div>
 </div>
 
-<div id="outline-container-org52e8ee5" class="outline-3">
-<h3 id="org52e8ee5">debug on error</h3>
-<div class="outline-text-3" id="text-org52e8ee5">
+<div id="outline-container-org6103a92" class="outline-3">
+<h3 id="org6103a92">debug on error</h3>
+<div class="outline-text-3" id="text-org6103a92">
 <p>
 Show tracebacks when errors happen.
 </p>
@@ -1551,9 +1551,9 @@ Show tracebacks when errors happen.
 </div>
 </div>
 
-<div id="outline-container-org650774f" class="outline-2">
-<h2 id="org650774f">direnv</h2>
-<div class="outline-text-2" id="text-org650774f">
+<div id="outline-container-orgacac80b" class="outline-2">
+<h2 id="orgacac80b">direnv</h2>
+<div class="outline-text-2" id="text-orgacac80b">
 <p>
 <a href="https://github.com/wbolster/emacs-direnv">emacs-direnv</a> connects emacs to <a href="https://direnv.net/">direnv</a> to obtain directory-specific environment
 variables.
@@ -1567,9 +1567,9 @@ variables.
 </div>
 </div>
 </div>
-<div id="outline-container-org76bbd51" class="outline-2">
-<h2 id="org76bbd51">helpful</h2>
-<div class="outline-text-2" id="text-org76bbd51">
+<div id="outline-container-orgb1e7e6e" class="outline-2">
+<h2 id="orgb1e7e6e">helpful</h2>
+<div class="outline-text-2" id="text-orgb1e7e6e">
 <p>
 Alternative to the built-in Emacs help that provides much more contextual
 information.
@@ -1589,13 +1589,13 @@ information.
 </div>
 </div>
 
-<div id="outline-container-orge123644" class="outline-3">
-<h3 id="orge123644">contextual help</h3>
-<div class="outline-text-3" id="text-orge123644">
+<div id="outline-container-org2923e69" class="outline-3">
+<h3 id="org2923e69">contextual help</h3>
+<div class="outline-text-3" id="text-org2923e69">
 </div>
-<div id="outline-container-orgce3ddab" class="outline-4">
-<h4 id="orgce3ddab">toggle-context-help</h4>
-<div class="outline-text-4" id="text-orgce3ddab">
+<div id="outline-container-org64d3cf1" class="outline-4">
+<h4 id="org64d3cf1">toggle-context-help</h4>
+<div class="outline-text-4" id="text-org64d3cf1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">toggle-context-help</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-doc">"Turn on or off the context help.</span>
@@ -1615,9 +1615,9 @@ information.
 </div>
 </div>
 
-<div id="outline-container-org354ee74" class="outline-4">
-<h4 id="org354ee74">context-help</h4>
-<div class="outline-text-4" id="text-org354ee74">
+<div id="outline-container-orgd72151a" class="outline-4">
+<h4 id="orgd72151a">context-help</h4>
+<div class="outline-text-4" id="text-orgd72151a">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">context-help</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-doc">"Display function or variable at point in *Help* buffer if visible.</span>
@@ -1638,9 +1638,9 @@ information.
 </div>
 </div>
 
-<div id="outline-container-orgf5ebf0b" class="outline-4">
-<h4 id="orgf5ebf0b">advise symbol eldoc</h4>
-<div class="outline-text-4" id="text-orgf5ebf0b">
+<div id="outline-container-org7fbb4fe" class="outline-4">
+<h4 id="org7fbb4fe">advise symbol eldoc</h4>
+<div class="outline-text-4" id="text-org7fbb4fe">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defadvice</span> <span class="org-function-name">eldoc-print-current-symbol-info</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>around eldoc-show-c-tag activate<span class="org-rainbow-delimiters-depth-2">)</span>
@@ -1656,9 +1656,9 @@ information.
 </div>
 </div>
 
-<div id="outline-container-org3ae9c37" class="outline-2">
-<h2 id="org3ae9c37">projectile</h2>
-<div class="outline-text-2" id="text-org3ae9c37">
+<div id="outline-container-orgc7de0a6" class="outline-2">
+<h2 id="orgc7de0a6">projectile</h2>
+<div class="outline-text-2" id="text-orgc7de0a6">
 <p>
 <a href="https://github.com/bbatsov/projectile">Projectile</a> offers a number of features related to project interaction. It can
 track the root directories and sibling files of files you edit
@@ -1678,9 +1678,9 @@ Projectile's default prefix is <code>C-c p</code>
 </div>
 </div>
 
-<div id="outline-container-orgc2175ad" class="outline-3">
-<h3 id="orgc2175ad">project discovery</h3>
-<div class="outline-text-3" id="text-orgc2175ad">
+<div id="outline-container-org2bb9fc3" class="outline-3">
+<h3 id="org2bb9fc3">project discovery</h3>
+<div class="outline-text-3" id="text-org2bb9fc3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> projectile-project-root-files-bottom-up
       '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">".git"</span> <span class="org-string">".hg"</span> <span class="org-string">"README.md"</span> <span class="org-string">"README.org"</span> <span class="org-string">"README"</span><span class="org-rainbow-delimiters-depth-2">)</span>
@@ -1694,9 +1694,9 @@ Projectile's default prefix is <code>C-c p</code>
 </div>
 </div>
 
-<div id="outline-container-org7d40e84" class="outline-2">
-<h2 id="org7d40e84">helm</h2>
-<div class="outline-text-2" id="text-org7d40e84">
+<div id="outline-container-org3ead527" class="outline-2">
+<h2 id="org3ead527">helm</h2>
+<div class="outline-text-2" id="text-org3ead527">
 <p>
 Menu and selection framework for finding files, switching buffers, running
 grep, etc.
@@ -1715,9 +1715,9 @@ grep, etc.
 </pre>
 </div>
 </div>
-<div id="outline-container-org41067ca" class="outline-3">
-<h3 id="org41067ca">ace jump</h3>
-<div class="outline-text-3" id="text-org41067ca">
+<div id="outline-container-org14d76c9" class="outline-3">
+<h3 id="org14d76c9">ace jump</h3>
+<div class="outline-text-3" id="text-org14d76c9">
 <p>
 Quickly jump to any candidate with a short letter combo.
 </p>
@@ -1731,9 +1731,9 @@ Quickly jump to any candidate with a short letter combo.
 </div>
 </div>
 
-<div id="outline-container-org2965e6c" class="outline-3">
-<h3 id="org2965e6c">helm-ag</h3>
-<div class="outline-text-3" id="text-org2965e6c">
+<div id="outline-container-orgc44c8a1" class="outline-3">
+<h3 id="orgc44c8a1">helm-ag</h3>
+<div class="outline-text-3" id="text-orgc44c8a1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">helm-ag</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -1741,9 +1741,9 @@ Quickly jump to any candidate with a short letter combo.
 </div>
 </div>
 
-<div id="outline-container-orgc171ebb" class="outline-3">
-<h3 id="orgc171ebb">helm-descbinds</h3>
-<div class="outline-text-3" id="text-orgc171ebb">
+<div id="outline-container-orgcc274a2" class="outline-3">
+<h3 id="orgcc274a2">helm-descbinds</h3>
+<div class="outline-text-3" id="text-orgcc274a2">
 <p>
 Use (<code>C-h b</code> / <code>kbd-helm-descbinds</code>) to inspect current bindings with Helm.
 </p>
@@ -1758,9 +1758,9 @@ Use (<code>C-h b</code> / <code>kbd-helm-descbinds</code>) to inspect current bi
 </div>
 </div>
 
-<div id="outline-container-org2c1df14" class="outline-3">
-<h3 id="org2c1df14">helm-flyspell</h3>
-<div class="outline-text-3" id="text-org2c1df14">
+<div id="outline-container-org215b991" class="outline-3">
+<h3 id="org215b991">helm-flyspell</h3>
+<div class="outline-text-3" id="text-org215b991">
 <p>
 Check and correct spelling for some modes.
 </p>
@@ -1778,9 +1778,9 @@ Check and correct spelling for some modes.
 </div>
 </div>
 
-<div id="outline-container-org912d31f" class="outline-3">
-<h3 id="org912d31f">helm-projectile</h3>
-<div class="outline-text-3" id="text-org912d31f">
+<div id="outline-container-org48debfb" class="outline-3">
+<h3 id="org48debfb">helm-projectile</h3>
+<div class="outline-text-3" id="text-org48debfb">
 <p>
 Make Projectile use Helm for selections.
 </p>
@@ -1794,9 +1794,9 @@ Make Projectile use Helm for selections.
 </div>
 </div>
 
-<div id="outline-container-orge01bfbb" class="outline-4">
-<h4 id="orge01bfbb">projectile-readme</h4>
-<div class="outline-text-4" id="text-orge01bfbb">
+<div id="outline-container-org0133c6f" class="outline-4">
+<h4 id="org0133c6f">projectile-readme</h4>
+<div class="outline-text-4" id="text-org0133c6f">
 <p>
 Open readme of the current project.
 </p>
@@ -1812,9 +1812,9 @@ Open readme of the current project.
 </div>
 </div>
 
-<div id="outline-container-org3d856c9" class="outline-4">
-<h4 id="org3d856c9">hydra-projectile-dwim</h4>
-<div class="outline-text-4" id="text-org3d856c9">
+<div id="outline-container-orgc15ffe2" class="outline-4">
+<h4 id="orgc15ffe2">hydra-projectile-dwim</h4>
+<div class="outline-text-4" id="text-orgc15ffe2">
 <p>
 Open the projectile hydra when in a project. Otherwise, select a project.
 </p>
@@ -1831,9 +1831,9 @@ Open the projectile hydra when in a project. Otherwise, select a project.
 </div>
 </div>
 
-<div id="outline-container-org67b86b1" class="outline-3">
-<h3 id="org67b86b1">auto full frame</h3>
-<div class="outline-text-3" id="text-org67b86b1">
+<div id="outline-container-org81585db" class="outline-3">
+<h3 id="org81585db">auto full frame</h3>
+<div class="outline-text-3" id="text-org81585db">
 <p>
 Make Helm always full height.
 </p>
@@ -1853,9 +1853,9 @@ Make Helm always full height.
 </div>
 </div>
 
-<div id="outline-container-org357d5b3" class="outline-2">
-<h2 id="org357d5b3">treemacs</h2>
-<div class="outline-text-2" id="text-org357d5b3">
+<div id="outline-container-orgd92f309" class="outline-2">
+<h2 id="orgd92f309">treemacs</h2>
+<div class="outline-text-2" id="text-orgd92f309">
 <p>
 Browse files in a sidebar.
 </p>
@@ -1879,9 +1879,9 @@ Browse files in a sidebar.
 </div>
 </div>
 
-<div id="outline-container-org3541cb8" class="outline-3">
-<h3 id="org3541cb8">toggle-autopeek</h3>
-<div class="outline-text-3" id="text-org3541cb8">
+<div id="outline-container-orgf7c907e" class="outline-3">
+<h3 id="orgf7c907e">toggle-autopeek</h3>
+<div class="outline-text-3" id="text-orgf7c907e">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> treemacs-autopeek-mode nil<span class="org-rainbow-delimiters-depth-1">)</span>
 
@@ -1898,9 +1898,9 @@ Browse files in a sidebar.
 </div>
 </div>
 
-<div id="outline-container-org233c18f" class="outline-3">
-<h3 id="org233c18f">treemacs-dwim</h3>
-<div class="outline-text-3" id="text-org233c18f">
+<div id="outline-container-orgf8c910a" class="outline-3">
+<h3 id="orgf8c910a">treemacs-dwim</h3>
+<div class="outline-text-3" id="text-orgf8c910a">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">treemacs-dwim</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">interactive</span><span class="org-rainbow-delimiters-depth-2">)</span>
@@ -1919,9 +1919,9 @@ Browse files in a sidebar.
 </div>
 </div>
 
-<div id="outline-container-org15e8626" class="outline-2">
-<h2 id="org15e8626">yasnippet</h2>
-<div class="outline-text-2" id="text-org15e8626">
+<div id="outline-container-org291fbc1" class="outline-2">
+<h2 id="org291fbc1">yasnippet</h2>
+<div class="outline-text-2" id="text-org291fbc1">
 <p>
 Expand interactive snippets.
 </p>
@@ -1936,9 +1936,9 @@ Expand interactive snippets.
 </div>
 </div>
 
-<div id="outline-container-org648eabd" class="outline-2">
-<h2 id="org648eabd">magit</h2>
-<div class="outline-text-2" id="text-org648eabd">
+<div id="outline-container-org347d9eb" class="outline-2">
+<h2 id="org347d9eb">magit</h2>
+<div class="outline-text-2" id="text-org347d9eb">
 <p>
 The best git frontend there is.
 </p>
@@ -1950,25 +1950,25 @@ The best git frontend there is.
 </div>
 </div>
 
-<div id="outline-container-org5504614" class="outline-2">
-<h2 id="org5504614">org-mode</h2>
-<div class="outline-text-2" id="text-org5504614">
+<div id="outline-container-org4406fcb" class="outline-2">
+<h2 id="org4406fcb">org-mode</h2>
+<div class="outline-text-2" id="text-org4406fcb">
 <p>
 A souped up markup with tasking, scheduling and aggregation features.
 </p>
 </div>
 
-<div id="outline-container-orge091b0b" class="outline-3">
-<h3 id="orge091b0b">straight.el fixes</h3>
-<div class="outline-text-3" id="text-orge091b0b">
+<div id="outline-container-org62fb4d9" class="outline-3">
+<h3 id="org62fb4d9">straight.el fixes</h3>
+<div class="outline-text-3" id="text-org62fb4d9">
 <p>
 Fix some issues with straight.el and org until <a href="https://github.com/raxod502/straight.el#installing-org-with-straightel">that is resolved</a>.
 </p>
 </div>
 
-<div id="outline-container-org188c608" class="outline-4">
-<h4 id="org188c608">fix-org-git-version</h4>
-<div class="outline-text-4" id="text-org188c608">
+<div id="outline-container-org538793f" class="outline-4">
+<h4 id="org538793f">fix-org-git-version</h4>
+<div class="outline-text-4" id="text-org538793f">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">fix-org-git-version</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-doc">"The Git version of org-mode.</span>
@@ -1986,9 +1986,9 @@ Fix some issues with straight.el and org until <a href="https://github.com/raxod
 </div>
 </div>
 
-<div id="outline-container-org6058df3" class="outline-4">
-<h4 id="org6058df3">fix-org-release</h4>
-<div class="outline-text-4" id="text-org6058df3">
+<div id="outline-container-org15e393d" class="outline-4">
+<h4 id="org15e393d">fix-org-release</h4>
+<div class="outline-text-4" id="text-org15e393d">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">fix-org-release</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-doc">"The release version of org-mode.</span>
@@ -2009,9 +2009,9 @@ Fix some issues with straight.el and org until <a href="https://github.com/raxod
 </div>
 </div>
 
-<div id="outline-container-orgff298ec" class="outline-3">
-<h3 id="orgff298ec">installation</h3>
-<div class="outline-text-3" id="text-orgff298ec">
+<div id="outline-container-orgdee6f2c" class="outline-3">
+<h3 id="orgdee6f2c">installation</h3>
+<div class="outline-text-3" id="text-orgdee6f2c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">org</span>
   <span class="org-builtin">:config</span>
@@ -2026,13 +2026,13 @@ Fix some issues with straight.el and org until <a href="https://github.com/raxod
 </div>
 </div>
 
-<div id="outline-container-orgc3b9db6" class="outline-3">
-<h3 id="orgc3b9db6">look</h3>
-<div class="outline-text-3" id="text-orgc3b9db6">
+<div id="outline-container-org21fe61b" class="outline-3">
+<h3 id="org21fe61b">look</h3>
+<div class="outline-text-3" id="text-org21fe61b">
 </div>
-<div id="outline-container-orgaeb36c3" class="outline-4">
-<h4 id="orgaeb36c3">theme customizations</h4>
-<div class="outline-text-4" id="text-orgaeb36c3">
+<div id="outline-container-org65d8381" class="outline-4">
+<h4 id="org65d8381">theme customizations</h4>
+<div class="outline-text-4" id="text-org65d8381">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">when</span> window-system
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">use-package</span> <span class="org-constant">org-beautify-theme</span>
@@ -2046,9 +2046,9 @@ Fix some issues with straight.el and org until <a href="https://github.com/raxod
 </div>
 </div>
 
-<div id="outline-container-org591ffb5" class="outline-4">
-<h4 id="org591ffb5">pretty symbols</h4>
-<div class="outline-text-4" id="text-org591ffb5">
+<div id="outline-container-org0fa3286" class="outline-4">
+<h4 id="org0fa3286">pretty symbols</h4>
+<div class="outline-text-4" id="text-org0fa3286">
 <p>
 Add a hook to set the pretty symbols alist.
 </p>
@@ -2061,9 +2061,9 @@ Add a hook to set the pretty symbols alist.
 </div>
 </div>
 </div>
-<div id="outline-container-org30cc6ea" class="outline-4">
-<h4 id="org30cc6ea">indent by header level</h4>
-<div class="outline-text-4" id="text-org30cc6ea">
+<div id="outline-container-orge9f5e97" class="outline-4">
+<h4 id="orge9f5e97">indent by header level</h4>
+<div class="outline-text-4" id="text-orge9f5e97">
 <p>
 Hide the heading asterisks. Instead indent headings based on depth.
 </p>
@@ -2075,9 +2075,9 @@ Hide the heading asterisks. Instead indent headings based on depth.
 </div>
 </div>
 
-<div id="outline-container-org9acfac8" class="outline-4">
-<h4 id="org9acfac8">pretty heading bullets</h4>
-<div class="outline-text-4" id="text-org9acfac8">
+<div id="outline-container-org6ba309f" class="outline-4">
+<h4 id="org6ba309f">pretty heading bullets</h4>
+<div class="outline-text-4" id="text-org6ba309f">
 <p>
 Use nice unicode bullets instead of the default asterisks.
 </p>
@@ -2093,9 +2093,9 @@ Use nice unicode bullets instead of the default asterisks.
 </div>
 </div>
 
-<div id="outline-container-org3c007fb" class="outline-4">
-<h4 id="org3c007fb">pretty priority cookies</h4>
-<div class="outline-text-4" id="text-org3c007fb">
+<div id="outline-container-org971c345" class="outline-4">
+<h4 id="org971c345">pretty priority cookies</h4>
+<div class="outline-text-4" id="text-org971c345">
 <p>
 Instead of the default <code>[#A]</code> and <code>[#C]</code> priority cookies, use little unicode arrows to
 indicate high and low priority. <code>[#B]</code>, which is the same as no priority, is shown as
@@ -2126,9 +2126,9 @@ normal.
 </div>
 </div>
 
-<div id="outline-container-org3251d06" class="outline-4">
-<h4 id="org3251d06">pretty heading ellipsis</h4>
-<div class="outline-text-4" id="text-org3251d06">
+<div id="outline-container-orgb6612a0" class="outline-4">
+<h4 id="orgb6612a0">pretty heading ellipsis</h4>
+<div class="outline-text-4" id="text-orgb6612a0">
 <p>
 Show a little arrow for collapsed headings.
 </p>
@@ -2141,9 +2141,9 @@ Show a little arrow for collapsed headings.
 </div>
 </div>
 
-<div id="outline-container-org9d42ad2" class="outline-4">
-<h4 id="org9d42ad2">prettify source blocks</h4>
-<div class="outline-text-4" id="text-org9d42ad2">
+<div id="outline-container-org81a67a0" class="outline-4">
+<h4 id="org81a67a0">prettify source blocks</h4>
+<div class="outline-text-4" id="text-org81a67a0">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">:push</span> my/org-pretty-symbols
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"#+begin_src"</span> . <span class="org-string">"&gt;&gt;"</span><span class="org-rainbow-delimiters-depth-2">)</span>
@@ -2152,9 +2152,9 @@ Show a little arrow for collapsed headings.
 </div>
 </div>
 </div>
-<div id="outline-container-orgf90159f" class="outline-4">
-<h4 id="orgf90159f">dynamic tag position</h4>
-<div class="outline-text-4" id="text-orgf90159f">
+<div id="outline-container-orgce9f0e7" class="outline-4">
+<h4 id="orgce9f0e7">dynamic tag position</h4>
+<div class="outline-text-4" id="text-orgce9f0e7">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">org-realign-tags</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">interactive</span><span class="org-rainbow-delimiters-depth-2">)</span>
@@ -2168,13 +2168,13 @@ Show a little arrow for collapsed headings.
 </div>
 </div>
 
-<div id="outline-container-orgdd056d9" class="outline-3">
-<h3 id="orgdd056d9">feel</h3>
-<div class="outline-text-3" id="text-orgdd056d9">
+<div id="outline-container-org67b70bb" class="outline-3">
+<h3 id="org67b70bb">feel</h3>
+<div class="outline-text-3" id="text-org67b70bb">
 </div>
-<div id="outline-container-org3a46e31" class="outline-4">
-<h4 id="org3a46e31">show all headings on startup</h4>
-<div class="outline-text-4" id="text-org3a46e31">
+<div id="outline-container-org191b533" class="outline-4">
+<h4 id="org191b533">show all headings on startup</h4>
+<div class="outline-text-4" id="text-org191b533">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-startup-folded 'content<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -2182,9 +2182,9 @@ Show a little arrow for collapsed headings.
 </div>
 </div>
 
-<div id="outline-container-org486f7b3" class="outline-4">
-<h4 id="org486f7b3">don't fold blocks on open</h4>
-<div class="outline-text-4" id="text-org486f7b3">
+<div id="outline-container-orgc23e218" class="outline-4">
+<h4 id="orgc23e218">don't fold blocks on open</h4>
+<div class="outline-text-4" id="text-orgc23e218">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-hide-block-startup nil<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -2192,9 +2192,9 @@ Show a little arrow for collapsed headings.
 </div>
 </div>
 
-<div id="outline-container-orgcfe6b02" class="outline-4">
-<h4 id="orgcfe6b02">auto-fill paragraphs</h4>
-<div class="outline-text-4" id="text-orgcfe6b02">
+<div id="outline-container-org2ec6319" class="outline-4">
+<h4 id="org2ec6319">auto-fill paragraphs</h4>
+<div class="outline-text-4" id="text-org2ec6319">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">:hook</span> org-mode 'turn-on-auto-fill<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -2202,9 +2202,9 @@ Show a little arrow for collapsed headings.
 </div>
 </div>
 
-<div id="outline-container-orgdc8e96c" class="outline-4">
-<h4 id="orgdc8e96c">resepect content on insert</h4>
-<div class="outline-text-4" id="text-orgdc8e96c">
+<div id="outline-container-org9797ee2" class="outline-4">
+<h4 id="org9797ee2">resepect content on insert</h4>
+<div class="outline-text-4" id="text-org9797ee2">
 <p>
 Don't split existing entries when inserting a new heading.
 </p>
@@ -2216,9 +2216,9 @@ Don't split existing entries when inserting a new heading.
 </div>
 </div>
 
-<div id="outline-container-orgc8ba196" class="outline-4">
-<h4 id="orgc8ba196">use helpful for help links</h4>
-<div class="outline-text-4" id="text-orgc8ba196">
+<div id="outline-container-org9e591ce" class="outline-4">
+<h4 id="org9e591ce">use helpful for help links</h4>
+<div class="outline-text-4" id="text-org9e591ce">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>advice-add 'org-link--open-help <span class="org-builtin">:override</span>
             <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-3">(</span>path<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-3">(</span>helpful-symbol <span class="org-rainbow-delimiters-depth-4">(</span>intern path<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -2226,9 +2226,9 @@ Don't split existing entries when inserting a new heading.
 </div>
 </div>
 </div>
-<div id="outline-container-org276b97a" class="outline-4">
-<h4 id="org276b97a">ensure one-line between headers</h4>
-<div class="outline-text-4" id="text-org276b97a">
+<div id="outline-container-orgc2b951c" class="outline-4">
+<h4 id="orgc2b951c">ensure one-line between headers</h4>
+<div class="outline-text-4" id="text-orgc2b951c">
 <p>
 When you save, this section will ensure that there is a one-line space between each
 heading. This helps with the background color of code-blocks not showing up on folded
@@ -2338,17 +2338,17 @@ headings.
 </div>
 </div>
 
-<div id="outline-container-orgce05f81" class="outline-3">
-<h3 id="orgce05f81">todo keywords</h3>
-<div class="outline-text-3" id="text-orgce05f81">
+<div id="outline-container-orgd3c0c5f" class="outline-3">
+<h3 id="orgd3c0c5f">todo keywords</h3>
+<div class="outline-text-3" id="text-orgd3c0c5f">
 </div>
-<div id="outline-container-org214e2bf" class="outline-4">
-<h4 id="org214e2bf">boilerplate</h4>
-<div class="outline-text-4" id="text-org214e2bf">
+<div id="outline-container-orgeeb061c" class="outline-4">
+<h4 id="orgeeb061c">boilerplate</h4>
+<div class="outline-text-4" id="text-orgeeb061c">
 </div>
 <ul class="org-ul">
-<li><a id="orgd776756"></a>make-state-model<br />
-<div class="outline-text-5" id="text-orgd776756">
+<li><a id="orgc2cf6ad"></a>make-state-model<br />
+<div class="outline-text-5" id="text-orgc2cf6ad">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">todo-make-state-model</span> <span class="org-rainbow-delimiters-depth-2">(</span>name key props<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>append <span class="org-rainbow-delimiters-depth-3">(</span>list <span class="org-builtin">:name</span> name <span class="org-builtin">:key</span> key<span class="org-rainbow-delimiters-depth-3">)</span> props<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -2356,8 +2356,8 @@ headings.
 </div>
 </div>
 </li>
-<li><a id="orgc6f848c"></a>parse-state-data<br />
-<div class="outline-text-5" id="text-orgc6f848c">
+<li><a id="org7d5ff5a"></a>parse-state-data<br />
+<div class="outline-text-5" id="text-org7d5ff5a">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">todo-parse-state-data</span> <span class="org-rainbow-delimiters-depth-2">(</span>state-data<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">-let*</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-delimiters-depth-5">(</span>name second <span class="org-type">&amp;rest</span><span class="org-rainbow-delimiters-depth-5">)</span> state-data<span class="org-rainbow-delimiters-depth-4">)</span>
@@ -2369,8 +2369,8 @@ headings.
 </div>
 </div>
 </li>
-<li><a id="org2f215c7"></a>make-sequence-mode<br />
-<div class="outline-text-5" id="text-org2f215c7">
+<li><a id="orgb584181"></a>make-sequence-mode<br />
+<div class="outline-text-5" id="text-orgb584181">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">todo-make-sequence-model</span> <span class="org-rainbow-delimiters-depth-2">(</span>states<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>mapcar 'todo-parse-state-data states<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -2378,8 +2378,8 @@ headings.
 </div>
 </div>
 </li>
-<li><a id="orga643c78"></a>parse-sequences-data<br />
-<div class="outline-text-5" id="text-orga643c78">
+<li><a id="orgd1c43fd"></a>parse-sequences-data<br />
+<div class="outline-text-5" id="text-orgd1c43fd">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">todo-parse-sequences-data</span> <span class="org-rainbow-delimiters-depth-2">(</span>sequences-data<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>mapcar 'todo-make-sequence-model sequences-data<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -2387,8 +2387,8 @@ headings.
 </div>
 </div>
 </li>
-<li><a id="org970509f"></a>todo-keyword-name<br />
-<div class="outline-text-5" id="text-org970509f">
+<li><a id="org877daf9"></a>todo-keyword-name<br />
+<div class="outline-text-5" id="text-org877daf9">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">todo-keyword-name</span> <span class="org-rainbow-delimiters-depth-2">(</span>name key<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">if</span> key <span class="org-rainbow-delimiters-depth-3">(</span>format <span class="org-string">"%s(%s)"</span> name key<span class="org-rainbow-delimiters-depth-3">)</span> name<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -2396,8 +2396,8 @@ headings.
 </div>
 </div>
 </li>
-<li><a id="org4c45b89"></a>keyword-name-forstate<br />
-<div class="outline-text-5" id="text-org4c45b89">
+<li><a id="org364123e"></a>keyword-name-forstate<br />
+<div class="outline-text-5" id="text-org364123e">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">todo-keyword-name-for-state</span> <span class="org-rainbow-delimiters-depth-2">(</span>state<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>todo-keyword-name <span class="org-rainbow-delimiters-depth-3">(</span>plist-get state <span class="org-builtin">:name</span><span class="org-rainbow-delimiters-depth-3">)</span>
@@ -2406,8 +2406,8 @@ headings.
 </div>
 </div>
 </li>
-<li><a id="org13a1f64"></a>is-done-state<br />
-<div class="outline-text-5" id="text-org13a1f64">
+<li><a id="org54d6e32"></a>is-done-state<br />
+<div class="outline-text-5" id="text-org54d6e32">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">todo-is-done-state</span> <span class="org-rainbow-delimiters-depth-2">(</span>state<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>equal t <span class="org-rainbow-delimiters-depth-3">(</span>plist-get state <span class="org-builtin">:done-state</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -2415,8 +2415,8 @@ headings.
 </div>
 </div>
 </li>
-<li><a id="org81bce92"></a>is-not-done-state<br />
-<div class="outline-text-5" id="text-org81bce92">
+<li><a id="org7d5b3e2"></a>is-not-done-state<br />
+<div class="outline-text-5" id="text-org7d5b3e2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">todo-is-not-done-state</span> <span class="org-rainbow-delimiters-depth-2">(</span>state<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>equal nil <span class="org-rainbow-delimiters-depth-3">(</span>plist-get state <span class="org-builtin">:done-state</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -2424,8 +2424,8 @@ headings.
 </div>
 </div>
 </li>
-<li><a id="orgea7ede6"></a>org-sequence<br />
-<div class="outline-text-5" id="text-orgea7ede6">
+<li><a id="org85f4b06"></a>org-sequence<br />
+<div class="outline-text-5" id="text-org85f4b06">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">todo-org-sequence</span> <span class="org-rainbow-delimiters-depth-2">(</span>states<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>active <span class="org-rainbow-delimiters-depth-5">(</span>seq-filter 'todo-is-not-done-state states<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
@@ -2438,8 +2438,8 @@ headings.
 </div>
 </div>
 </li>
-<li><a id="org8d96eb4"></a>org-todo-keywords<br />
-<div class="outline-text-5" id="text-org8d96eb4">
+<li><a id="org79047ef"></a>org-todo-keywords<br />
+<div class="outline-text-5" id="text-org79047ef">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">todo-org-todo-keywords</span> <span class="org-rainbow-delimiters-depth-2">(</span>sequences<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>mapcar 'todo-org-sequence <span class="org-rainbow-delimiters-depth-3">(</span>todo-parse-sequences-data sequences<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -2448,8 +2448,8 @@ headings.
 </div>
 </div>
 </li>
-<li><a id="org580b7dc"></a>org-todo-keyword-faces<br />
-<div class="outline-text-5" id="text-org580b7dc">
+<li><a id="org070bc47"></a>org-todo-keyword-faces<br />
+<div class="outline-text-5" id="text-org070bc47">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">todo-org-todo-keyword-faces</span> <span class="org-rainbow-delimiters-depth-2">(</span>sequences<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">cl-loop</span> for sequence in <span class="org-rainbow-delimiters-depth-3">(</span>todo-parse-sequences-data sequences<span class="org-rainbow-delimiters-depth-3">)</span>
@@ -2462,8 +2462,8 @@ headings.
 </div>
 </div>
 </li>
-<li><a id="org1d6fe00"></a>prettify-symbols-alist<br />
-<div class="outline-text-5" id="text-org1d6fe00">
+<li><a id="org627db44"></a>prettify-symbols-alist<br />
+<div class="outline-text-5" id="text-org627db44">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">todo-prettify-symbols-alist</span> <span class="org-rainbow-delimiters-depth-2">(</span>sequences<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">cl-loop</span> for sequence in <span class="org-rainbow-delimiters-depth-3">(</span>todo-parse-sequences-data sequences<span class="org-rainbow-delimiters-depth-3">)</span>
@@ -2476,8 +2476,8 @@ headings.
 </div>
 </div>
 </li>
-<li><a id="org00c9eb0"></a>finalize-agenda-for-state<br />
-<div class="outline-text-5" id="text-org00c9eb0">
+<li><a id="org3c16c82"></a>finalize-agenda-for-state<br />
+<div class="outline-text-5" id="text-org3c16c82">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">todo-finalize-agenda-for-state</span> <span class="org-rainbow-delimiters-depth-2">(</span>state<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">-let</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-delimiters-depth-5">(</span><span class="org-type">&amp;plist</span> <span class="org-builtin">:name</span> <span class="org-builtin">:icon</span> <span class="org-builtin">:face</span><span class="org-rainbow-delimiters-depth-5">)</span> state<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
@@ -2504,9 +2504,9 @@ headings.
 </ul>
 </div>
 
-<div id="outline-container-org0dbc5f0" class="outline-4">
-<h4 id="org0dbc5f0">keywords</h4>
-<div class="outline-text-4" id="text-org0dbc5f0">
+<div id="outline-container-org3ca97a5" class="outline-4">
+<h4 id="org3ca97a5">keywords</h4>
+<div class="outline-text-4" id="text-org3ca97a5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> todo-keywords
       <span class="org-comment-delimiter">;; </span><span class="org-comment">normal workflow</span>
@@ -2526,9 +2526,9 @@ headings.
 </div>
 </div>
 
-<div id="outline-container-org68f8a87" class="outline-4">
-<h4 id="org68f8a87">org agenda finalization</h4>
-<div class="outline-text-4" id="text-org68f8a87">
+<div id="outline-container-org847c60b" class="outline-4">
+<h4 id="org847c60b">org agenda finalization</h4>
+<div class="outline-text-4" id="text-org847c60b">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> my/todo-sequences-data <span class="org-rainbow-delimiters-depth-2">(</span>todo-parse-sequences-data todo-keywords<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">:hook</span> org-agenda-finalize
@@ -2538,9 +2538,9 @@ headings.
 </div>
 </div>
 </div>
-<div id="outline-container-org2cbcab8" class="outline-4">
-<h4 id="org2cbcab8">sorting</h4>
-<div class="outline-text-4" id="text-org2cbcab8">
+<div id="outline-container-org6eaaf4d" class="outline-4">
+<h4 id="org6eaaf4d">sorting</h4>
+<div class="outline-text-4" id="text-org6eaaf4d">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">my/todo-sort</span> <span class="org-rainbow-delimiters-depth-2">(</span>a b<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">let*</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>a-state <span class="org-rainbow-delimiters-depth-5">(</span>get-text-property 0 'todo-state a<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
@@ -2560,13 +2560,13 @@ headings.
 </div>
 </div>
 
-<div id="outline-container-org327bdfb" class="outline-3">
-<h3 id="org327bdfb">org-capture</h3>
-<div class="outline-text-3" id="text-org327bdfb">
+<div id="outline-container-org2ea190e" class="outline-3">
+<h3 id="org2ea190e">org-capture</h3>
+<div class="outline-text-3" id="text-org2ea190e">
 </div>
-<div id="outline-container-orge3b2b6b" class="outline-4">
-<h4 id="orge3b2b6b">org-directory</h4>
-<div class="outline-text-4" id="text-orge3b2b6b">
+<div id="outline-container-org3d5c708" class="outline-4">
+<h4 id="org3d5c708">org-directory</h4>
+<div class="outline-text-4" id="text-org3d5c708">
 <p>
 <a href="org-directory">org-directory</a> is the default location for captures.
 </p>
@@ -2576,18 +2576,18 @@ headings.
 </div>
 </div>
 </div>
-<div id="outline-container-org35aef26" class="outline-4">
-<h4 id="org35aef26">set default notes file</h4>
-<div class="outline-text-4" id="text-org35aef26">
+<div id="outline-container-org7593709" class="outline-4">
+<h4 id="org7593709">set default notes file</h4>
+<div class="outline-text-4" id="text-org7593709">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-default-notes-file my/notes-file-name<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org54d831e" class="outline-4">
-<h4 id="org54d831e">automatically visit new capture</h4>
-<div class="outline-text-4" id="text-org54d831e">
+<div id="outline-container-org66ea6f0" class="outline-4">
+<h4 id="org66ea6f0">automatically visit new capture</h4>
+<div class="outline-text-4" id="text-org66ea6f0">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">:after</span> org
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">:push</span> org-capture-after-finalize-hook 'org-capture-goto-last-stored<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -2595,9 +2595,9 @@ headings.
 </div>
 </div>
 </div>
-<div id="outline-container-orgecfa70b" class="outline-4">
-<h4 id="orgecfa70b">capture templates</h4>
-<div class="outline-text-4" id="text-orgecfa70b">
+<div id="outline-container-orgb80d9f9" class="outline-4">
+<h4 id="orgb80d9f9">capture templates</h4>
+<div class="outline-text-4" id="text-orgb80d9f9">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 </pre>
@@ -2606,17 +2606,17 @@ headings.
 </div>
 </div>
 
-<div id="outline-container-org94f2875" class="outline-3">
-<h3 id="org94f2875">org-babel</h3>
-<div class="outline-text-3" id="text-org94f2875">
+<div id="outline-container-orgd84b9b4" class="outline-3">
+<h3 id="orgd84b9b4">org-babel</h3>
+<div class="outline-text-3" id="text-orgd84b9b4">
 </div>
-<div id="outline-container-orgab941d2" class="outline-4">
-<h4 id="orgab941d2">babel languages</h4>
-<div class="outline-text-4" id="text-orgab941d2">
+<div id="outline-container-orge8a8100" class="outline-4">
+<h4 id="orge8a8100">babel languages</h4>
+<div class="outline-text-4" id="text-orge8a8100">
 </div>
 <ul class="org-ul">
-<li><a id="org2dc1d0c"></a>ob-csharp<br />
-<div class="outline-text-5" id="text-org2dc1d0c">
+<li><a id="org6461c24"></a>ob-csharp<br />
+<div class="outline-text-5" id="text-org6461c24">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">ob-csharp</span>
   <span class="org-builtin">:straight</span> <span class="org-rainbow-delimiters-depth-2">(</span>ob-csharp <span class="org-builtin">:type</span> git
@@ -2629,8 +2629,8 @@ headings.
 </div>
 </div>
 </li>
-<li><a id="org712f04d"></a>ob-fsharp<br />
-<div class="outline-text-5" id="text-org712f04d">
+<li><a id="org19726d9"></a>ob-fsharp<br />
+<div class="outline-text-5" id="text-org19726d9">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">ob-fsharp</span>
   <span class="org-builtin">:straight</span> <span class="org-rainbow-delimiters-depth-2">(</span>ob-fsharp <span class="org-builtin">:type</span> git
@@ -2645,9 +2645,9 @@ headings.
 </li>
 </ul>
 </div>
-<div id="outline-container-org7ace7e6" class="outline-4">
-<h4 id="org7ace7e6">enable languages</h4>
-<div class="outline-text-4" id="text-org7ace7e6">
+<div id="outline-container-orgb9dc19d" class="outline-4">
+<h4 id="orgb9dc19d">enable languages</h4>
+<div class="outline-text-4" id="text-orgb9dc19d">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-babel-load-languages
       '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>shell . t<span class="org-rainbow-delimiters-depth-3">)</span>
@@ -2661,9 +2661,9 @@ headings.
 </div>
 </div>
 
-<div id="outline-container-org1db63e8" class="outline-4">
-<h4 id="org1db63e8">default header args</h4>
-<div class="outline-text-4" id="text-org1db63e8">
+<div id="outline-container-org9832d37" class="outline-4">
+<h4 id="org9832d37">default header args</h4>
+<div class="outline-text-4" id="text-org9832d37">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">:after</span> org
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">setq</span> org-babel-default-header-args
@@ -2679,9 +2679,9 @@ headings.
 </div>
 </div>
 
-<div id="outline-container-org6ffad48" class="outline-4">
-<h4 id="org6ffad48">disable evaluation prompts</h4>
-<div class="outline-text-4" id="text-org6ffad48">
+<div id="outline-container-org31efdd8" class="outline-4">
+<h4 id="org31efdd8">disable evaluation prompts</h4>
+<div class="outline-text-4" id="text-org31efdd8">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">:after</span> org
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">setq</span> org-confirm-babel-evaluate nil
@@ -2692,9 +2692,9 @@ headings.
 </div>
 </div>
 
-<div id="outline-container-orgf495eef" class="outline-4">
-<h4 id="orgf495eef">install babel handlers</h4>
-<div class="outline-text-4" id="text-orgf495eef">
+<div id="outline-container-org32c2c8b" class="outline-4">
+<h4 id="org32c2c8b">install babel handlers</h4>
+<div class="outline-text-4" id="text-org32c2c8b">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">:hook</span> after-init
   <span class="org-rainbow-delimiters-depth-2">(</span>org-babel-do-load-languages 'org-babel-load-languages
@@ -2705,18 +2705,18 @@ headings.
 </div>
 </div>
 
-<div id="outline-container-org2305dd5" class="outline-3">
-<h3 id="org2305dd5">helm-org</h3>
-<div class="outline-text-3" id="text-org2305dd5">
+<div id="outline-container-org9fed39f" class="outline-3">
+<h3 id="org9fed39f">helm-org</h3>
+<div class="outline-text-3" id="text-org9fed39f">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">helm-org</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org3d87a63" class="outline-3">
-<h3 id="org3d87a63">helm-org-rifle</h3>
-<div class="outline-text-3" id="text-org3d87a63">
+<div id="outline-container-org8161bcb" class="outline-3">
+<h3 id="org8161bcb">helm-org-rifle</h3>
+<div class="outline-text-3" id="text-org8161bcb">
 <p>
 Quickly search through the current org buffer.
 </p>
@@ -2727,9 +2727,9 @@ Quickly search through the current org buffer.
 </div>
 </div>
 </div>
-<div id="outline-container-org9a398c5" class="outline-3">
-<h3 id="org9a398c5">org-projectile</h3>
-<div class="outline-text-3" id="text-org9a398c5">
+<div id="outline-container-orgba82365" class="outline-3">
+<h3 id="orgba82365">org-projectile</h3>
+<div class="outline-text-3" id="text-orgba82365">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">org-projectile</span>
   <span class="org-builtin">:config</span>
@@ -2747,9 +2747,9 @@ Quickly search through the current org buffer.
 </div>
 </div>
 
-<div id="outline-container-org39465ad" class="outline-4">
-<h4 id="org39465ad">org-projectile-helm</h4>
-<div class="outline-text-4" id="text-org39465ad">
+<div id="outline-container-org4aabc9d" class="outline-4">
+<h4 id="org4aabc9d">org-projectile-helm</h4>
+<div class="outline-text-4" id="text-org4aabc9d">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">org-projectile-helm</span>
   <span class="org-builtin">:after</span> org-projectile
@@ -2760,17 +2760,17 @@ Quickly search through the current org buffer.
 </div>
 </div>
 
-<div id="outline-container-org0e9b40e" class="outline-3">
-<h3 id="org0e9b40e">super-agenda</h3>
-<div class="outline-text-3" id="text-org0e9b40e">
+<div id="outline-container-org1dccf73" class="outline-3">
+<h3 id="org1dccf73">super-agenda</h3>
+<div class="outline-text-3" id="text-org1dccf73">
 <p>
 Provides better organization of the agenda view.
 </p>
 </div>
 
-<div id="outline-container-org018139b" class="outline-4">
-<h4 id="org018139b">narrow agenda by header</h4>
-<div class="outline-text-4" id="text-org018139b">
+<div id="outline-container-org68e87b8" class="outline-4">
+<h4 id="org68e87b8">narrow agenda by header</h4>
+<div class="outline-text-4" id="text-org68e87b8">
 <p>
 Hitting <code>C-&lt;return&gt;</code> on a header will narrow the agenda to that file.
 </p>
@@ -2797,9 +2797,9 @@ Hitting <code>C-&lt;return&gt;</code> on a header will narrow the agenda to that
 </div>
 </div>
 </div>
-<div id="outline-container-org802eeee" class="outline-4">
-<h4 id="org802eeee">transform agenda items</h4>
-<div class="outline-text-4" id="text-org802eeee">
+<div id="outline-container-orgb003f4c" class="outline-4">
+<h4 id="orgb003f4c">transform agenda items</h4>
+<div class="outline-text-4" id="text-orgb003f4c">
 <p>
 Clean up the item display, including the project and file names.
 </p>
@@ -2840,9 +2840,9 @@ Clean up the item display, including the project and file names.
 </div>
 </div>
 
-<div id="outline-container-orgc6d6ba0" class="outline-4">
-<h4 id="orgc6d6ba0">group items by project &amp; filename</h4>
-<div class="outline-text-4" id="text-orgc6d6ba0">
+<div id="outline-container-orgeb5a843" class="outline-4">
+<h4 id="orgeb5a843">group items by project &amp; filename</h4>
+<div class="outline-text-4" id="text-orgeb5a843">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">org-agenda-group-items</span> <span class="org-rainbow-delimiters-depth-2">(</span>item<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">-when-let*</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>new-marker <span class="org-rainbow-delimiters-depth-5">(</span>make-marker<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
@@ -2861,9 +2861,9 @@ Clean up the item display, including the project and file names.
 </div>
 </div>
 
-<div id="outline-container-orgdaad208" class="outline-4">
-<h4 id="orgdaad208">agenda layout</h4>
-<div class="outline-text-4" id="text-orgdaad208">
+<div id="outline-container-orga18148b" class="outline-4">
+<h4 id="orga18148b">agenda layout</h4>
+<div class="outline-text-4" id="text-orga18148b">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">get-agenda-commands</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"a"</span> <span class="org-string">"agenda view"</span>
@@ -2891,17 +2891,17 @@ Clean up the item display, including the project and file names.
 </div>
 </div>
 
-<div id="outline-container-org201baf7" class="outline-3">
-<h3 id="org201baf7">org-agenda</h3>
-<div class="outline-text-3" id="text-org201baf7">
+<div id="outline-container-org404462f" class="outline-3">
+<h3 id="org404462f">org-agenda</h3>
+<div class="outline-text-3" id="text-org404462f">
 <p>
 Aggregate tasks across multiple org files.
 </p>
 </div>
 
-<div id="outline-container-org640d6ca" class="outline-4">
-<h4 id="org640d6ca">super agenda mode</h4>
-<div class="outline-text-4" id="text-org640d6ca">
+<div id="outline-container-orgfa86ae8" class="outline-4">
+<h4 id="orgfa86ae8">super agenda mode</h4>
+<div class="outline-text-4" id="text-orgfa86ae8">
 <p>
 Enhance the agenda with dynamic groups.
 </p>
@@ -2915,9 +2915,9 @@ Enhance the agenda with dynamic groups.
 </div>
 </div>
 </div>
-<div id="outline-container-orgef6f5a5" class="outline-4">
-<h4 id="orgef6f5a5">don't format todo keywords</h4>
-<div class="outline-text-4" id="text-orgef6f5a5">
+<div id="outline-container-org7eac8db" class="outline-4">
+<h4 id="org7eac8db">don't format todo keywords</h4>
+<div class="outline-text-4" id="text-org7eac8db">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-agenda-todo-keyword-format <span class="org-string">""</span>
       org-agenda-prefix-format '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>todo . <span class="org-string">"  %(org-get-todo-state)"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -2926,9 +2926,9 @@ Enhance the agenda with dynamic groups.
 </div>
 </div>
 
-<div id="outline-container-orgd44a60e" class="outline-4">
-<h4 id="orgd44a60e">sorting strategy</h4>
-<div class="outline-text-4" id="text-orgd44a60e">
+<div id="outline-container-org7fef667" class="outline-4">
+<h4 id="org7fef667">sorting strategy</h4>
+<div class="outline-text-4" id="text-org7fef667">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-agenda-sorting-strategy
       '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>agenda habit-down time-up priority-down category-keep<span class="org-rainbow-delimiters-depth-3">)</span>
@@ -2940,9 +2940,9 @@ Enhance the agenda with dynamic groups.
 </div>
 </div>
 
-<div id="outline-container-org4897c65" class="outline-4">
-<h4 id="org4897c65">agenda files</h4>
-<div class="outline-text-4" id="text-org4897c65">
+<div id="outline-container-orgb1f2f7b" class="outline-4">
+<h4 id="orgb1f2f7b">agenda files</h4>
+<div class="outline-text-4" id="text-orgb1f2f7b">
 <p>
 Add files to agenda aggregation.
 </p>
@@ -2956,9 +2956,9 @@ Add files to agenda aggregation.
 </div>
 </div>
 </div>
-<div id="outline-container-org2156ac5" class="outline-3">
-<h3 id="org2156ac5">org-fragtog</h3>
-<div class="outline-text-3" id="text-org2156ac5">
+<div id="outline-container-org25814cc" class="outline-3">
+<h3 id="org25814cc">org-fragtog</h3>
+<div class="outline-text-3" id="text-org25814cc">
 <p>
 Automatically preview LaTex fragments.
 </p>
@@ -2972,9 +2972,9 @@ Automatically preview LaTex fragments.
 </div>
 </div>
 
-<div id="outline-container-orgaf88d41" class="outline-3">
-<h3 id="orgaf88d41">linkmarks</h3>
-<div class="outline-text-3" id="text-orgaf88d41">
+<div id="outline-container-orgf56777c" class="outline-3">
+<h3 id="orgf56777c">linkmarks</h3>
+<div class="outline-text-3" id="text-orgf56777c">
 <p>
 Use org as the bookmark backend.
 </p>
@@ -2987,9 +2987,9 @@ Use org as the bookmark backend.
 </div>
 </div>
 
-<div id="outline-container-orgc5da380" class="outline-3">
-<h3 id="orgc5da380">org-ql</h3>
-<div class="outline-text-3" id="text-orgc5da380">
+<div id="outline-container-org03fab04" class="outline-3">
+<h3 id="org03fab04">org-ql</h3>
+<div class="outline-text-3" id="text-org03fab04">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">org-ql</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -2997,9 +2997,9 @@ Use org as the bookmark backend.
 </div>
 </div>
 
-<div id="outline-container-orge952ebc" class="outline-3">
-<h3 id="orge952ebc">helm-org-walk</h3>
-<div class="outline-text-3" id="text-orge952ebc">
+<div id="outline-container-org6dbad0c" class="outline-3">
+<h3 id="org6dbad0c">helm-org-walk</h3>
+<div class="outline-text-3" id="text-org6dbad0c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">helm-org-walk</span>
   <span class="org-builtin">:straight</span> <span class="org-rainbow-delimiters-depth-2">(</span>helm-org-walk <span class="org-builtin">:type</span> git <span class="org-builtin">:host</span> github <span class="org-builtin">:repo</span> <span class="org-string">"dustinlacewell/helm-org-walk"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -3007,9 +3007,9 @@ Use org as the bookmark backend.
 </div>
 </div>
 </div>
-<div id="outline-container-org0e3fe3f" class="outline-3">
-<h3 id="org0e3fe3f">quiet file-local variables</h3>
-<div class="outline-text-3" id="text-org0e3fe3f">
+<div id="outline-container-orgba2074f" class="outline-3">
+<h3 id="orgba2074f">quiet file-local variables</h3>
+<div class="outline-text-3" id="text-orgba2074f">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> safe-local-variable-values '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>org-confirm-elisp-link-function . nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -3018,9 +3018,9 @@ Use org as the bookmark backend.
 </div>
 </div>
 
-<div id="outline-container-org040a526" class="outline-2">
-<h2 id="org040a526">outshine</h2>
-<div class="outline-text-2" id="text-org040a526">
+<div id="outline-container-orgc660344" class="outline-2">
+<h2 id="orgc660344">outshine</h2>
+<div class="outline-text-2" id="text-orgc660344">
 <p>
 Collapse sections in various modes like elisp.
 </p>
@@ -3035,13 +3035,13 @@ Collapse sections in various modes like elisp.
 </div>
 </div>
 
-<div id="outline-container-orga797aa3" class="outline-2">
-<h2 id="orga797aa3">language support</h2>
-<div class="outline-text-2" id="text-orga797aa3">
+<div id="outline-container-org838b18a" class="outline-2">
+<h2 id="org838b18a">language support</h2>
+<div class="outline-text-2" id="text-org838b18a">
 </div>
-<div id="outline-container-org341e0fb" class="outline-3">
-<h3 id="org341e0fb">flycheck</h3>
-<div class="outline-text-3" id="text-org341e0fb">
+<div id="outline-container-org3c0601e" class="outline-3">
+<h3 id="org3c0601e">flycheck</h3>
+<div class="outline-text-3" id="text-org3c0601e">
 <p>
 Show syntax errors for programming languages.
 </p>
@@ -3053,13 +3053,13 @@ Show syntax errors for programming languages.
 </div>
 </div>
 
-<div id="outline-container-org078206e" class="outline-3">
-<h3 id="org078206e">elisp</h3>
-<div class="outline-text-3" id="text-org078206e">
+<div id="outline-container-orgd1fea96" class="outline-3">
+<h3 id="orgd1fea96">elisp</h3>
+<div class="outline-text-3" id="text-orgd1fea96">
 </div>
-<div id="outline-container-orgff0192a" class="outline-4">
-<h4 id="orgff0192a">macrostep</h4>
-<div class="outline-text-4" id="text-orgff0192a">
+<div id="outline-container-org3f471ae" class="outline-4">
+<h4 id="org3f471ae">macrostep</h4>
+<div class="outline-text-4" id="text-org3f471ae">
 <p>
 Interactively expand macros.
 </p>
@@ -3074,9 +3074,9 @@ Interactively expand macros.
 </div>
 </div>
 
-<div id="outline-container-orgff753e1" class="outline-4">
-<h4 id="orgff753e1">lispy-mode</h4>
-<div class="outline-text-4" id="text-orgff753e1">
+<div id="outline-container-orgecf28d7" class="outline-4">
+<h4 id="orgecf28d7">lispy-mode</h4>
+<div class="outline-text-4" id="text-orgecf28d7">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">lispy</span>
   <span class="org-builtin">:init</span>
@@ -3092,9 +3092,9 @@ Interactively expand macros.
 </div>
 </div>
 
-<div id="outline-container-org459a8bc" class="outline-3">
-<h3 id="org459a8bc">markdown-mode</h3>
-<div class="outline-text-3" id="text-org459a8bc">
+<div id="outline-container-orgf6465b2" class="outline-3">
+<h3 id="orgf6465b2">markdown-mode</h3>
+<div class="outline-text-3" id="text-orgf6465b2">
 <p>
 All the internet uses it.
 </p>
@@ -3111,22 +3111,22 @@ All the internet uses it.
 </div>
 </div>
 
-<div id="outline-container-org9e65ac1" class="outline-3">
-<h3 id="org9e65ac1">python</h3>
-<div class="outline-text-3" id="text-org9e65ac1">
+<div id="outline-container-org550142d" class="outline-3">
+<h3 id="org550142d">python</h3>
+<div class="outline-text-3" id="text-org550142d">
 </div>
-<div id="outline-container-org5ef99a4" class="outline-4">
-<h4 id="org5ef99a4">elpy</h4>
-<div class="outline-text-4" id="text-org5ef99a4">
+<div id="outline-container-org4f580ec" class="outline-4">
+<h4 id="org4f580ec">elpy</h4>
+<div class="outline-text-4" id="text-org4f580ec">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">elpy</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgbd77933" class="outline-4">
-<h4 id="orgbd77933">jedi</h4>
-<div class="outline-text-4" id="text-orgbd77933">
+<div id="outline-container-org58abed4" class="outline-4">
+<h4 id="org58abed4">jedi</h4>
+<div class="outline-text-4" id="text-org58abed4">
 <p>
 <a href="https://github.com/tkf/emacs-jedi">Jedi</a> is an auto-completion server for Python.
 </p>
@@ -3144,13 +3144,13 @@ All the internet uses it.
 </div>
 </div>
 
-<div id="outline-container-org0020d04" class="outline-3">
-<h3 id="org0020d04">javascript</h3>
-<div class="outline-text-3" id="text-org0020d04">
+<div id="outline-container-org1cc3bca" class="outline-3">
+<h3 id="org1cc3bca">javascript</h3>
+<div class="outline-text-3" id="text-org1cc3bca">
 </div>
 <ul class="org-ul">
-<li><a id="orgf1207bd"></a>js2-mode<br />
-<div class="outline-text-5" id="text-orgf1207bd">
+<li><a id="org3a9db56"></a>js2-mode<br />
+<div class="outline-text-5" id="text-org3a9db56">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">js2-mode</span>
   <span class="org-builtin">:config</span>
@@ -3164,8 +3164,8 @@ All the internet uses it.
 </div>
 </div>
 </li>
-<li><a id="orge2ac9a2"></a>xref-js2<br />
-<div class="outline-text-5" id="text-orge2ac9a2">
+<li><a id="orgb436426"></a>xref-js2<br />
+<div class="outline-text-5" id="text-orgb436426">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">xref-js2</span>
   <span class="org-builtin">:config</span>
@@ -3175,8 +3175,8 @@ All the internet uses it.
 </div>
 </div>
 </li>
-<li><a id="orgf7abaa9"></a>js2-refactor<br />
-<div class="outline-text-5" id="text-orgf7abaa9">
+<li><a id="orga4bc9fb"></a>js2-refactor<br />
+<div class="outline-text-5" id="text-orga4bc9fb">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">js2-refactor</span>
   <span class="org-builtin">:config</span>
@@ -3186,8 +3186,8 @@ All the internet uses it.
 </div>
 </div>
 </li>
-<li><a id="orgd383f5c"></a>company-tern<br />
-<div class="outline-text-5" id="text-orgd383f5c">
+<li><a id="orgaee106a"></a>company-tern<br />
+<div class="outline-text-5" id="text-orgaee106a">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">company-tern</span>
   <span class="org-builtin">:config</span>
@@ -3207,9 +3207,9 @@ All the internet uses it.
 </ul>
 </div>
 
-<div id="outline-container-org84058df" class="outline-3">
-<h3 id="org84058df">typescript</h3>
-<div class="outline-text-3" id="text-org84058df">
+<div id="outline-container-org737090c" class="outline-3">
+<h3 id="org737090c">typescript</h3>
+<div class="outline-text-3" id="text-org737090c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">typescript-mode</span>
   <span class="org-builtin">:config</span>
@@ -3218,8 +3218,8 @@ All the internet uses it.
 </div>
 </div>
 <ul class="org-ul">
-<li><a id="org3aa4289"></a>tide<br />
-<div class="outline-text-5" id="text-org3aa4289">
+<li><a id="org9ffca8a"></a>tide<br />
+<div class="outline-text-5" id="text-org9ffca8a">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">setup-tide-mode</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">interactive</span><span class="org-rainbow-delimiters-depth-2">)</span>
@@ -3253,9 +3253,9 @@ All the internet uses it.
 </ul>
 </div>
 
-<div id="outline-container-org3af27d2" class="outline-3">
-<h3 id="org3af27d2">nim</h3>
-<div class="outline-text-3" id="text-org3af27d2">
+<div id="outline-container-org755620e" class="outline-3">
+<h3 id="org755620e">nim</h3>
+<div class="outline-text-3" id="text-org755620e">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">nim-mode</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -3263,9 +3263,9 @@ All the internet uses it.
 </div>
 </div>
 
-<div id="outline-container-org95b8407" class="outline-3">
-<h3 id="org95b8407">yaml</h3>
-<div class="outline-text-3" id="text-org95b8407">
+<div id="outline-container-org37a8a04" class="outline-3">
+<h3 id="org37a8a04">yaml</h3>
+<div class="outline-text-3" id="text-org37a8a04">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">yaml-mode</span>
   <span class="org-builtin">:config</span>
@@ -3275,9 +3275,9 @@ All the internet uses it.
 </div>
 </div>
 
-<div id="outline-container-orga226f05" class="outline-3">
-<h3 id="orga226f05">web-mode</h3>
-<div class="outline-text-3" id="text-orga226f05">
+<div id="outline-container-org42adf5a" class="outline-3">
+<h3 id="org42adf5a">web-mode</h3>
+<div class="outline-text-3" id="text-org42adf5a">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">web-mode</span>
   <span class="org-builtin">:demand</span> t
@@ -3290,9 +3290,9 @@ All the internet uses it.
 </div>
 </div>
 
-<div id="outline-container-org1f9f721" class="outline-3">
-<h3 id="org1f9f721">go-mode</h3>
-<div class="outline-text-3" id="text-org1f9f721">
+<div id="outline-container-org1f8ef1c" class="outline-3">
+<h3 id="org1f8ef1c">go-mode</h3>
+<div class="outline-text-3" id="text-org1f8ef1c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">go-mode</span>
   <span class="org-builtin">:config</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">:hook</span> go-mode
@@ -3304,9 +3304,9 @@ All the internet uses it.
 </div>
 </div>
 
-<div id="outline-container-orgbbffec7" class="outline-3">
-<h3 id="orgbbffec7">csharp</h3>
-<div class="outline-text-3" id="text-orgbbffec7">
+<div id="outline-container-orgc85dc68" class="outline-3">
+<h3 id="orgc85dc68">csharp</h3>
+<div class="outline-text-3" id="text-orgc85dc68">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">csharp-mode</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
@@ -3325,9 +3325,9 @@ All the internet uses it.
 </div>
 </div>
 </div>
-<div id="outline-container-org8d2eb80" class="outline-3">
-<h3 id="org8d2eb80">fsharp</h3>
-<div class="outline-text-3" id="text-org8d2eb80">
+<div id="outline-container-org610abe6" class="outline-3">
+<h3 id="org610abe6">fsharp</h3>
+<div class="outline-text-3" id="text-org610abe6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">fsharp-mode</span>
   <span class="org-builtin">:config</span>
@@ -3339,13 +3339,13 @@ All the internet uses it.
 </div>
 </div>
 
-<div id="outline-container-org56db06b" class="outline-2">
-<h2 id="org56db06b">tooling support</h2>
-<div class="outline-text-2" id="text-org56db06b">
+<div id="outline-container-org5af6e56" class="outline-2">
+<h2 id="org5af6e56">tooling support</h2>
+<div class="outline-text-2" id="text-org5af6e56">
 </div>
-<div id="outline-container-org14654e1" class="outline-3">
-<h3 id="org14654e1">docker</h3>
-<div class="outline-text-3" id="text-org14654e1">
+<div id="outline-container-org0020d68" class="outline-3">
+<h3 id="org0020d68">docker</h3>
+<div class="outline-text-3" id="text-org0020d68">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">dockerfile-mode</span>
   <span class="org-builtin">:mode</span> <span class="org-string">"Dockerfile\\'"</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -3354,9 +3354,9 @@ All the internet uses it.
 </div>
 </div>
 
-<div id="outline-container-org73d4326" class="outline-3">
-<h3 id="org73d4326">nix</h3>
-<div class="outline-text-3" id="text-org73d4326">
+<div id="outline-container-orgc2dd6e7" class="outline-3">
+<h3 id="orgc2dd6e7">nix</h3>
+<div class="outline-text-3" id="text-orgc2dd6e7">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">nix-mode</span>
   <span class="org-builtin">:straight</span> <span class="org-rainbow-delimiters-depth-2">(</span>nix-mode <span class="org-builtin">:type</span> git <span class="org-builtin">:host</span> github <span class="org-builtin">:repo</span> <span class="org-string">"NixOS/nix-mode"</span><span class="org-rainbow-delimiters-depth-2">)</span>
@@ -3366,9 +3366,9 @@ All the internet uses it.
 </pre>
 </div>
 </div>
-<div id="outline-container-orgef6cecc" class="outline-4">
-<h4 id="orgef6cecc">nix-sandbox</h4>
-<div class="outline-text-4" id="text-orgef6cecc">
+<div id="outline-container-org8e297dd" class="outline-4">
+<h4 id="org8e297dd">nix-sandbox</h4>
+<div class="outline-text-4" id="text-org8e297dd">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">nix-sandbox</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -3378,13 +3378,13 @@ All the internet uses it.
 </div>
 </div>
 
-<div id="outline-container-orgc79db14" class="outline-2">
-<h2 id="orgc79db14">elfeed</h2>
-<div class="outline-text-2" id="text-orgc79db14">
+<div id="outline-container-org30e7112" class="outline-2">
+<h2 id="org30e7112">elfeed</h2>
+<div class="outline-text-2" id="text-org30e7112">
 </div>
-<div id="outline-container-orgb1fd5a2" class="outline-3">
-<h3 id="orgb1fd5a2">boilerplate</h3>
-<div class="outline-text-3" id="text-orgb1fd5a2">
+<div id="outline-container-org330428a" class="outline-3">
+<h3 id="org330428a">boilerplate</h3>
+<div class="outline-text-3" id="text-org330428a">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">advice-unadvice</span> <span class="org-rainbow-delimiters-depth-2">(</span>sym<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-doc">"Remove all advices from symbol SYM."</span>
@@ -3412,9 +3412,9 @@ All the internet uses it.
 </div>
 </div>
 
-<div id="outline-container-orgc599dbe" class="outline-3">
-<h3 id="orgc599dbe">setup</h3>
-<div class="outline-text-3" id="text-orgc599dbe">
+<div id="outline-container-orgdb58f36" class="outline-3">
+<h3 id="orgdb58f36">setup</h3>
+<div class="outline-text-3" id="text-orgdb58f36">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">elfeed</span>
   <span class="org-builtin">:bind</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"C-x w"</span> . elfeed-show<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
@@ -3434,17 +3434,17 @@ All the internet uses it.
 </div>
 </div>
 
-<div id="outline-container-orgab70b57" class="outline-2">
-<h2 id="orgab70b57">misc</h2>
-<div class="outline-text-2" id="text-orgab70b57">
+<div id="outline-container-org27fed7a" class="outline-2">
+<h2 id="org27fed7a">misc</h2>
+<div class="outline-text-2" id="text-org27fed7a">
 <p>
 Miscellaneous packages that don't really need their own section.
 </p>
 </div>
 
-<div id="outline-container-orgd198953" class="outline-3">
-<h3 id="orgd198953">htmlize</h3>
-<div class="outline-text-3" id="text-orgd198953">
+<div id="outline-container-orgc488fdb" class="outline-3">
+<h3 id="orgc488fdb">htmlize</h3>
+<div class="outline-text-3" id="text-orgc488fdb">
 <p>
 Allows org codeblocks to be syntax highlighted on html export.
 </p>
@@ -3456,9 +3456,9 @@ Allows org codeblocks to be syntax highlighted on html export.
 </div>
 </div>
 
-<div id="outline-container-orgc163ef3" class="outline-3">
-<h3 id="orgc163ef3">emacsql</h3>
-<div class="outline-text-3" id="text-orgc163ef3">
+<div id="outline-container-org319ac1d" class="outline-3">
+<h3 id="org319ac1d">emacsql</h3>
+<div class="outline-text-3" id="text-org319ac1d">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">emacsql-sqlite</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -3466,9 +3466,9 @@ Allows org codeblocks to be syntax highlighted on html export.
 </div>
 </div>
 
-<div id="outline-container-orgd972681" class="outline-3">
-<h3 id="orgd972681">gist</h3>
-<div class="outline-text-3" id="text-orgd972681">
+<div id="outline-container-org6210a74" class="outline-3">
+<h3 id="org6210a74">gist</h3>
+<div class="outline-text-3" id="text-org6210a74">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">gist</span>
   <span class="org-builtin">:straight</span> <span class="org-rainbow-delimiters-depth-2">(</span>gist <span class="org-builtin">:type</span> git <span class="org-builtin">:host</span> github <span class="org-builtin">:repo</span> <span class="org-string">"defunkt/gist.el"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -3477,9 +3477,9 @@ Allows org codeblocks to be syntax highlighted on html export.
 </div>
 </div>
 
-<div id="outline-container-orgfd9d551" class="outline-3">
-<h3 id="orgfd9d551">poker.el</h3>
-<div class="outline-text-3" id="text-orgfd9d551">
+<div id="outline-container-org925d26d" class="outline-3">
+<h3 id="org925d26d">poker.el</h3>
+<div class="outline-text-3" id="text-org925d26d">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">poker</span>
   <span class="org-builtin">:straight</span> <span class="org-rainbow-delimiters-depth-2">(</span>poker <span class="org-builtin">:type</span> git <span class="org-builtin">:host</span> github <span class="org-builtin">:repo</span> <span class="org-string">"mlang/poker.el"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -3488,9 +3488,9 @@ Allows org codeblocks to be syntax highlighted on html export.
 </div>
 </div>
 
-<div id="outline-container-org0a2bf36" class="outline-3">
-<h3 id="org0a2bf36">decide-mode</h3>
-<div class="outline-text-3" id="text-org0a2bf36">
+<div id="outline-container-org01bd06f" class="outline-3">
+<h3 id="org01bd06f">decide-mode</h3>
+<div class="outline-text-3" id="text-org01bd06f">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">decide</span>
   <span class="org-builtin">:straight</span> <span class="org-rainbow-delimiters-depth-2">(</span>decide <span class="org-builtin">:type</span> git <span class="org-builtin">:host</span> github <span class="org-builtin">:repo</span> <span class="org-string">"lifelike/decide-mode"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -3499,9 +3499,9 @@ Allows org codeblocks to be syntax highlighted on html export.
 </div>
 </div>
 
-<div id="outline-container-org0626c2a" class="outline-3">
-<h3 id="org0626c2a">lojban</h3>
-<div class="outline-text-3" id="text-org0626c2a">
+<div id="outline-container-org26e316c" class="outline-3">
+<h3 id="org26e316c">lojban</h3>
+<div class="outline-text-3" id="text-org26e316c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">(eval `(use-package sutysisku</span>
 <span class="org-comment-delimiter">;;    </span><span class="org-comment">:demand t</span>
@@ -3512,17 +3512,17 @@ Allows org codeblocks to be syntax highlighted on html export.
 </div>
 </div>
 
-<div id="outline-container-orgeaa717c" class="outline-2">
-<h2 id="orgeaa717c">hydra</h2>
-<div class="outline-text-2" id="text-orgeaa717c">
+<div id="outline-container-orgfc39f6d" class="outline-2">
+<h2 id="orgfc39f6d">hydra</h2>
+<div class="outline-text-2" id="text-orgfc39f6d">
 <p>
 <a href="https://github.com/abo-abo/hydra">Hydra</a> provides customizable interactive command palettes.
 </p>
 </div>
 
-<div id="outline-container-orga7f17c7" class="outline-3">
-<h3 id="orga7f17c7">pretty-hydra</h3>
-<div class="outline-text-3" id="text-orga7f17c7">
+<div id="outline-container-org9c57235" class="outline-3">
+<h3 id="org9c57235">pretty-hydra</h3>
+<div class="outline-text-3" id="text-org9c57235">
 <p>
 <a href="https://github.com/jerrypnz/major-mode-hydra.el#pretty-hydra">Pretty-hydra</a> provides a macro that makes it easy to get good looking hydras.
 </p>
@@ -3539,9 +3539,9 @@ Allows org codeblocks to be syntax highlighted on html export.
 </div>
 </div>
 
-<div id="outline-container-orgd5203f6" class="outline-3">
-<h3 id="orgd5203f6">major-mode-hydra</h3>
-<div class="outline-text-3" id="text-orgd5203f6">
+<div id="outline-container-org7bb2cd4" class="outline-3">
+<h3 id="org7bb2cd4">major-mode-hydra</h3>
+<div class="outline-text-3" id="text-org7bb2cd4">
 <p>
 <a href="https://github.com/jerrypnz/major-mode-hydra.el">Major-mode-hydra</a> associates hydras with major-modes.
 </p>
@@ -3557,9 +3557,9 @@ Allows org codeblocks to be syntax highlighted on html export.
 </div>
 </div>
 
-<div id="outline-container-orge17d330" class="outline-3">
-<h3 id="orge17d330">hera</h3>
-<div class="outline-text-3" id="text-orge17d330">
+<div id="outline-container-org5e927ea" class="outline-3">
+<h3 id="org5e927ea">hera</h3>
+<div class="outline-text-3" id="text-org5e927ea">
 <p>
 <a href="https://github.com/dustinlacewell/hera">Hera</a> lets hydras form a stack.
 </p>
@@ -3573,21 +3573,21 @@ Allows org codeblocks to be syntax highlighted on html export.
 </div>
 </div>
 
-<div id="outline-container-orga8feeb7" class="outline-3">
-<h3 id="orga8feeb7">:hydra</h3>
-<div class="outline-text-3" id="text-orga8feeb7">
+<div id="outline-container-org8f0d7dc" class="outline-3">
+<h3 id="org8f0d7dc">:hydra</h3>
+<div class="outline-text-3" id="text-org8f0d7dc">
 <p>
 Macro for defining Hydras.
 </p>
 </div>
 
-<div id="outline-container-org39d48e7" class="outline-4">
-<h4 id="org39d48e7">boilerplate</h4>
-<div class="outline-text-4" id="text-org39d48e7">
+<div id="outline-container-org8622134" class="outline-4">
+<h4 id="org8622134">boilerplate</h4>
+<div class="outline-text-4" id="text-org8622134">
 </div>
 <ul class="org-ul">
-<li><a id="org3d318ba"></a>inject-hint<br />
-<div class="outline-text-5" id="text-org3d318ba">
+<li><a id="orga348d46"></a>inject-hint<br />
+<div class="outline-text-5" id="text-orga348d46">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">:hydra/inject-hint</span> <span class="org-rainbow-delimiters-depth-2">(</span>symbol hint<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">-let*</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>name <span class="org-rainbow-delimiters-depth-5">(</span>symbol-name symbol<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
@@ -3602,8 +3602,8 @@ Macro for defining Hydras.
 </div>
 </li>
 
-<li><a id="org4c8e176"></a>make-head-hint<br />
-<div class="outline-text-5" id="text-org4c8e176">
+<li><a id="orge56e9a7"></a>make-head-hint<br />
+<div class="outline-text-5" id="text-orge56e9a7">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">:hydra/make-head-hint</span> <span class="org-rainbow-delimiters-depth-2">(</span>head default-color<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">-let</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-delimiters-depth-5">(</span>key _ hint . rest<span class="org-rainbow-delimiters-depth-5">)</span> head<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
@@ -3618,8 +3618,8 @@ Macro for defining Hydras.
 </div>
 </li>
 
-<li><a id="org9bda6f4"></a>make-hint<br />
-<div class="outline-text-5" id="text-org9bda6f4">
+<li><a id="org11539af"></a>make-hint<br />
+<div class="outline-text-5" id="text-org11539af">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">:hydra/make-hint</span> <span class="org-rainbow-delimiters-depth-2">(</span>heads default-color<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>string-join
@@ -3632,8 +3632,8 @@ Macro for defining Hydras.
 </div>
 </li>
 
-<li><a id="org0204647"></a>clear-hint<br />
-<div class="outline-text-5" id="text-org0204647">
+<li><a id="org67e86a7"></a>clear-hint<br />
+<div class="outline-text-5" id="text-org67e86a7">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">:hydra/clear-hint</span> <span class="org-rainbow-delimiters-depth-2">(</span>head<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">-let*</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-delimiters-depth-5">(</span>key form _ . rest<span class="org-rainbow-delimiters-depth-5">)</span> head<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
@@ -3643,8 +3643,8 @@ Macro for defining Hydras.
 </div>
 </li>
 
-<li><a id="org79e79c2"></a>add-exit-head<br />
-<div class="outline-text-5" id="text-org79e79c2">
+<li><a id="orgbb5d5f0"></a>add-exit-head<br />
+<div class="outline-text-5" id="text-orgbb5d5f0">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">:hydra/add-exit-head</span> <span class="org-rainbow-delimiters-depth-2">(</span>heads<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>exit-head '<span class="org-rainbow-delimiters-depth-5">(</span><span class="org-string">"SPC"</span> <span class="org-rainbow-delimiters-depth-6">(</span>hera-pop<span class="org-rainbow-delimiters-depth-6">)</span> <span class="org-string">"to exit"</span> <span class="org-builtin">:color</span> blue<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
@@ -3654,8 +3654,8 @@ Macro for defining Hydras.
 </div>
 </li>
 
-<li><a id="orgc82b788"></a>add-heads<br />
-<div class="outline-text-5" id="text-orgc82b788">
+<li><a id="orgc3f35f4"></a>add-heads<br />
+<div class="outline-text-5" id="text-orgc3f35f4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">:hydra/add-heads</span> <span class="org-rainbow-delimiters-depth-2">(</span>columns extra-heads<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">let*</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>cell <span class="org-rainbow-delimiters-depth-5">(</span>nthcdr 1 columns<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
@@ -3670,9 +3670,9 @@ Macro for defining Hydras.
 </ul>
 </div>
 
-<div id="outline-container-org35417ab" class="outline-4">
-<h4 id="org35417ab">macro</h4>
-<div class="outline-text-4" id="text-org35417ab">
+<div id="outline-container-org34053d0" class="outline-4">
+<h4 id="org34053d0">macro</h4>
+<div class="outline-text-4" id="text-org34053d0">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defmacro</span> <span class="org-function-name">:hydra</span> <span class="org-rainbow-delimiters-depth-2">(</span>name body columns <span class="org-type">&amp;optional</span> extra-heads<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">declare</span> <span class="org-rainbow-delimiters-depth-3">(</span>indent defun<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
@@ -3699,9 +3699,9 @@ Macro for defining Hydras.
 </div>
 </div>
 
-<div id="outline-container-orgd038dbf" class="outline-4">
-<h4 id="orgd038dbf">tests</h4>
-<div class="outline-text-4" id="text-orgd038dbf">
+<div id="outline-container-orgaf8ac07" class="outline-4">
+<h4 id="orgaf8ac07">tests</h4>
+<div class="outline-text-4" id="text-orgaf8ac07">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">(macroexpand-all `(:hydra hydra-test (:color red :major-mode fundamental-mode)</span>
 <span class="org-comment-delimiter">;;    </span><span class="org-comment">("First"</span>
@@ -3726,13 +3726,13 @@ Macro for defining Hydras.
 </div>
 </div>
 
-<div id="outline-container-orgc8e5dc2" class="outline-2">
-<h2 id="orgc8e5dc2">default hydra</h2>
-<div class="outline-text-2" id="text-orgc8e5dc2">
+<div id="outline-container-org2fc418e" class="outline-2">
+<h2 id="org2fc418e">default hydra</h2>
+<div class="outline-text-2" id="text-org2fc418e">
 </div>
-<div id="outline-container-org066e10a" class="outline-3">
-<h3 id="org066e10a">hydra-bookmarks</h3>
-<div class="outline-text-3" id="text-org066e10a">
+<div id="outline-container-orga6f39b1" class="outline-3">
+<h3 id="orga6f39b1">hydra-bookmarks</h3>
+<div class="outline-text-3" id="text-orga6f39b1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">:hydra</span> hydra-bookmarks <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">:color</span> blue<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"Bookmarks"</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">"n"</span> <span class="org-rainbow-delimiters-depth-5">(</span>linkmarks-capture<span class="org-rainbow-delimiters-depth-5">)</span> <span class="org-string">"new"</span><span class="org-rainbow-delimiters-depth-4">)</span>
@@ -3742,9 +3742,9 @@ Macro for defining Hydras.
 </div>
 </div>
 </div>
-<div id="outline-container-orgc6ed4c0" class="outline-3">
-<h3 id="orgc6ed4c0">hydra-help</h3>
-<div class="outline-text-3" id="text-orgc6ed4c0">
+<div id="outline-container-orgc9cb4ad" class="outline-3">
+<h3 id="orgc9cb4ad">hydra-help</h3>
+<div class="outline-text-3" id="text-orgc9cb4ad">
 <p>
 Many of the Emacs help facilities at your fingertips!
 </p>
@@ -3781,9 +3781,9 @@ Many of the Emacs help facilities at your fingertips!
 </div>
 </div>
 
-<div id="outline-container-orgd0a2c88" class="outline-3">
-<h3 id="orgd0a2c88">hydra-mark</h3>
-<div class="outline-text-3" id="text-orgd0a2c88">
+<div id="outline-container-orgd5d17f6" class="outline-3">
+<h3 id="orgd5d17f6">hydra-mark</h3>
+<div class="outline-text-3" id="text-orgd5d17f6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">unpop-to-mark-command</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-doc">"Unpop off mark ring. Does nothing if mark ring is empty."</span>
@@ -3810,9 +3810,9 @@ Many of the Emacs help facilities at your fingertips!
 </div>
 </div>
 
-<div id="outline-container-org4abbcf3" class="outline-3">
-<h3 id="org4abbcf3">hydra-registers</h3>
-<div class="outline-text-3" id="text-org4abbcf3">
+<div id="outline-container-orgf6aefe6" class="outline-3">
+<h3 id="orgf6aefe6">hydra-registers</h3>
+<div class="outline-text-3" id="text-orgf6aefe6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">:hydra</span> hydra-registers <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">:color</span> pink<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"Point"</span>
@@ -3834,9 +3834,9 @@ Many of the Emacs help facilities at your fingertips!
 </div>
 </div>
 
-<div id="outline-container-orgc4816d8" class="outline-3">
-<h3 id="orgc4816d8">hydra-window</h3>
-<div class="outline-text-3" id="text-orgc4816d8">
+<div id="outline-container-orgf203d25" class="outline-3">
+<h3 id="orgf203d25">hydra-window</h3>
+<div class="outline-text-3" id="text-orgf203d25">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">ace-window</span><span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-rainbow-delimiters-depth-1">(</span>winner-mode 1<span class="org-rainbow-delimiters-depth-1">)</span>
@@ -3864,9 +3864,9 @@ Many of the Emacs help facilities at your fingertips!
 </div>
 </div>
 
-<div id="outline-container-org940e660" class="outline-3">
-<h3 id="org940e660">hydra-zoom</h3>
-<div class="outline-text-3" id="text-org940e660">
+<div id="outline-container-orgb84511a" class="outline-3">
+<h3 id="orgb84511a">hydra-zoom</h3>
+<div class="outline-text-3" id="text-orgb84511a">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">:hydra</span> hydra-zoom <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">:color</span> red<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"Buffer"</span>
@@ -3881,9 +3881,9 @@ Many of the Emacs help facilities at your fingertips!
 </div>
 </div>
 
-<div id="outline-container-orgdec5ac8" class="outline-3">
-<h3 id="orgdec5ac8">hydra-nix</h3>
-<div class="outline-text-3" id="text-orgdec5ac8">
+<div id="outline-container-org9c7ce64" class="outline-3">
+<h3 id="org9c7ce64">hydra-nix</h3>
+<div class="outline-text-3" id="text-org9c7ce64">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">:hydra</span> hydra-nix <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">:color</span> blue<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"Nix"</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">"p"</span> <span class="org-rainbow-delimiters-depth-5">(</span><span class="org-keyword">progn</span> <span class="org-rainbow-delimiters-depth-6">(</span>find-file <span class="org-rainbow-delimiters-depth-7">(</span>my/get-org-file <span class="org-string">"nixpkgs.org"</span><span class="org-rainbow-delimiters-depth-7">)</span><span class="org-rainbow-delimiters-depth-6">)</span>
@@ -3897,9 +3897,9 @@ Many of the Emacs help facilities at your fingertips!
 </div>
 </div>
 
-<div id="outline-container-org64804e1" class="outline-3">
-<h3 id="org64804e1">hydra-docs</h3>
-<div class="outline-text-3" id="text-org64804e1">
+<div id="outline-container-orga717f11" class="outline-3">
+<h3 id="orga717f11">hydra-docs</h3>
+<div class="outline-text-3" id="text-orga717f11">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">:hydra</span> hydra-docs <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">:color</span> blue<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"Docs"</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">"n"</span> <span class="org-rainbow-delimiters-depth-5">(</span>hera-push 'hydra-nix/body<span class="org-rainbow-delimiters-depth-5">)</span> <span class="org-string">"Nix"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -3907,9 +3907,9 @@ Many of the Emacs help facilities at your fingertips!
 </div>
 </div>
 </div>
-<div id="outline-container-orgc8c4bbe" class="outline-3">
-<h3 id="orgc8c4bbe">hydra-notes</h3>
-<div class="outline-text-3" id="text-orgc8c4bbe">
+<div id="outline-container-orgc0f78fa" class="outline-3">
+<h3 id="orgc0f78fa">hydra-notes</h3>
+<div class="outline-text-3" id="text-orgc0f78fa">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">require</span> '<span class="org-constant">helm-org-walk</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
@@ -3925,9 +3925,9 @@ Many of the Emacs help facilities at your fingertips!
 </div>
 </div>
 
-<div id="outline-container-org97d40f0" class="outline-3">
-<h3 id="org97d40f0">hydra-gist</h3>
-<div class="outline-text-3" id="text-org97d40f0">
+<div id="outline-container-org035ba68" class="outline-3">
+<h3 id="org035ba68">hydra-gist</h3>
+<div class="outline-text-3" id="text-org035ba68">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">:hydra</span> hydra-gist <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">:color</span> blue<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"Gist"</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">"p"</span> <span class="org-rainbow-delimiters-depth-5">(</span>gist-region-or-buffer<span class="org-rainbow-delimiters-depth-5">)</span> <span class="org-string">"public"</span><span class="org-rainbow-delimiters-depth-4">)</span>
@@ -3938,9 +3938,9 @@ Many of the Emacs help facilities at your fingertips!
 </div>
 </div>
 
-<div id="outline-container-orgf8e5f9e" class="outline-3">
-<h3 id="orgf8e5f9e">hydra-projectile</h3>
-<div class="outline-text-3" id="text-orgf8e5f9e">
+<div id="outline-container-org3d3c1a8" class="outline-3">
+<h3 id="org3d3c1a8">hydra-projectile</h3>
+<div class="outline-text-3" id="text-org3d3c1a8">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">:hydra</span> hydra-projectile <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">:color</span> blue<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"Open"</span>
@@ -3962,9 +3962,9 @@ Many of the Emacs help facilities at your fingertips!
 </div>
 </div>
 
-<div id="outline-container-org05f47bd" class="outline-3">
-<h3 id="org05f47bd">hydra-default</h3>
-<div class="outline-text-3" id="text-org05f47bd">
+<div id="outline-container-orgcb9d5cd" class="outline-3">
+<h3 id="orgcb9d5cd">hydra-default</h3>
+<div class="outline-text-3" id="text-orgcb9d5cd">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">:hydra</span> hydra-default <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">:color</span> blue<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"Open"</span>
@@ -3987,17 +3987,17 @@ Many of the Emacs help facilities at your fingertips!
 </div>
 </div>
 
-<div id="outline-container-org9039b2d" class="outline-2">
-<h2 id="org9039b2d">modal hydras</h2>
-<div class="outline-text-2" id="text-org9039b2d">
+<div id="outline-container-org9e3229c" class="outline-2">
+<h2 id="org9e3229c">modal hydras</h2>
+<div class="outline-text-2" id="text-org9e3229c">
 </div>
-<div id="outline-container-org1ff08bf" class="outline-3">
-<h3 id="org1ff08bf">boilerplate</h3>
-<div class="outline-text-3" id="text-org1ff08bf">
+<div id="outline-container-org559c889" class="outline-3">
+<h3 id="org559c889">boilerplate</h3>
+<div class="outline-text-3" id="text-org559c889">
 </div>
-<div id="outline-container-orge1ce605" class="outline-4">
-<h4 id="orge1ce605">hydra-dwim</h4>
-<div class="outline-text-4" id="text-orge1ce605">
+<div id="outline-container-org87de1dd" class="outline-4">
+<h4 id="org87de1dd">hydra-dwim</h4>
+<div class="outline-text-4" id="text-org87de1dd">
 <p>
 Open hydra for current major mode if one exists, otherwise the default hydra.
 </p>
@@ -4019,9 +4019,9 @@ Open hydra for current major mode if one exists, otherwise the default hydra.
 </div>
 </div>
 </div>
-<div id="outline-container-orge89a90f" class="outline-3">
-<h3 id="orge89a90f">hydra-yank-pop</h3>
-<div class="outline-text-3" id="text-orge89a90f">
+<div id="outline-container-org41f9702" class="outline-3">
+<h3 id="org41f9702">hydra-yank-pop</h3>
+<div class="outline-text-3" id="text-org41f9702">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">:hydra</span> hydra-yank-pop <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">:color</span> red<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"Yank/Pop"</span>
@@ -4037,9 +4037,9 @@ Open hydra for current major mode if one exists, otherwise the default hydra.
 </div>
 </div>
 
-<div id="outline-container-org46b57ad" class="outline-3">
-<h3 id="org46b57ad">hydra-elisp</h3>
-<div class="outline-text-3" id="text-org46b57ad">
+<div id="outline-container-orgcf15f03" class="outline-3">
+<h3 id="orgcf15f03">hydra-elisp</h3>
+<div class="outline-text-3" id="text-orgcf15f03">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">:hydra</span> hydra-elisp <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">:color</span> blue <span class="org-builtin">:major-mode</span> emacs-lisp-mode<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"Execute"</span>
@@ -4056,9 +4056,9 @@ Open hydra for current major mode if one exists, otherwise the default hydra.
 </div>
 </div>
 
-<div id="outline-container-org2189954" class="outline-3">
-<h3 id="org2189954">hydra-treemacs</h3>
-<div class="outline-text-3" id="text-org2189954">
+<div id="outline-container-org04b120c" class="outline-3">
+<h3 id="org04b120c">hydra-treemacs</h3>
+<div class="outline-text-3" id="text-org04b120c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">:hydra</span> hydra-treemacs <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">:color</span> red<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"Workspace"</span>
@@ -4070,13 +4070,13 @@ Open hydra for current major mode if one exists, otherwise the default hydra.
 </div>
 </div>
 </div>
-<div id="outline-container-org9c85a62" class="outline-3">
-<h3 id="org9c85a62">hydra-org</h3>
-<div class="outline-text-3" id="text-org9c85a62">
+<div id="outline-container-org530401c" class="outline-3">
+<h3 id="org530401c">hydra-org</h3>
+<div class="outline-text-3" id="text-org530401c">
 </div>
-<div id="outline-container-orgc2d0954" class="outline-4">
-<h4 id="orgc2d0954">hydra-org-goto-first-sibling</h4>
-<div class="outline-text-4" id="text-orgc2d0954">
+<div id="outline-container-org2b3e0c3" class="outline-4">
+<h4 id="org2b3e0c3">hydra-org-goto-first-sibling</h4>
+<div class="outline-text-4" id="text-org2b3e0c3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">hydra-org-goto-first-sibling</span> <span class="org-rainbow-delimiters-depth-2">()</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">interactive</span><span class="org-rainbow-delimiters-depth-2">)</span>
        <span class="org-rainbow-delimiters-depth-2">(</span>org-backward-heading-same-level 99999999<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -4085,9 +4085,9 @@ Open hydra for current major mode if one exists, otherwise the default hydra.
 </div>
 </div>
 
-<div id="outline-container-org1df022d" class="outline-4">
-<h4 id="org1df022d">hydra-org-goto-last-sibling</h4>
-<div class="outline-text-4" id="text-org1df022d">
+<div id="outline-container-orgc4c1fec" class="outline-4">
+<h4 id="orgc4c1fec">hydra-org-goto-last-sibling</h4>
+<div class="outline-text-4" id="text-orgc4c1fec">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">hydra-org-goto-last-sibling</span> <span class="org-rainbow-delimiters-depth-2">()</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">interactive</span><span class="org-rainbow-delimiters-depth-2">)</span>
        <span class="org-rainbow-delimiters-depth-2">(</span>org-forward-heading-same-level 99999999<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -4096,9 +4096,9 @@ Open hydra for current major mode if one exists, otherwise the default hydra.
 </div>
 </div>
 
-<div id="outline-container-orgcd827e2" class="outline-4">
-<h4 id="orgcd827e2">hydra-org-parent-level</h4>
-<div class="outline-text-4" id="text-orgcd827e2">
+<div id="outline-container-orgf2784a6" class="outline-4">
+<h4 id="orgf2784a6">hydra-org-parent-level</h4>
+<div class="outline-text-4" id="text-orgf2784a6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">hydra-org-parent-level</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">interactive</span><span class="org-rainbow-delimiters-depth-2">)</span>
@@ -4121,9 +4121,9 @@ Open hydra for current major mode if one exists, otherwise the default hydra.
 </div>
 </div>
 
-<div id="outline-container-org2681458" class="outline-4">
-<h4 id="org2681458">hydra-org-child-level</h4>
-<div class="outline-text-4" id="text-org2681458">
+<div id="outline-container-orgfcea14d" class="outline-4">
+<h4 id="orgfcea14d">hydra-org-child-level</h4>
+<div class="outline-text-4" id="text-orgfcea14d">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">hydra-org-child-level</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">interactive</span><span class="org-rainbow-delimiters-depth-2">)</span>
@@ -4139,9 +4139,9 @@ Open hydra for current major mode if one exists, otherwise the default hydra.
 </div>
 </div>
 
-<div id="outline-container-org62db2e1" class="outline-4">
-<h4 id="org62db2e1">hydra-org</h4>
-<div class="outline-text-4" id="text-org62db2e1">
+<div id="outline-container-org170353c" class="outline-4">
+<h4 id="org170353c">hydra-org</h4>
+<div class="outline-text-4" id="text-org170353c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">:hydra</span> hydra-org <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-builtin">:color</span> red <span class="org-builtin">:major-mode</span> org-mode<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"Shift"</span>
@@ -4173,9 +4173,9 @@ Open hydra for current major mode if one exists, otherwise the default hydra.
 </div>
 </div>
 
-<div id="outline-container-org24fa01a" class="outline-3">
-<h3 id="org24fa01a">hydra-js</h3>
-<div class="outline-text-3" id="text-org24fa01a">
+<div id="outline-container-org891a0c4" class="outline-3">
+<h3 id="org891a0c4">hydra-js</h3>
+<div class="outline-text-3" id="text-org891a0c4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">js2r-toggle-async</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">interactive</span><span class="org-rainbow-delimiters-depth-2">)</span>
@@ -4214,13 +4214,13 @@ Open hydra for current major mode if one exists, otherwise the default hydra.
 </div>
 </div>
 
-<div id="outline-container-org3e5a9a1" class="outline-2">
-<h2 id="org3e5a9a1">linux configuration</h2>
-<div class="outline-text-2" id="text-org3e5a9a1">
+<div id="outline-container-org840e2c8" class="outline-2">
+<h2 id="org840e2c8">linux configuration</h2>
+<div class="outline-text-2" id="text-org840e2c8">
 </div>
-<div id="outline-container-orgb23a384" class="outline-3">
-<h3 id="orgb23a384">preamble</h3>
-<div class="outline-text-3" id="text-orgb23a384">
+<div id="outline-container-orgeeea78b" class="outline-3">
+<h3 id="orgeeea78b">preamble</h3>
+<div class="outline-text-3" id="text-orgeeea78b">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-2">(</span>string-equal system-type <span class="org-string">"gnu/linux"</span><span class="org-rainbow-delimiters-depth-2">)</span>
 </pre>
@@ -4228,9 +4228,9 @@ Open hydra for current major mode if one exists, otherwise the default hydra.
 </div>
 </div>
 
-<div id="outline-container-orgcedbce9" class="outline-3">
-<h3 id="orgcedbce9">nixos</h3>
-<div class="outline-text-3" id="text-orgcedbce9">
+<div id="outline-container-org92117c0" class="outline-3">
+<h3 id="org92117c0">nixos</h3>
+<div class="outline-text-3" id="text-org92117c0">
 <p>
 NixOS' ZSH module drops some PATH modification stuff in <code>~/.config/zsh/.zshrc</code>
 which causes the following message on startup:
@@ -4257,9 +4257,9 @@ The following line prevents the warning above:
 </div>
 </div>
 
-<div id="outline-container-orgc5ff85e" class="outline-3">
-<h3 id="orgc5ff85e">theme</h3>
-<div class="outline-text-3" id="text-orgc5ff85e">
+<div id="outline-container-org8f5f902" class="outline-3">
+<h3 id="org8f5f902">theme</h3>
+<div class="outline-text-3" id="text-org8f5f902">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>load-file <span class="org-string">"~/.config/wpg/templates/theme.el"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-rainbow-delimiters-depth-1">(</span>enable-theme 'xresources<span class="org-rainbow-delimiters-depth-1">)</span>
@@ -4267,9 +4267,9 @@ The following line prevents the warning above:
 </div>
 </div>
 
-<div id="outline-container-orgad856ee" class="outline-4">
-<h4 id="orgad856ee">automatically update theme</h4>
-<div class="outline-text-4" id="text-orgad856ee">
+<div id="outline-container-org655b7f3" class="outline-4">
+<h4 id="org655b7f3">automatically update theme</h4>
+<div class="outline-text-4" id="text-org655b7f3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">theme-callback</span> <span class="org-rainbow-delimiters-depth-2">(</span>event<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>load-file <span class="org-string">"~/.config/wpg/templates/theme.el"</span><span class="org-rainbow-delimiters-depth-2">)</span>
@@ -4284,9 +4284,9 @@ The following line prevents the warning above:
 </div>
 </div>
 
-<div id="outline-container-orgfffba06" class="outline-4">
-<h4 id="orgfffba06">default font</h4>
-<div class="outline-text-4" id="text-orgfffba06">
+<div id="outline-container-org1d62af7" class="outline-4">
+<h4 id="org1d62af7">default font</h4>
+<div class="outline-text-4" id="text-org1d62af7">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> powerline-height 32<span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-rainbow-delimiters-depth-1">(</span>set-face-attribute 'default nil <span class="org-builtin">:family</span> <span class="org-string">"New Times Roman"</span> <span class="org-builtin">:weight</span> 'light<span class="org-rainbow-delimiters-depth-1">)</span>
@@ -4295,9 +4295,9 @@ The following line prevents the warning above:
 </div>
 </div>
 
-<div id="outline-container-orgac859d6" class="outline-4">
-<h4 id="orgac859d6">unicode fonts</h4>
-<div class="outline-text-4" id="text-orgac859d6">
+<div id="outline-container-orgb9151a3" class="outline-4">
+<h4 id="orgb9151a3">unicode fonts</h4>
+<div class="outline-text-4" id="text-orgb9151a3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">unicode-fonts</span>
   <span class="org-builtin">:config</span>
@@ -4313,17 +4313,17 @@ The following line prevents the warning above:
 </div>
 </div>
 
-<div id="outline-container-org5baf85b" class="outline-3">
-<h3 id="org5baf85b">core</h3>
-<div class="outline-text-3" id="text-org5baf85b">
+<div id="outline-container-org224c6a7" class="outline-3">
+<h3 id="org224c6a7">core</h3>
+<div class="outline-text-3" id="text-org224c6a7">
 </div>
-<div id="outline-container-org198a5cc" class="outline-4">
-<h4 id="org198a5cc">minor modes</h4>
-<div class="outline-text-4" id="text-org198a5cc">
+<div id="outline-container-org53680c4" class="outline-4">
+<h4 id="org53680c4">minor modes</h4>
+<div class="outline-text-4" id="text-org53680c4">
 </div>
 <ul class="org-ul">
-<li><a id="orgb8c6c0f"></a>ispell-minor-mode<br />
-<div class="outline-text-5" id="text-orgb8c6c0f">
+<li><a id="org7e2dd5a"></a>ispell-minor-mode<br />
+<div class="outline-text-5" id="text-org7e2dd5a">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ispell-program-name <span class="org-rainbow-delimiters-depth-2">(</span>concat my/home-directory <span class="org-string">".nix-profile/bin/aspell"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -4333,9 +4333,9 @@ The following line prevents the warning above:
 </ul>
 </div>
 
-<div id="outline-container-org202da18" class="outline-4">
-<h4 id="org202da18">fix tooltips</h4>
-<div class="outline-text-4" id="text-org202da18">
+<div id="outline-container-orge689b0a" class="outline-4">
+<h4 id="orge689b0a">fix tooltips</h4>
+<div class="outline-text-4" id="text-orge689b0a">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> x-gtk-use-system-tooltips nil<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -4344,13 +4344,13 @@ The following line prevents the warning above:
 </div>
 </div>
 
-<div id="outline-container-org5a7d559" class="outline-3">
-<h3 id="org5a7d559">helm</h3>
-<div class="outline-text-3" id="text-org5a7d559">
+<div id="outline-container-org2194a6e" class="outline-3">
+<h3 id="org2194a6e">helm</h3>
+<div class="outline-text-3" id="text-org2194a6e">
 </div>
-<div id="outline-container-orgc5e4316" class="outline-4">
-<h4 id="orgc5e4316">theme customizations</h4>
-<div class="outline-text-4" id="text-orgc5e4316">
+<div id="outline-container-org03fc215" class="outline-4">
+<h4 id="org03fc215">theme customizations</h4>
+<div class="outline-text-4" id="text-org03fc215">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>set-face-attribute
  'helm-selection nil
@@ -4391,9 +4391,9 @@ The following line prevents the warning above:
 </div>
 </div>
 
-<div id="outline-container-org93ecf15" class="outline-4">
-<h4 id="org93ecf15">filter nix wrappers</h4>
-<div class="outline-text-4" id="text-org93ecf15">
+<div id="outline-container-org33e6a71" class="outline-4">
+<h4 id="org33e6a71">filter nix wrappers</h4>
+<div class="outline-text-4" id="text-org33e6a71">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">require</span> '<span class="org-constant">helm-external</span><span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> helm-external-commands-list
@@ -4405,9 +4405,9 @@ The following line prevents the warning above:
 </div>
 </div>
 
-<div id="outline-container-org78d2a90" class="outline-3">
-<h3 id="org78d2a90">postamble</h3>
-<div class="outline-text-3" id="text-org78d2a90">
+<div id="outline-container-org6b0d09a" class="outline-3">
+<h3 id="org6b0d09a">postamble</h3>
+<div class="outline-text-3" id="text-org6b0d09a">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 
@@ -4416,13 +4416,13 @@ The following line prevents the warning above:
 </div>
 </div>
 
-<div id="outline-container-orgdd6df8f" class="outline-4">
-<h4 id="orgdd6df8f">csharp</h4>
-<div class="outline-text-4" id="text-orgdd6df8f">
+<div id="outline-container-org736c837" class="outline-4">
+<h4 id="org736c837">csharp</h4>
+<div class="outline-text-4" id="text-org736c837">
 </div>
 <ul class="org-ul">
-<li><a id="org3de6321"></a>omnisharp<br />
-<div class="outline-text-5" id="text-org3de6321">
+<li><a id="org56b7c30"></a>omnisharp<br />
+<div class="outline-text-5" id="text-org56b7c30">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">omnisharp</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
@@ -4444,13 +4444,13 @@ The following line prevents the warning above:
 </div>
 </div>
 
-<div id="outline-container-org1cc8b5e" class="outline-2">
-<h2 id="org1cc8b5e">windows configuration</h2>
-<div class="outline-text-2" id="text-org1cc8b5e">
+<div id="outline-container-org9910a4e" class="outline-2">
+<h2 id="org9910a4e">windows configuration</h2>
+<div class="outline-text-2" id="text-org9910a4e">
 </div>
-<div id="outline-container-org8756b2d" class="outline-3">
-<h3 id="org8756b2d">preamble</h3>
-<div class="outline-text-3" id="text-org8756b2d">
+<div id="outline-container-orgb7279ea" class="outline-3">
+<h3 id="orgb7279ea">preamble</h3>
+<div class="outline-text-3" id="text-orgb7279ea">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-2">(</span>string-equal system-type <span class="org-string">"windows-nt"</span><span class="org-rainbow-delimiters-depth-2">)</span>
 </pre>
@@ -4458,9 +4458,9 @@ The following line prevents the warning above:
 </div>
 </div>
 
-<div id="outline-container-orgee86154" class="outline-3">
-<h3 id="orgee86154">theme</h3>
-<div class="outline-text-3" id="text-orgee86154">
+<div id="outline-container-orgc7df2cc" class="outline-3">
+<h3 id="orgc7df2cc">theme</h3>
+<div class="outline-text-3" id="text-orgc7df2cc">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">dracula-theme</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -4468,9 +4468,9 @@ The following line prevents the warning above:
 </div>
 </div>
 
-<div id="outline-container-org43151a3" class="outline-3">
-<h3 id="org43151a3">postamble</h3>
-<div class="outline-text-3" id="text-org43151a3">
+<div id="outline-container-org5b0f9f6" class="outline-3">
+<h3 id="org5b0f9f6">postamble</h3>
+<div class="outline-text-3" id="text-org5b0f9f6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-unmatched">)</span>
 </pre>
@@ -4479,19 +4479,35 @@ The following line prevents the warning above:
 </div>
 </div>
 
-<div id="outline-container-orga892b5b" class="outline-2">
-<h2 id="orga892b5b">postfix</h2>
-<div class="outline-text-2" id="text-orga892b5b">
+<div id="outline-container-org62bca3c" class="outline-2">
+<h2 id="org62bca3c">postfix</h2>
+<div class="outline-text-2" id="text-org62bca3c">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp" id="org7548295"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-html-htmlize-output-type 'css<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp" id="org02703e5"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-html-htmlize-output-type 'css<span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-html-head-include-default-style nil<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
+
+<style>
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 2.3em;
+    border-bottom: 1px solid black;
+}
+
+h3 {
+    content: "\25CB";
+    margin-right: .3em;
+}
+</style>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2020-09-23 Wed 12:38</p>
+<p class="date">Created: 2020-09-23 Wed 13:00</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
